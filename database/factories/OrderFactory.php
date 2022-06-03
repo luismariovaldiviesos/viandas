@@ -27,6 +27,7 @@ class OrderFactory extends Factory
             'shipping' => 0,
             'items' => $this->faker->numberBetween(1,10),
             'discount' =>$dto,
+            'cash'=> $this->faker->numberBetween(1,10),
             'type' => $this->faker->randomElement(['Web','Local']),
             'status' => $this->faker->randomElement(['Delivered','Pending']),
             'user_id' => User::all()->random()->id,

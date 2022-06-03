@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('shipping',10,2)->default(0);
             $table->integer('items')->default(0);
             $table->decimal('discount',10,2)->default(0);
+            $table->decimal('cash',10,2)->default(0);
             $table->enum('type',['Web','Local'])->default('Local');
             $table->enum('status',['Delivered','Pending'])->default('Delivered');
             $table->foreignId('user_id')->constrained();
