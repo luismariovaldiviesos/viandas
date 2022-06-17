@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Categories;
+use App\Http\Livewire\Products;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('categories', Categories::class)->name('categories');
+Route::get('products', Products::class)->name('products');
 
 // ruta principal
 Route::get('/', function () {

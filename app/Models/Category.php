@@ -62,7 +62,7 @@ class Category extends Model
                 return 'storage/image-not-found.png';
         }
 
-        return 'storage/noimg.jpg';
+        return 'storage/noimg.png';
     }
 
 }

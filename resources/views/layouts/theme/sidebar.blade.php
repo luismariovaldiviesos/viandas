@@ -7,14 +7,14 @@
 
     <ul>
         <li>
-            <a href="#" class="side-menu">
+            <a href="{{ url('categories') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="layers"></i> </div>
                 <div class="side-menu__title"> CATEGORIAS  </div>
             </a>
         </li>
 
         <li>
-            <a href="#" class="side-menu">
+            <a href="{{ route('products') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="coffee"></i> </div>
                 <div class="side-menu__title"> PRODUCTOS  </div>
             </a>

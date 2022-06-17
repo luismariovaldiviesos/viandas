@@ -80,4 +80,17 @@
 
     @endif
 
+    @include('livewire.sales.keyboard')
+
+
+    {{-- para el buscador  --}}
+    <script>
+        const inputSearch = document.getElementById('search')
+        inputSearch.addEventListener('change', (e) => {
+            @this.search = e.target.value
+        })
+
+
+    </script>
+
 </div>

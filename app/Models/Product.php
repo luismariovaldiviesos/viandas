@@ -8,4 +8,96 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-}
+
+
+    protected $fillable =  ['code','name','price','price2','changes','cost','stock','minstock','category_id'];
+
+
+    //validaciones
+    public static  function rules ($id)
+    {
+        if($id <= 0){
+            return[
+                'name' => 'required|min:3|max:100|string|unique:products',
+                'code' => 'nullable|max:25',
+                'category' => 'required|not_in:elegir',
+                'price' => 'gt:0', // mayor a cero
+                'cost' => 'gt:0', // mayor a cero
+                'stock' => 'required',
+                'minstock' => 'required',
+            ];
+        }
+        else{
+            return[
+                'name' => "required|min:3|max:100|string|unique:products,name,{$id}",
+                'code' => 'nullable|max:25',
+                'category' => 'required|not_in:elegir',
+                'price' => 'gt:0', // mayor a cero
+                'cost' => 'gt:0', // mayor a cero
+                'stock' => 'required',
+                'minstock' => 'required',
+            ];
+        }
+
+    }
+
+    public static $messages = [
+        'name.required' => 'Nombre del producto requerido',
+        'name.min' => 'Nombre del producto debe tener al menos tres caracteres',
+        'name.max' => 'Nombre del producto debe tener máximos 100 caracteres',
+        'name.unique' => 'Nombre del producto ya existe en la base de datos',
+        'code.max' => 'El código debe tener máximo 25 caracteres',
+        'category.required' => 'La categoria es requerida',
+        'category.not_in' => 'Elige una categoría válida',
+        'cost.gt' => 'El costo debe ser mayor a cero',
+        'price.gt' => 'El precio debe ser mayor a cero',
+        'stock.required' => 'Ingresa el stock',
+        'minstock.required' => 'Ingresa el stock mínimo',
+    ];
+
+
+    //relaciones
+    public function sales()
+    {
+       return $this->hasMany(OrderDetail::class);
+    }
+
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'model');
+    }
+
+    // ultima imagen que se relaciono al producto
+    public function lastestImage()
+    {
+        return $this->morphOne(Image::class, 'model')->latestOfMany();
+    }
+
+    //accesors
+    public function getImgAttribute()
+    {
+        if(count($this->images))
+        {
+            if (file_exists('storage/products/'. $this->images->last()->file))
+
+                return "storage/products/". $this->images->last()->file;
+                else
+            return "storage/image-not-found.png";  // si el producto tiene imagen pero fisiscamente no se encuentra
+
+        } else{
+            return 'storage/noimg.png'; // si el producto no  tiene imagen relacionada
+
+        }
+    }
+
+
+
+   }
+
+
