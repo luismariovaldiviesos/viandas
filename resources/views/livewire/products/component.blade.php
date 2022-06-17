@@ -1,15 +1,17 @@
 <div>
     <div class="intro-y col-span-12">
 
-            <div class="intro-y box">
+        <div class="intro-y box">
 
             <h2 class="text-lg font-medium text-center text-them-1 py-4">
                 PRODUCTOS
             </h2>
 
-            <div class="intro-y col-span-12 flex-wrap sm:flex-nowrap items-center mt-2 p-4">
+            <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2 p-4">
                 <button onclick="openPanel('add')" class="btn btn-primary shadow-md mr-2">Agregar</button>
-                <div class="hidden md:block mx-auto text-gray-600">-</div>
+                <div class="hidden md:block mx-auto text-gray-600">
+                    --
+                </div>
 
                 <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                     <div class="w-56 relative text-gray-700 dark:text-gray-300 ">
