@@ -4,7 +4,7 @@
         <div class="intro-y box">
 
             <h2 class="text-lg font-medium text-center text-them-1 py-4">
-                PRODUCTOS
+                {{ $componentName }}
             </h2>
 
             <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2 p-4">
@@ -58,7 +58,7 @@
                                             <div class="d-flex justify-content-center">
                                                 @if ($product->sales->count() < 1)
                                                     <button class="btn btn-danger text-white border-0"
-                                                    onclick="destroy('products','destroy', {{ $product->id }})"
+                                                    onclick="destroy('products','Destroy', {{ $product->id }})"
                                                     type="button">
                                                         <i class=" fas fa-trash f-2x"></i>
                                                     </button>
@@ -80,6 +80,7 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        {{ $products->links() }}
                     </div>
                 </div>
             </div>

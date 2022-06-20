@@ -7,7 +7,7 @@
             <div class="intro-y box">
 
             <h2 class="text-lg font-medium text-center text-them-1 py-4">
-                CATEGORIAS
+                {{ $componentName }}
             </h2>
 
             {{-- AQUI LLAMAMOS AL COMPONENTE SEARH --}}

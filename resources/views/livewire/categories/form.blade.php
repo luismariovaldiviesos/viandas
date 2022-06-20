@@ -44,4 +44,16 @@
         </div>
 
     </div>
+
+
+    <script>
+        KioskBoard.run('#categoryName', {})
+        const inputCatName = document.getElementById('categoryName')
+        if(inputCatName){
+            inputCatName.addEventListener('change', ()=> {
+                @this.name = e.target.value
+            })
+        }
+    </script>
+
 </div>

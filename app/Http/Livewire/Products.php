@@ -15,8 +15,8 @@ class Products extends Component
     use WithFileUploads;
 
     public $name='', $code ='', $cost=0, $price=0, $price2=0, $stock=0, $minstock=0, $category='elegir',$selected_id=0,$gallery = [];
-    public $action = 'Listado', $componentName='Catalogo de Productos', $search, $form = false;
-    private $pagination =5;
+    public $action = 'Listado', $componentName='CATALOGO DE PRODUCTOS', $search, $form = false;
+    private $pagination =15;
     protected $paginationTheme='tailwind';
 
 
@@ -157,6 +157,7 @@ class Products extends Component
     public  function Destroy(Product $product)
     {
         // eliminar las imagenes fisicamente
+        //dd($product);
         $product->images()->each( function($img){
             if($img->file != null && file_exists('storage/products' . $img->file))
             {

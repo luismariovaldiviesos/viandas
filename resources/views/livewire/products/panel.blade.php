@@ -5,7 +5,7 @@
          <div class="modal-content">
 
             <a href="javascript:;" data-dismiss="modal">
-                <i class="fas fa-times w-8 h-8 text-gray-500"></i>
+                <i class="fas fa-times fa-4x w-8 h-8 text-gray-500"></i>
             </a>
 
             <div class="modal-header p-5">

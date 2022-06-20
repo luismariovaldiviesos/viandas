@@ -4,13 +4,18 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Categories extends Component
 {
 
+    use WithPagination;
+    use WithFileUploads;
+
     // propiedades publicas
     public $form = false, $name ="", $selected_id=0, $photo ='';
-    public $action = 'Listado', $componentName = 'Categorias', $search = '';
+    public $action = 'Listado', $componentName = 'CATALOGO DE CATEGORIAS', $search = '';
     private $pagination =4;
 
     protected $paginationTheme = 'tailwind';
@@ -30,6 +35,7 @@ class Categories extends Component
 
     public function Edit(Category  $category)
     {
-
+        $this->selected_id = $category->id;
+        $this->name = $category->name;
     }
 }
