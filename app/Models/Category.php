@@ -56,10 +56,16 @@ class Category extends Model
         $img = $this->image->file;
         if($img != null)
         {
-            if (file_exists('storage/categories' . $img))
-                return 'storage/categories' . $img;
+            if (file_exists('storage/categories' . $img ))
+                {
+                    return 'storage/categories' . $img;
+                }
                 else
-                return 'storage/image-not-found.png';
+                {
+                    return 'storage/image-not-found.png';
+                    //return 'hasta aquillegamos';
+                }
+
         }
 
         return 'storage/noimg.png';
