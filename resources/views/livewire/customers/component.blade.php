@@ -52,7 +52,7 @@
                                             <div class="d-flex justify-content-center">
                                                 @if ($customer->orders->count() < 1)
                                                     <button class="btn btn-danger text-white border-0"
-                                                    onclick="destroy('customers','destroy', {{ $customer->id }})"
+                                                    onclick="destroy('customers','Destroy', {{ $customer->id }})"
                                                     type="button">
                                                         <i class=" fas fa-trash f-2x"></i>
                                                     </button>
@@ -96,9 +96,21 @@
 
     {{-- para el buscador  --}}
     <script>
-        const inputSearch = document.getElementById('search')
-        inputSearch.addEventListener('change', (e) => {
-            @this.search = e.target.value
+
+        document.addEventListener('click', (e) => {
+            if(e.target.id == 'search'){
+                KioskBoard.run('#search', {})
+
+                // para no hacer click fuera click dentro
+                document.getElementById('search').blur()
+                document.getElementById('search').focus()
+
+                const inputSearch = document.getElementById('search')
+                inputSearch.addEventListener('change', (e) => {
+                 @this.search = e.target.value
+                 })
+
+            }
         })
 
 

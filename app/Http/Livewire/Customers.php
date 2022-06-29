@@ -55,10 +55,60 @@ class Customers extends Component
         $this->noty(null, 'close-modal');
     }
 
-    public function resetUi()
+    public function resetUI()
     {
         $this->resetPage();
         $this->resetValidation();
-        $this->reset('businame','valueidenti','address','email','phone','notes','selected_id','search');
+        $this->reset('businame','typeidenti','valueidenti','address','email','phone','notes','selected_id','search','form');
     }
+
+    public function Edit(Customer $customer){
+
+        $this->selected_id = $customer->id;
+        $this->businame = $customer->businame;
+        $this->typeidenti = $customer->typeidenti;
+        $this->valueidenti = $customer->valueidenti;
+        $this->address = $customer->address;
+        $this->email = $customer->email;
+        $this->phone = $customer->phone;
+        $this->notes = $customer->notes;
+        $this->form = true;
+
+    }
+
+    public $listeners = ['resetUI', 'Destroy'];
+
+    public function Store()
+    {
+        $this->validate(Customer::rules($this->selected_id), Customer::$messages);
+
+        Customer::updateOrCreate(
+            ['id' => $this->selected_id],
+            [
+                'businame' => $this->businame,
+                'typeidenti' => $this->typeidenti,
+                'valueidenti' => $this->valueidenti,
+                'address' => $this->address,
+                'email' => $this->email,
+                'phone' => $this->phone,
+                'notes' => $this->notes
+            ]
+
+            );
+            $this->noty($this->selected_id > 0 ? 'Cliente actualizado ' : 'Cliente registrado', 'noty', false, 'close-modal' );
+            $this->resetUI();
+
+    }
+
+    public function Destroy(Customer $customer)
+    {
+        if($customer->orders->count() < 1)
+        {
+            $customer->delete();
+            $this->noty("El cliente <b>$customer->businame </b> ha sido elmininado");
+        }else{
+            $this->noty("El cliente tiene ventas relacionadas, no es posible eliminarlo");
+        }
+    }
+
 }

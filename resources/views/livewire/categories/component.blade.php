@@ -85,9 +85,20 @@
 
     {{-- para el buscador  --}}
     <script>
-        const inputSearch = document.getElementById('search')
-        inputSearch.addEventListener('change', (e) => {
-            @this.search = e.target.value
+         document.addEventListener('click', (e) => {
+            if(e.target.id == 'search'){
+                KioskBoard.run('#search', {})
+
+                // para no hacer click fuera click dentro
+                document.getElementById('search').blur()
+                document.getElementById('search').focus()
+
+                const inputSearch = document.getElementById('search')
+                inputSearch.addEventListener('change', (e) => {
+                 @this.search = e.target.value
+                 })
+
+            }
         })
 
 
