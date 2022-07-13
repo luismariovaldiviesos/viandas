@@ -203,7 +203,7 @@ class Sales extends Component
 
         } catch (\Throwable $e) {
             DB::rollback();
-            $this->not('Error al guardar el pedido: ' . $e->getMessage(), 'noty', 'error');
+            $this->noty('Error al guardar el pedido: ' . $e->getMessage(), 'noty', 'error');
         }
     }
 
