@@ -26,7 +26,7 @@ trait CartTrait {
         return $cart->countInCart($id);
     }
 
-    public function getItemsCArt()
+    public function getItemsCart()
     {
         $cart = new Cart;
         return $cart->totalItems();

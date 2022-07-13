@@ -21,7 +21,7 @@
         </li>
 
         <li>
-            <a href="#" class="side-menu">
+            <a href="{{ route('sales') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="shopping-cart"></i> </div>
                 <div class="side-menu__title"> VENTAS  </div>
             </a>

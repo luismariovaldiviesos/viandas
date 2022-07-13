@@ -9,66 +9,52 @@ class Category extends Model
 {
     use HasFactory;
 
-
     protected $fillable = ['name'];
 
-
-    //reglas de validacion
     public static function rules($id)
     {
-        // registro nuevo
-        if($id <= 0)
-        {
-          return ['name' => 'required|min:3|max:50|unique:categories'];
-        }
-        //actualizar registro
-        else
-        {
-           return  ['name' => "required|min:3|max:50|unique:categories,name,{$id}"];
+        if ($id <= 0) {
+            return [
+                'name' => 'required|min:3|max:50|unique:categories'
+            ];
+        } else {
+            return [
+                'name' => "required|min:3|max:50|unique:categories,name,{$id}"
+            ];
         }
     }
 
     public static $messages = [
-        'name.required' => 'el nombre de la categoria es requerido',
-        'name.min' => 'el nombre de la categoria debe tener al menos 3 caracteres',
-        'name.max' => 'el nombre de la categoria debe tener maximo 50 caracteres',
-        'name.unique' => 'el nombre de categoria ya existe en el sistema',
+        'name.required' => 'Nombre requerido',
+        'name.min' => 'El nombre debe tener al menos 3 caracteres',
+        'name.max' => 'El nombre debe tener máximo 50 caracteres',
+        'name.unique' => 'La categoría ya existe en sistema'
     ];
 
-
-    // relaciones
-
+    // relationships
     public function products()
     {
         return $this->hasMany(Product::class);
     }
-
     public function image()
     {
-        return $this->morphOne(Image::class, 'model')->withDefault(); // si no hay imagen devuelve vacio
+        //Este patrón a menudo se denomina patrón de objeto nulo y puede ayudar a eliminar las comprobaciones condicionales en su código.
+        return  $this->morphOne(Image::class, 'model')->withDefault();
     }
 
 
-    //muttators && accesors
-
+    // accessors && mutators
     public function getImgAttribute()
     {
         $img = $this->image->file;
-        if($img != null)
-        {
-            if (file_exists('storage/categories' . $img ))
-                {
-                    return 'storage/categories' . $img;
-                }
-                else
-                {
-                    return 'storage/image-not-found.png';
-                    //return 'hasta aquillegamos';
-                }
 
+        if ($img != null) {
+            if (file_exists('storage/categories/' . $img))
+                return 'storage/categories/' . $img;
+            else
+            return "storage/image-not-found.png";  // si el producto tiene imagen pero fisiscamente no se encuentra
         }
 
-        return 'storage/noimg.png';
+        return 'storage/noimg.png'; // si el producto no  tiene imagen relacionada
     }
-
 }
