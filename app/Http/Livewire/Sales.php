@@ -79,7 +79,7 @@ class Sales extends Component
     public function getProductsByCategory($category_id)
     {
         $this->showListProducts =  true;
-        $this->productsList = Product::where('category_id', $category_id)->get();
+        $this->productsList = Product::where('category_id', $category_id)->where('stock','>', 0)->get();
     }
 
     public function add2Cart(Product $product)
@@ -105,6 +105,11 @@ class Sales extends Component
 
     public function updateQty(Product $product, $cant=1)
     {
+        //para validar si hay las suficientes existencias en bbd y poder vender
+        if($cant  + $this->countInCart($product->id) > $product->stock){
+            $this->noty('STOCK INSUFICIENTE','noty','error');
+            return;
+        }
         if ($cant <= 0)
             $this->removeProductCart($product->id);
         else
@@ -156,6 +161,8 @@ class Sales extends Component
 
             if ($this->customerSelected !=  'Seleccionar Cliente') {
                 $this->customer_id = Customer::where('businame', $this->customerSelected)->first()->id;
+            } else{
+                $this->customer_id = Customer::where('businame', 'consumidor final')->first()->id;
             }
 
 

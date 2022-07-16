@@ -72,4 +72,13 @@
     })
 
 
+    document.addEventListener('click', (e) => {
+        if(e.target.getAttribute('data-type') === 'qty'){
+            KioskBoard.run('#' + e.target.id, {})
+            document.getElementById( e.target.id).blur()
+            document.getElementById( e.target.id).focus()
+        }
+    })
+
+
 </script>

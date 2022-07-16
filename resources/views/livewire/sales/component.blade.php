@@ -47,11 +47,16 @@
                                     <td class="border-b dark:border-dark-5 text-center">${{number_format($item->price,2)}}</td>
                                     <td class="border-b dark:border-dark-5 text-center">
                                         <div class="input-group mt-2">
-                                            <input wire:keydown.enter="updateQty({{$item->id}}, $event.target.value )" value="{{$item->qty}}" data-kioskboard-type="numpad" data-type="qty" type="text" class="form-control text-center kioskboard" id="r{{$item->id}}">
-                                            <div wire:click="updateQty({{$item->id}}, document.getElementById('r'+ {{$item->id}} ).value )" class="input-group-text">
+                                            <input wire:keydown.enter="updateQty({{$item->id}}, $event.target.value )"
+                                            {{-- data-type qty es para que se active el teclado tactil en la cantidad
+                                            el evento esta en el archivo scripts de sales  --}}
+                                            data-type="qty"
+                                            value="{{$item->qty}}" data-kioskboard-type="numpad" data-type="qty" type="text" class="form-control text-center kioskboard" id="r{{$item->id}}">
+                                            <div wire:click="updateQty({{$item->id}}, document.getElementById('r'+ {{$item->id}} ).value )" class="input-group-text {{$item->livestock > 0 ? '' : 'hidden'}} ">
                                                 <i class="fas fa-redo fa-lg"></i>
                                             </div>
                                         </div>
+
                                         <div><small class="text-xs text-theme-1">{{$item->livestock}}</small></div>
                                     </td>
                                     <td class="border-b dark:border-dark-5 text-center">
@@ -63,10 +68,11 @@
                                             <button  wire:click.prevent="decreaseQty({{$item->id}})" class="btn btn-warning ml-4"><i class="fas fa-minus "></i></button>
 
 
+                                            {{-- desactivamos el boton ams si als existencias son menores --}}
                                             <button  wire:click.prevent="increaseQty({{$item->id}})"
-                                             class="btn btn-success ml-4  " >
+                                             class="btn btn-success ml-4 {{$item->livestock > 0 ? '' : 'hidden'}} " >
                                              <i class="fas fa-plus"></i>
-                                         </button>
+                                            </button>
 
 
                                         </div>
@@ -153,13 +159,13 @@
             <h1>Ingresar el Efectivo</h1>
         </div>
         <div class="mt-8">
-            @if($totalCart >0 && ($cash>= $totalCart))
+            @if($totalCart > 0 && ($cash >= $totalCart))
                 <button wire:loading.attr="disabled" wire:target="storeSale" wire:click.prevent="storeSale" class="btn btn-primary w-full"><i class="fas fa-database mr-2"></i> Guardar Venta</button>
                 <button wire:loading.attr="disabled" wire:target="storeSale" wire:click.prevent="storeSale(true)" class="btn btn-outline-primary w-full mt-5"><i class="fas fa-receipt mr-2"></i> Guardar e Imprimir</button>
             @endif
 
             @if($totalCart >0)
-                <button onclick="Cancel()" class="btn btn-danger w-full">
+                <button onclick="Cancel()" class="btn btn-danger w-full mt-5">
                 <i class="fas fa-trash mr-2"> </i>
                 Cancelar Venta</button>
             @endif

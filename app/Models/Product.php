@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\CartTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
     use HasFactory;
+    use CartTrait;
 
 
     protected $fillable =  ['code','name','price','price2','changes','cost','stock','minstock','category_id'];
@@ -96,7 +98,19 @@ class Product extends Model
         }
     }
 
+    public function getLiveStockAttribute()
+    {
+        $stock =0;
+        $stockCart = $this->countInCart($this->id);
+        if ($stockCart > 0) {
+            $stock = $this->stock - $stockCart;
+        }
+        else{
+            $stock = $this->stock;
+        }
 
+        return $stock;
+    }
 
    }
 
