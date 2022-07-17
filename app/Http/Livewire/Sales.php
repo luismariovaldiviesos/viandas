@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Traits\CartTrait;
+use App\Traits\PrinterTrait;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use phpDocumentor\Reflection\Types\This;
@@ -16,7 +17,7 @@ use DB;
 class Sales extends Component
 {
     //traits
-    use CartTrait;
+    use CartTrait, PrinterTrait;
 
     // propiedades generales
     public $search, $cash, $searchCustomer, $customer_id =null,  $changes,  $customerSelected ="Seleccionar Cliente";
