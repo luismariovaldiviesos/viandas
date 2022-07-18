@@ -16,6 +16,10 @@
         <link rel="stylesheet" href="{{ asset('css/snackbar.min.css')}}" />
         <script src="{{ asset('js/kioskboard.js') }}"></script>
 
+        <link rel="stylesheet" href="{{ asset('css/mc-calendar.min.css')}}" />
+        <script src="{{ asset('js/mc-calendar.min.js') }}"></script>
+
+
         <style>
             .image-fit>img{
                 object-fit: containt !important;
