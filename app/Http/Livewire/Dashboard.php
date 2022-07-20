@@ -25,6 +25,7 @@ class Dashboard extends Component
             array_push($this->listYears, $currentYear +$i);
         }
 
+        $this->getTop5();
 
         return view('livewire.dash.component')->layout('layouts.theme.app');
     }
@@ -35,7 +36,17 @@ class Dashboard extends Component
         ->select(
             DB::raw("p.name as product, sum(order_details.quantity * p.price) as total")
         )->whereYear('order_details.created_at', $this->year)
-        ->group('p.name')
-        ->orderBy(DB::row("sum(order_details.quantity * p.price)"))
+        ->groupBy('p.name')
+        ->orderBy(DB::raw("sum(order_details.quantity * p.price)"), 'desc')
+        ->get()->take(5)->toArray();
+
+        $contDif = ( 5 - count($this->top5Data)); // si la consulta devuelve 5 productos o menos
+
+        if ($contDif > 0) {
+            for ($i=1; $i <= $contDif; $i++) {
+                array_push($this->top5Data, ["product" => "-", "total" => 0]);
+            }
+        }
+
     }
 }

@@ -19,6 +19,9 @@
         <link rel="stylesheet" href="{{ asset('css/mc-calendar.min.css')}}" />
         <script src="{{ asset('js/mc-calendar.min.js') }}"></script>
 
+        <link rel="stylesheet" href="{{ asset('css/apexcharts.css') }}" />
+    <script src="{{ asset('js/apexcharts.js') }}"></script>
+
 
         <style>
             .image-fit>img{
