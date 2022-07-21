@@ -111,7 +111,7 @@
                     <div class="grid grid-flow-col auto-cols-max md:auto-cols-min gap-2">
                         <div>
                             <label for="">Imágenes</label>
-                            <input type="file" class="form-control" wire:model.defer='gallery' accept="image/x-png,image/x-jpeg" multiple>
+                            <input type="file" class="form-control" wire:model.defer='gallery'   accept="image/x-png,image/jpeg,image/jpg" multiple>
                             @error('gallery')
                             <span style="color:red; ">{{ $message }}</span>
                             @enderror
