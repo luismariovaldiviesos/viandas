@@ -160,7 +160,7 @@
 
         },
         title: {
-          text: totalYearSales,
+          text: totalYearSales(),
           floating: true,
           offsetY: 330,
           align: 'center',
