@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Http\Livewire\Settings;
 use App\Models\Branch;
 use Carbon\Carbon;
 use App\Models\Order;
@@ -11,25 +12,34 @@ use Mike42\Escpos\EscposImage;
 use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use App\Models\Config;
+use App\Models\Setting;
 use Mike42\Escpos\CapabilityProfile;
 
 trait PrinterTrait {
 
     public function PrintTicket($orderId)
     {
-        $nombreImpresora = 'file';
-        $connector = new WindowsPrintConnector($nombreImpresora);
+
+        $settings = Setting::first();
+
+        if(!$settings) return;  // si tenemos registros continuamos, si no se corta y no imprime
+
+
+
+        //$nombreImpresora = 'file';
+        $connector = new WindowsPrintConnector($settings->printer);
         $printer =  new Printer($connector);
 
         $printer->setJustification(Printer::JUSTIFY_CENTER);
-        //$logo = EscposImage::load('logo.png');
-        //$printer->bitImage($logo);
+        $logo = EscposImage::load($settings->logo);
+        $printer->bitImage($logo);
         $printer->setTextSize(3, 3);
-        $printer->text("fastFOOD\n");
+        $printer->text("$settings->name\n");
         $printer->selectPrintMode();
-        $printer->text("Comida Express\n");
-        $printer->text("las pencas\n");
-        $printer->text("cuenca\n");
+        $printer->text("$settings->address\n");
+        $printer->text("$settings->phone\n");
+        // $printer->text("las pencas\n");
+        // $printer->text("cuenca\n");
         $printer->feed(); // linea en blanco
 
         $printer->setEmphasis(true); //negrita
@@ -82,7 +92,7 @@ trait PrinterTrait {
 
         //pie de ticket
         $printer->setJustification(Printer::JUSTIFY_CENTER);
-        $printer->text("Gracias por su compra\n");
+        $printer->text("$settings->leyend\n");
         $printer->text("khipu.com\n");
         $printer->feed(2);
 

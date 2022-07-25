@@ -25,7 +25,7 @@
             <div class="dropdown-menu__content box bg-theme-26 dark:bg-dark-6 text-white">
                 <div class="p-4 border-b border-theme-27 dark:border-dark-3">
                     <div class="font-medium">{{Auth()->user()->name}}</div>
-                    <div class="text-xs text-theme-28 mt-0.5 dark:text-gray-600">Developer</div>
+                    <div class="text-xs text-theme-28 mt-0.5 dark:text-gray-600">{{Auth()->user()->profile}}</div>
                 </div>
                 {{-- <div class="p-2">
                     <a href="{{ route('profile') }}" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="user" class="w-4 h-4 mr-2"></i> Perfil </a>

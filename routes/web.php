@@ -6,6 +6,7 @@ use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Products;
 use App\Http\Livewire\Reports;
 use App\Http\Livewire\Sales;
+use App\Http\Livewire\Settings;
 use App\Http\Livewire\Users;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('sales', Sales::class)->name('sales');
     Route::get('reports', Reports::class)->name('reports');
     Route::get('dash', Dashboard::class)->name('dash');
+    Route::get('settings', Settings::class)->name('settings');
 
 });
 
