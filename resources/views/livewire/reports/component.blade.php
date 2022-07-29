@@ -35,6 +35,7 @@
                 <div class="col-span-12 sm:col-span-6 xl:col-span-4 ">
                     @if($startDate !='' && $endDate !='')
                     <button wire:click.prevent="getReport" class="btn btn-primary " >Consultar</button>
+                    <button wire:click.prevent="ReportPDF" class="btn btn-danger " >PDF</button>
                     @endif
                 </div>
 

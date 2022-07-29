@@ -3,6 +3,7 @@
 use App\Http\Livewire\Categories;
 use App\Http\Livewire\Customers;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Diario;
 use App\Http\Livewire\Products;
 use App\Http\Livewire\Reports;
 use App\Http\Livewire\Sales;
@@ -31,6 +32,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('reports', Reports::class)->name('reports');
     Route::get('dash', Dashboard::class)->name('dash');
     Route::get('settings', Settings::class)->name('settings');
+    Route::get('diarios', Diario::class)->name('diario');
+
+
+
 
 });
 

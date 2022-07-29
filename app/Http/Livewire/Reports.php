@@ -16,7 +16,7 @@ class Reports extends Component
     use PrinterTrait;
 
     public $search, $startDate, $endDate, $userId= 'TODOS', $details = [];
-    private $pagination = 6;
+    private $pagination = 100;
 
 
     public function render()
@@ -26,6 +26,11 @@ class Reports extends Component
             'orders' => $this->getReport()
         ])
         ->layout('layouts.theme.app');
+    }
+
+    public function ReportPDF()
+    {
+        dd($this->getReport());
     }
 
     public function getReport()

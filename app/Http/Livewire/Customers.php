@@ -34,7 +34,7 @@ class Customers extends Component
         return view('livewire.customers.component',[
             'customers' => $customers
 
-        ])->layout('layouts.theme.app');;
+        ])->layout('layouts.theme.app');
     }
 
     public function noty($msg, $eventName = 'noty', $reset = true, $action =""){
