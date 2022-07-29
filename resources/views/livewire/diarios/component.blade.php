@@ -141,7 +141,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="col-span-12 md:col-span-6 xl:col-span-12 mt-3 xxl:mt-8">
                                     <div class="intro-x flex items-center h-10">
                                         <h2 class="text-lg font-medium truncate mr-auto">
-                                            Important Notes
+                                           TOMAR EN CUENTA
                                         </h2>
                                         <button data-carousel="important-notes" data-target="prev" class="tiny-slider-navigator btn px-2 border-gray-400 text-gray-700 dark:text-gray-300 mr-2"> <i data-feather="chevron-left" class="w-4 h-4"></i> </button>
                                         <button data-carousel="important-notes" data-target="next" class="tiny-slider-navigator btn px-2 border-gray-400 text-gray-700 dark:text-gray-300 mr-2"> <i data-feather="chevron-right" class="w-4 h-4"></i> </button>
