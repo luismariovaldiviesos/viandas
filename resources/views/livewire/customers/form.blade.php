@@ -26,7 +26,7 @@
                                  <option value="ci">ci</option>
                                 <option value="ruc">ruc</option>
 
-                              </select>
+                            </select>
                             @error('businame')
                                 <x-alert msg="{{ $message }}" />
                             @enderror

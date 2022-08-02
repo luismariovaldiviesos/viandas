@@ -29,6 +29,13 @@
             </a>
         </li>
 
+        <li>
+            <a href="{{ route('cajas') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="shopping-cart"></i> </div>
+                <div class="side-menu__title"> CAJAS  </div>
+            </a>
+        </li>
+
         <div class="side-nav__devider my-6"></div>
 
         <li>

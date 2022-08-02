@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Cajas;
 use App\Http\Livewire\Categories;
 use App\Http\Livewire\Customers;
 use App\Http\Livewire\Dashboard;
@@ -33,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dash', Dashboard::class)->name('dash');
     Route::get('settings', Settings::class)->name('settings');
     Route::get('diarios', Diario::class)->name('diario');
+    Route::get('cajas', Cajas::class)->name('cajas');
 
 
 

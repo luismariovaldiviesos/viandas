@@ -112,4 +112,10 @@ class User extends Authenticatable
         return 'storage/default_avatar.JPG';
    }
 
+
+   public  function caja ()
+   {
+    return $this->hasOne(Caja::class, 'id');
+   }
+
 }

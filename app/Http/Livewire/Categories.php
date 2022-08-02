@@ -24,8 +24,6 @@ class Categories extends Component
 
     public function render()
     {
-
-
         if (strlen($this->search) > 0)
             $info = Category::where('name', 'like', "%{$this->search}%")->paginate($this->pagination);
         else
