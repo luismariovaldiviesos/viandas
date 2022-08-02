@@ -8,35 +8,54 @@
 
         <div class="p-5 ">
             <div class="preview">
-                <div x-data="{}" x-init="setTimeout(() => { refs.first.focus() }, 900  )">
-                    <label class="form-label" >Nombre Caja</label>
-                    <input type="text" wire:model="nombre" x-ref="first"
-                    class="form-control kioskboard {{ $errors->first('nombre') ?  "border-theme-6" : "" }}"
-                    placeholder="ingresa la descripción"
-                    >
-                    @error('nombre')
-                        <x-alert msg="{{ $message }}" />
-                    @enderror
+
+                <div class="mt-3">
+                    <div class="sm:grid grid-cols-2 gap-5">
+                        <div>
+                            <label  class="form-label">Nombre Caja</label>
+                            <input wire:model='nombre' id="nombre" type="text" class="form-control form-control-lg border-start-0 kioskboard" maxlength="250">
+                            @error('nombre')
+                                <x-alert msg="{{ $message }}" />
+                            @enderror
+                        </div>
+
+                        <div class="grid grid-cols-6">
+                            <div class="col-end-2 bg-amber-500">
+                                <label class="form-label">Estado Caja</label>
+                                <select wire:model='status' class="form-select form-select-lg sm:mr-2">
+                                    <option selected="elegir">Elegir</option>
+                                    <option value="0">CAJA CERRRADA</option>
+                                    <option value="1">CAJA ABIERTA</option>
+                                </select>
+                                @error('status')
+                                <x-alert msg="{{ $message }}" />
+                            @enderror
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-6">
+                            <div class="col-end-2 bg-amber-500">
+                                <label class="form-label">Usuario Caja</label>
+                                <select wire:model='user_id' class="form-select form-select-lg sm:mr-2">
+                                   <option selected="elegir">Elegir</option>
+                                   @foreach ($usuarios as $user )
+                                   <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
+
+                                </select>
+                                @error('user_id')
+                                <x-alert msg="{{ $message }}" />
+                            @enderror
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
 
-                <br>
-                <div>
-                    <label  class="form-label">Asignar usuario</label>
-                    <select wire:model='user_id' id="user_id" class="form-control form-control-lg border-start-0 kioskboard">
-                        <option selected>Elegir</option>
-                            @foreach ($users as $user )
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
-                    </select>
-                    @error('user_id')
-                        <x-alert msg="{{ $message }}" />
-                    @enderror
-                </div>
 
 
                 <div class="mt-5">
-
-                    {{-- COMPONENTES DE BLADE PARA GUARDAR Y VOLVER --}}
                     <x-back />
 
                     <x-save />
@@ -49,13 +68,30 @@
 
 
     <script>
-        KioskBoard.run('#categoryName', {})
-        const inputCatName = document.getElementById('categoryName')
-        if(inputCatName){
-            inputCatName.addEventListener('change', ()=> {
-                @this.name = e.target.value
-            })
-        }
+
+       KioskBoard.run('.kioskboard', {})
+
+       document.querySelectorAll(".kioskboard").forEach(i => i.addEventListener("change", e =>{
+
+            switch(e.currentTarget.id)
+            {
+                case 'name':
+                    @this.name = e.target.value
+                    break
+                case 'email':
+                    @this.email = e.target.value
+                    break
+                case 'password':
+                    @this.password = e.target.value
+                    break
+            }
+
+       }))
+
     </script>
 
 </div>
+
+
+
+

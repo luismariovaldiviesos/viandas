@@ -20,23 +20,24 @@
                         <table class="table">
                             <thead>
                                 <tr class="text-theme-1">
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" width="25%">NOMBRE</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" width="25%">STATUS</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" width="25%">USUARIO ASIGNADO</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">ACCIONES</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >NOMBRE CAJA</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >ESTADI CAJA</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >USUARIOS</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center" >ACCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($cajas as $caja )
                                     <tr class=" dark:bg-dark-1 {{ $loop->index % 2> 0 ? 'bg-gray-200' : '' }}">
+
                                         <td class="dark:border-dark-5">
                                             <h6 class="mb-1 font-medium">{{ $caja->nombre }}</h6>
                                         </td>
                                         <td class="dark:border-dark-5">
-                                            <h6 class="mb-1 font-medium">{{ $caja->status == 0 ? ('CAJA CERRADA') : ('CAJA ABIERTA')  }}</h6>
+                                            <h6 class="mb-1 font-medium">{{ $caja->status == 0 ? ('CAJA CERRDA ') :  ('CAJA ABIERTA') }}</h6>
                                         </td>
                                         <td class="dark:border-dark-5">
-                                            <h6 class="mb-1 font-medium">{{ $caja->user->name }}</h6>
+                                            <h6 class="mb-1 font-medium">{{ $caja->usuario }}</h6>
                                         </td>
 
                                         <td class="dark:border-dark-5 text-center">
@@ -59,7 +60,7 @@
                                 @empty
                                     <tr class="bg-gray-200 dark:bg-dark-1">
                                         <td colspan="2">
-                                            <h6 class="text-center">    NO HAY CATEGORIAS REGISTRADAS </h6>
+                                            <h6 class="text-center">    NO HAY CAJAS  </h6>
                                         </td>
                                     </tr>
                                 @endforelse
@@ -87,7 +88,8 @@
 
     {{-- para el buscador  --}}
     <script>
-         document.addEventListener('click', (e) => {
+
+        document.addEventListener('click', (e) => {
             if(e.target.id == 'search'){
                 KioskBoard.run('#search', {})
 

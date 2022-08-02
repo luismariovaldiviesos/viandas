@@ -13,33 +13,43 @@ class Caja extends Model
 
     public static function rules($id)
     {
-        if ($id <= 0) {
-            return [
+        if($id <=0){
+            return
+            [
                 'nombre' => 'required|min:3|max:50|unique:cajas',
-                'user_id' => 'required',
+                'status' => 'required|not_in:elegir',
+                'user_id'=> 'required|not_in:elegir'
             ];
-        } else {
-            return [
+        }
+        else
+        {
+            return
+            [
                 'nombre' => "required|min:3|max:50|unique:cajas,nombre,{$id}",
-                'user_id' => 'required',
+                'status' => "required|not_in:elegir",
+                'user_id'=> 'required|not_in:elegir'
             ];
         }
     }
 
-    public static $messages = [
-        'nombre.required' => 'Nombre requerido',
-        'nombre.min' => 'El nombre debe tener al menos 3 caracteres',
-        'nombre.max' => 'El nombre debe tener máximo 50 caracteres',
-        'nombre.unique' => 'La caja ya existe en sistema',
-        'user_id.required' => 'Usuario requerido',
-
+    public static $messages =[
+        'nombre.required' => 'nombre requerido',
+        'nombre.min' => 'nombre debe tener al menos 3 caracteres',
+        'nombre.max' => 'nombre debe tener maximo 50 caracteres',
+        'nombre.unique' => 'nombre caja ya existe en la bada de datos',
+        'status.required' => 'status es requerido',
+        'status.not_in' => 'Seleccione un usuario válido',
+        'user_id.required' => 'usuario de caja requerido',
+        'user_id.not_in' => 'Seleccione un usuario válido'
     ];
 
 
 
-    public function  user ()
+    public function user()
     {
-        return $this->hasOne(User::class, 'id');
+        return $this->belongsTo(User::class);
     }
+
+
 
 }

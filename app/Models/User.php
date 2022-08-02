@@ -115,7 +115,7 @@ class User extends Authenticatable
 
    public  function caja ()
    {
-    return $this->hasOne(Caja::class, 'id');
+    return $this->hasOne(Caja::class);
    }
 
 }
