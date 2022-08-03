@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Caja;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\User;
 use App\Models\Product;
 use App\Traits\CartTrait;
 use App\Traits\PrinterTrait;
@@ -37,9 +39,11 @@ class Sales extends Component
 
     protected $paginationTheme = "bootstrap";
 
+    public $estadoCaja;
+
     public function render()
     {
-
+        $this->validaCaja();
         if(strlen($this->searchCustomer) > 0)
             $this->customers =  Customer::where('businame','like',"%{$this->searchCustomer}%")
              ->orderBy('businame','asc')->get()->take(5); //primeros 5 clientes
@@ -54,6 +58,15 @@ class Sales extends Component
             'categories' => Category::orderBy('name','asc')->get(),
         ])
         ->layout('layouts.theme.app');
+    }
+
+    public function  validaCaja()
+    {
+
+        $user_id  =  Auth()->user()->id;
+        $usuario = User::find($user_id);
+        return  $this->estadoCaja = $usuario->caja->status ;
+
     }
 
 

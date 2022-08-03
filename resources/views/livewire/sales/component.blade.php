@@ -15,9 +15,19 @@
                 <i class="fas fa-list mr-2"></i> DETALLE DE VENTA
              </a>
 
-            <a wire:click="setTabActive('tabCategories')" title="Seleccionar Categoría" data-toggle="tab" data-target="#tabCategory" href="javascript:;" class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center {{$tabCategories ? 'active' : '' }}" id="meta-title-tab" role="tab" aria-selected="false">
-             <i class="fas fa-th-large mr-2"></i> CATEGORÍAS
-             </a>
+             @if ($estadoCaja == 0)
+
+             <span>no se puede facturar</span>
+
+             @else
+
+             <a wire:click="setTabActive('tabCategories')" title="Seleccionar Categoría" data-toggle="tab" data-target="#tabCategory" href="javascript:;" class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center {{$tabCategories ? 'active' : '' }}" id="meta-title-tab" role="tab" aria-selected="false">
+                <i class="fas fa-th-large mr-2"></i> CATEGORÍAS
+                </a>
+
+             @endif
+
+
 
          </div>
      <div class="post__content tab-content">
