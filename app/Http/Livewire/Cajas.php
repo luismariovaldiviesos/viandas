@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Caja;
 use App\Models\User;
+use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -86,26 +87,51 @@ class Cajas extends Component
     {
         $this->validate(Caja::rules($this->selected_id), Caja::$messages);
 
-        Caja::updateOrCreate(
+       $caja =  Caja::updateOrCreate(
             ['id' => $this->selected_id],
             [
                 'nombre' =>  $this->nombre,
                 'status' =>  $this->status,
                 'user_id' =>  $this->user_id
-
             ]
         );
 
-        $this->noty($this->selected_id > 0 ? 'Caja actualizada' : 'Caja registrada');
-        $this->resetUI();
+        if ($this->selected_id > 0) {
+            if($this->status == 0)  // cerrar caja
+            {
+
+            }
+            else{  //abrir caja
+
+                $this->abrirCaja($caja->id);
+
+            }
+        }
+        else{
+
+            $this->noty($this->selected_id > 0 ? 'Caja actualizada' : 'Caja registrada');
+             $this->resetUI();
+        }
+
+
+    }
+
+    public function abrirCaja($id)
+    {
+        dd($id);
     }
 
 
     public function Destroy(Caja $caja)
     {
-
+        if ($caja->user->count() < 1 ) {
             $caja->delete();
             $this->noty("La caja <b>$caja->nombre</b> fue eliminada del sistema");
+        }
+        else{
+             $this->noty("La caja no puede ser eliminada, tiene usuarios asignados");
+        }
+
 
     }
 }
