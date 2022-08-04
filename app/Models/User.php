@@ -118,4 +118,12 @@ class User extends Authenticatable
     return $this->hasOne(Caja::class);
    }
 
+   // un usuaio tiene variuos arqueos
+
+   public function arqueos()
+   {
+       return $this->hasMany(Arqueo::class);
+   }
+
+
 }

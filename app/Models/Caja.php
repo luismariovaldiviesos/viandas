@@ -50,6 +50,13 @@ class Caja extends Model
         return $this->belongsTo(User::class);
     }
 
+    // una caja tiene variuos arqueos
+
+    public function arqueos()
+    {
+        return $this->hasMany(Arqueo::class);
+    }
+
 
 
 }

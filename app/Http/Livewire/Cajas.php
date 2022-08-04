@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Arqueo;
 use App\Models\Caja;
 use App\Models\User;
 use Carbon\Carbon;
@@ -87,7 +88,7 @@ class Cajas extends Component
     {
         $this->validate(Caja::rules($this->selected_id), Caja::$messages);
 
-       $caja =  Caja::updateOrCreate(
+       $caja =  Caja::updateOrCreate( // crear caja
             ['id' => $this->selected_id],
             [
                 'nombre' =>  $this->nombre,
@@ -96,7 +97,7 @@ class Cajas extends Component
             ]
         );
 
-        if ($this->selected_id > 0) {
+        if ($this->selected_id > 0) {  //editat caja es decir abrir o cerrra
             if($this->status == 0)  // cerrar caja
             {
 
@@ -116,9 +117,14 @@ class Cajas extends Component
 
     }
 
-    public function abrirCaja($id)
+    public function abrirCaja($idCaja)
     {
-        dd($id);
+        Arqueo::create([
+            'caja_id' => $idCaja,
+            'user_id' => Auth()->user()->id,
+            'monto_inicial' => 20
+        ]);
+        $this->noty("arqueo iniciado");
     }
 
 
