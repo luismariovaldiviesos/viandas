@@ -17,7 +17,6 @@ class Caja extends Model
             return
             [
                 'nombre' => 'required|min:3|max:50|unique:cajas',
-                'status' => 'required|not_in:elegir',
                 'user_id'=> 'required|not_in:elegir'
             ];
         }
@@ -26,7 +25,6 @@ class Caja extends Model
             return
             [
                 'nombre' => "required|min:3|max:50|unique:cajas,nombre,{$id}",
-                'status' => "required|not_in:elegir",
                 'user_id'=> 'required|not_in:elegir'
             ];
         }
@@ -37,8 +35,6 @@ class Caja extends Model
         'nombre.min' => 'nombre debe tener al menos 3 caracteres',
         'nombre.max' => 'nombre debe tener maximo 50 caracteres',
         'nombre.unique' => 'nombre caja ya existe en la bada de datos',
-        'status.required' => 'status es requerido',
-        'status.not_in' => 'Seleccione un usuario válido',
         'user_id.required' => 'usuario de caja requerido',
         'user_id.not_in' => 'Seleccione un usuario válido'
     ];

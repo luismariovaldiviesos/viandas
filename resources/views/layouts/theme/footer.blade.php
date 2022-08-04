@@ -41,5 +41,24 @@
     }
 
 
+    function abrir(componentName, methodName =  'destroy', rowId){
+        swal({
+            title: '¿ estas seguro de abrir caja ?',
+            text: '',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Abrir caja',
+            confirmButtonColor: '#e7515a',
+            cancelButtonText: 'Cerrar',
+            padding: '2em'
+        }).then(function(result){
+            if(result.value){
+                window.livewire.emitTo(componentName, methodName, rowId)
+                swal.close()
+            }
+        })
+    }
+
+
 </script>
 

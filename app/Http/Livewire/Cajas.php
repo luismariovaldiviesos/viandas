@@ -82,13 +82,16 @@ class Cajas extends Component
     }
 
 
-    public $listeners = ['resetUI','Destroy'];
+    public $listeners = ['resetUI','Destroy','Abrir'];
 
     public function Store()
     {
         $this->validate(Caja::rules($this->selected_id), Caja::$messages);
-
-       $caja =  Caja::updateOrCreate( // crear caja
+        if($this->status == 'elegir')  /// es ingreso nuevo
+        {
+            $this->status = 0;
+        }
+        Caja::updateOrCreate( // crear caja
             ['id' => $this->selected_id],
             [
                 'nombre' =>  $this->nombre,
@@ -97,35 +100,21 @@ class Cajas extends Component
             ]
         );
 
-        if ($this->selected_id > 0) {  //editat caja es decir abrir o cerrra
-            if($this->status == 0)  // cerrar caja
-            {
-
-            }
-            else{  //abrir caja
-
-                $this->abrirCaja($caja->id);
-
-            }
-        }
-        else{
-
-            $this->noty($this->selected_id > 0 ? 'Caja actualizada' : 'Caja registrada');
-             $this->resetUI();
-        }
+        $this->noty($this->selected_id > 0 ? 'Caja actualizada' : 'Caja registrada');
+        $this->resetUI();
 
 
     }
 
-    public function abrirCaja($idCaja)
-    {
-        Arqueo::create([
-            'caja_id' => $idCaja,
-            'user_id' => Auth()->user()->id,
-            'monto_inicial' => 20
-        ]);
-        $this->noty("arqueo iniciado");
-    }
+    // public function abrirCaja($idCaja)
+    // {
+    //     Arqueo::create([
+    //         'caja_id' => $idCaja,
+    //         'user_id' => Auth()->user()->id,
+    //         'monto_inicial' => 20
+    //     ]);
+    //     $this->noty("arqueo iniciado");
+    // }
 
 
     public function Destroy(Caja $caja)
@@ -139,5 +128,10 @@ class Cajas extends Component
         }
 
 
+    }
+
+    public function Abrir()
+    {
+        dd('abrir');
     }
 }

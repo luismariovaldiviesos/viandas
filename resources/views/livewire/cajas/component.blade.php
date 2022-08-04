@@ -34,7 +34,7 @@
                                             <h6 class="mb-1 font-medium">{{ $caja->nombre }}</h6>
                                         </td>
                                         <td class="dark:border-dark-5">
-                                            <h6 class="mb-1 font-medium">{{ $caja->status == 0 ? ('CAJA CERRDA ') :  ('CAJA ABIERTA') }}</h6>
+                                            <h6 class="mb-1 font-medium">{{ $caja->status == 0 ? ('CAJA CERRADA ') :  ('CAJA ABIERTA') }}</h6>
                                         </td>
                                         <td class="dark:border-dark-5">
                                             <h6 class="mb-1 font-medium">{{ $caja->usuario }}</h6>
@@ -42,18 +42,28 @@
 
                                         <td class="dark:border-dark-5 text-center">
                                             <div class="d-flex justify-content-center">
-                                                {{-- @if ($caja->user->count() < 1) --}}
+                                                {{-- @if ($caja->user->count() < 1)
                                                     <button class="btn btn-danger text-white border-0"
                                                     onclick="destroy('cajas','Destroy', {{ $caja->id }})"
                                                     type="button">
                                                         <i class=" fas fa-trash f-2x"></i>
                                                     </button>
-                                                {{-- @endif --}}
+                                                @endif --}}
                                                 <button class="btn btn-warning text-white border-0 ml-3"
                                                     wire:click.prevent="Edit({{ $caja->id }})"
                                                     type="button">
                                                         <i class=" fas fa-edit f-2x"></i>
-                                                    </button>
+                                                </button>
+
+                                                @if ($caja->status == 0)
+
+                                                <button class="btn btn-danger text-white border-0"
+                                                onclick="abrir('cajas','Abrir', {{ $caja->id }})"
+                                                type="button">
+                                                    <i class=" fas fa-folder-open f-2x"></i>
+                                                </button>
+                                                @endif
+
                                             </div>
                                         </td>
                                     </tr>

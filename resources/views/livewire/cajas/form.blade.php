@@ -19,6 +19,7 @@
                             @enderror
                         </div>
 
+                        {{-- @if ($selected_id > 0)
                         <div class="grid grid-cols-6">
                             <div class="col-end-2 bg-amber-500">
                                 <label class="form-label">Estado Caja</label>
@@ -32,6 +33,8 @@
                             @enderror
                             </div>
                         </div>
+                        @endif --}}
+
 
                         <div class="grid grid-cols-6">
                             <div class="col-end-2 bg-amber-500">
