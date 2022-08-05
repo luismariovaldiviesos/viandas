@@ -41,7 +41,7 @@
     }
 
 
-    function abrir(componentName, methodName =  'destroy', rowId){
+    function abrir(componentName, methodName =  'destroy', rowId, $montoInicial){
         swal({
             title: '¿ estas seguro de abrir caja ?',
             text: '',

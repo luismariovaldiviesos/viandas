@@ -130,8 +130,8 @@ class Cajas extends Component
 
     }
 
-    public function Abrir()
+    public function Abrir(Caja $caja)
     {
-        dd('abrir');
+        dd($caja->id);
     }
 }

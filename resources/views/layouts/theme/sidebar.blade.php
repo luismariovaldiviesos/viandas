@@ -35,6 +35,12 @@
                 <div class="side-menu__title"> CAJAS  </div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('arqueos') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
+                <div class="side-menu__title"> ARQUEOS  </div>
+            </a>
+        </li>
 
         <div class="side-nav__devider my-6"></div>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Arqueos;
 use App\Http\Livewire\Cajas;
 use App\Http\Livewire\Categories;
 use App\Http\Livewire\Customers;
@@ -35,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings', Settings::class)->name('settings');
     Route::get('diarios', Diario::class)->name('diario');
     Route::get('cajas', Cajas::class)->name('cajas');
-
+    Route::get('arqueos', Arqueos::class)->name('arqueos');
 
 
 
