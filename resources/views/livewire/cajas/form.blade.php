@@ -19,23 +19,6 @@
                             @enderror
                         </div>
 
-                        {{-- @if ($selected_id > 0)
-                        <div class="grid grid-cols-6">
-                            <div class="col-end-2 bg-amber-500">
-                                <label class="form-label">Estado Caja</label>
-                                <select wire:model='status' class="form-select form-select-lg sm:mr-2">
-                                    <option selected="elegir">Elegir</option>
-                                    <option value="0">CAJA CERRRADA</option>
-                                    <option value="1">CAJA ABIERTA</option>
-                                </select>
-                                @error('status')
-                                <x-alert msg="{{ $message }}" />
-                            @enderror
-                            </div>
-                        </div>
-                        @endif --}}
-
-
                         <div class="grid grid-cols-6">
                             <div class="col-end-2 bg-amber-500">
                                 <label class="form-label">Usuario Caja</label>

@@ -57,12 +57,19 @@
 
                                                 @if ($caja->status == 0)
 
-                                                <button class="btn btn-danger text-white border-0"
+                                                {{-- <button class="btn btn-danger text-white border-0"
                                                 onclick="abrir('cajas','Abrir', {{ $caja->id }})"
                                                 type="button">
                                                     <i class=" fas fa-folder-open f-2x"></i>
+                                                </button> --}}
+
+                                                <button class="btn btn-danger text-white border-0"
+                                                onclick="Abrircaja({{ $caja->id }})"
+                                                type="button">
+                                                    <i class=" fas fa-folder-open f-2x"></i>
                                                 </button>
-                                                @endif
+
+                                              @endif
 
                                             </div>
                                         </td>
@@ -91,9 +98,11 @@
 
         @include('livewire.cajas.form')
 
+
     @endif
 
     @include('livewire.sales.keyboard')
+    @include('livewire.cajas.modal-valor-inicio')
 
 
     {{-- para el buscador  --}}
@@ -114,6 +123,21 @@
 
             }
         })
+
+
+        function Abrircaja(idCaja){
+            var modal = document.getElementById('modalValorInicio')
+            @this.selected_id = idCaja
+            modal.classList.add("overflow-y-auto", "show")
+		    modal.style.cssText = "margin-top: 0px; margin-left: -100px;  z-index: 10000;"
+        }
+
+        function closeModal()
+            {
+                var modal = document.getElementById('modalValorInicio')
+                modal.classList.remove("overflow-y-auto", "show")
+                modal.style.cssText = ""
+            }
 
 
     </script>

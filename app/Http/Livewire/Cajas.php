@@ -14,7 +14,7 @@ class Cajas extends Component
 
     use WithPagination;
 
-    public $nombre='', $status='elegir', $user_id='elegir', $selected_id ='', $search ='';
+    public $nombre='', $status='elegir', $user_id='elegir', $selected_id ='', $search ='', $valorInicio=0;
     public $componentName = 'Cajas', $form  = false;
 
     public $action = 'Listado';
@@ -30,12 +30,14 @@ class Cajas extends Component
             $cajas = Caja::join('users as u','u.id','cajas.user_id')
                             ->select('cajas.*','u.name as usuario')
                             ->where('cajas.nombre','like',"%{$this->search}%")
+                            ->orderBy('name','asc')
                             ->paginate($this->pagination);
         }
         else
         {
             $cajas = Caja::join('users as u','u.id','cajas.user_id')
             ->select('cajas.*','u.name as usuario')
+            ->orderBy('name','asc')
             ->paginate($this->pagination);
         }
         return view('livewire.cajas.component',
@@ -73,6 +75,7 @@ class Cajas extends Component
 
     public function Edit(Caja $caja)
     {
+        //dd($caja->nombre);
         $this->selected_id = $caja->id;
         $this->nombre = $caja->nombre;
         $this->status = $caja->status;
@@ -130,8 +133,9 @@ class Cajas extends Component
 
     }
 
-    public function Abrir(Caja $caja)
+    public function Abrir($valorInicio)
     {
-        dd($caja->id);
+        $this->valorInicio = $valorInicio;
+        dd($this->valorInicio, $this->selected_id);
     }
 }
