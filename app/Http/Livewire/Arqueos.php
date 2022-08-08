@@ -18,7 +18,19 @@ class Arqueos extends Component
 
     public function render()
     {
-        $arqueos =  Arqueo::orderBy('id','asc')->paginate($this->pagination);
+        if(strlen($this->search) > 0){
+            $arqueos = Arqueo::join('users as u','u.id','arqueos.user_id')
+            ->select('arqueos.*','u.name as usuario')
+            ->where('arqueos.created_at','like',"%{$this->search}%")
+            ->orderBy('created_at','asc')
+            ->paginate($this->pagination);
+        }
+        else{
+            $arqueos = Arqueo::join('users as u','u.id','arqueos.user_id')
+            ->select('arqueos.*','u.name as usuario')
+            ->orderBy('created_at','asc')
+            ->paginate($this->pagination);
+        }
         return view('livewire.arqueos.component', [
             'arqueos' => $arqueos
         ]

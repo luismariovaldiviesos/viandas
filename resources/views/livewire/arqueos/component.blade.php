@@ -42,36 +42,21 @@
                             <tbody>
                                 @forelse ($arqueos as $arqueo )
                                     <tr class=" dark:bg-dark-1 {{ $loop->index % 2> 0 ? 'bg-gray-200' : '' }}">
-                                        <td>
-                                            <h6 class="mb-1 font-medium">{{ $arqueo->caja_id }}</h6>
-                                        </td>
 
-                                        <td class="dark:border-dark-5">
-                                            <h6 class="mb-1 font-medium">{{ $arqueo->user_id }}</h6>
-                                        </td>
-
-                                        <td class="text-center">{{ strtoupper($arqueo->monto_inicial ) }}</td>
+                                        <td class="text-center font-medium">{{ $arqueo->caja_id }}</td>
+                                        <td class="text-center font-medium">{{ $arqueo->usuario }}</td>
+                                        <td class="text-center font-medium">{{ number_format($arqueo->monto_inicial, 2 ) }}</td>
                                         <td class="text-center font-medium">{{ number_format($arqueo->monto_final,2 ) }}</td>
                                         <td class="text-center font-medium">{{ number_format($arqueo->total,2 ) }}</td>
                                         <td class="text-center font-medium">{{ $arqueo->observaciones  }}</td>
-                                        <td class="text-center font-medium">{{ $arqueo->created_at  }}</td>
+                                        <td class="text-center font-medium">{{\Carbon\Carbon::parse($arqueo->created_at)->format('d-m-Y H:m')}}</td>
+                                        @if ($arqueo->created_at == $arqueo->updated_at)
+                                        <td class="text-center text-theme-1 font-medium">CIERRE PENDIENTE</td>
+                                        @else
                                         <td class="text-center font-medium">{{ $arqueo->updated_at  }}</td>
-                                        {{-- <td class="dark:border-dark-5 text-center">
-                                            <div class="d-flex justify-content-center">
-                                                @if ($product->sales->count() < 1)
-                                                    <button class="btn btn-danger text-white border-0"
-                                                    onclick="destroy('products','Destroy', {{ $product->id }})"
-                                                    type="button">
-                                                        <i class=" fas fa-trash f-2x"></i>
-                                                    </button>
-                                                @endif
-                                                <button class="btn btn-warning text-white border-0 ml-3"
-                                                    wire:click.prevent="Edit({{ $product->id }})"
-                                                    type="button">
-                                                        <i class=" fas fa-edit f-2x"></i>
-                                                    </button>
-                                            </div>
-                                        </td> --}}
+                                        @endif
+
+
                                     </tr>
                                 @empty
                                     <tr class="bg-gray-200 dark:bg-dark-1">
