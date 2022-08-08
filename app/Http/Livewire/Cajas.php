@@ -6,6 +6,7 @@ use App\Models\Arqueo;
 use App\Models\Caja;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -135,7 +136,18 @@ class Cajas extends Component
 
     public function Abrir($valorInicio)
     {
-        $this->valorInicio = $valorInicio;
-        dd($this->valorInicio, $this->selected_id);
+        $arqueo  = Arqueo::create([
+            'caja_id' => $this->selected_id,
+            'user_id' => Auth()->user()->id,
+            'monto_inicial' => $valorInicio
+        ]);
+
+        if($arqueo){
+            Caja::where('id', $this->selected_id)
+            ->update(['status' => 1]);
+        }
+        $this->dispatchBrowserEvent('close-modal-apertura');
+        $this->noty("LA caja se abrio con éxito");
     }
 }
+

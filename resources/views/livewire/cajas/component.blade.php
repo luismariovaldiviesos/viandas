@@ -140,6 +140,13 @@
             }
 
 
+        //liteners que vienen desde el frontend
+
+     // listeners que vienen desde el front -end
+     window.addEventListener('close-modal-apertura', event => {
+        closeModal()
+    })
+
     </script>
 
 </div>

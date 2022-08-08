@@ -39,7 +39,7 @@
 		modal.style.cssText = ""
     }
 
-    // listeners que vienen desde el back-end
+    // listeners que vienen desde el front -end
     window.addEventListener('close-modal-changes', event => {
         closeModal()
     })
