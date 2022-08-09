@@ -37,6 +37,7 @@
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">OBSERVACIONES</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">FECHA APERTURA</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">FECHA CIERRE</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center" >ACCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,7 +55,29 @@
                                         <td class="text-center text-theme-1 font-medium">CIERRE PENDIENTE</td>
                                         @else
                                         <td class="text-center font-medium">{{ $arqueo->updated_at  }}</td>
+                                        <small class="font-normal">Caja cerrada</small>
                                         @endif
+
+
+
+                                        <td class="dark:border-dark-5 text-center">
+                                            @if ($arqueo->created_at == $arqueo->updated_at)
+                                            <button class="btn btn-danger text-white border-0"
+                                            onclick="CerrarCaja({{ $arqueo->id }})"
+                                            type="button">
+                                                <i class=" fas fa-folder-open f-2x"></i>
+                                            </button>
+                                                    <small class="font-normal ">Cerrar Caja</small>
+                                            @else
+                                                <button class="btn btn-success text-white border-0"
+                                                    onclick="detalleArqueo({{ $arqueo->caja_id }})"
+                                                    type="button">
+                                                        <i class=" fas fa-lock f-2x "></i>
+                                                        <small class="font-normal">Cerrar Caja</small>
+                                                </button>
+                                            @endif
+                                        </td>
+
 
 
                                     </tr>
@@ -79,77 +102,53 @@
     </div>
 
 
-        @include('livewire.arqueos.panel')
+        @include('livewire.arqueos.modal-cierre')
         @include('livewire.sales.keyboard')
 
 
     {{-- para el buscador  --}}
     <script>
-        const inputSearch = document.getElementById('search')
-        inputSearch.addEventListener('change', (e) => {
-            @this.search = e.target.value
-        })
+        document.addEventListener('click', (e) => {
+            if(e.target.id == 'search'){
+                KioskBoard.run('#search', {})
 
-        // abrir modal
-        function openPanel(action = ''){
-            if(action == 'add'){
-                @this.resetUI()
+                // para no hacer click fuera click dentro
+                document.getElementById('search').blur()
+                document.getElementById('search').focus()
+
+                const inputSearch = document.getElementById('search')
+                inputSearch.addEventListener('change', (e) => {
+                 @this.search = e.target.value
+                 })
+
             }
-            var modal = document.getElementById('panelProduct')
-            modal.classList.add('overflow-y-auto','show')
-            modal.style.cssText="margin-top: 0px; margin-left: 0px; padding-left: 17px; z-index: 100"
-
-        }
-
-        //cerrar modal
-        function closePanel(action = ''){
-
-            var modal = document.getElementById('panelProduct')
-            modal.classList.add('overflow-y-auto','show')
-            modal.style.cssText=""
-
-        }
-
-        window.addEventListener('open-modal', event => {
-            openPanel()
         })
 
-        window.addEventListener('noty', event => {
-            if (event.detail.action == 'close-modal')  closePanel()
 
-        })
+        function CerrarCaja(id){
+            console.log(id);
+            // var modal = document.getElementById('modal-cierre')
+            // @this.selected_id = id
+            // modal.classList.add("overflow-y-auto", "show")
+		    // modal.style.cssText = "margin-top: 0px; margin-left: -100px;  z-index: 10000;"
+        }
 
-        kioskBoard.run('.kioskboard', {})
+        function closeModal()
+            {
+                var modal = document.getElementById('modalValorInicio')
+                modal.classList.remove("overflow-y-auto", "show")
+                modal.style.cssText = ""
+            }
+
+
+        //liteners que vienen desde el frontend
+
+     // listeners que vienen desde el front -end
+     window.addEventListener('close-modal-apertura', event => {
+        closeModal()
+    })
     </script>
 
-    {{-- <script>
-        document.querySelectorAll(".kioskboard").forEach(i => i.addEventListener("change", e => {
-            switch (e.currentTarget.id)
-            {
-                case 'name':
-                    @this.name = e.target.value
-                    break
-                case 'cost':
-                    @this.cost = e.target.value
-                    break
-                case 'code':
-                    @this.code = e.target.value
-                    break
-                case 'price':
-                    @this.price = e.target.value
-                    break
-                case 'price2':
-                    @this.price2 = e.target.value
-                    break
-                case 'stock':
-                    @this.stock = e.target.value
-                    break
-                case 'minstock':
-                    @this.minstock = e.target.value
-                    break
 
-            }
-        }))
-    </script> --}}
 
 </div>
