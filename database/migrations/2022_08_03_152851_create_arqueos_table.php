@@ -20,7 +20,8 @@ return new class extends Migration
             $table->decimal('monto_inicial', 2,0);
             $table->decimal('monto_final', 2,0)->nullable();
             $table->decimal('total', 2,0)->nullable();
-            $table->string('observaciones', 2,0)->nullable();
+            $table->string('observaciones')->nullable();
+            $table->dateTime('fecha_cierre')->nullable();
             $table->timestamps();
         });
     }

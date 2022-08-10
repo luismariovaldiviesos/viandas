@@ -54,7 +54,7 @@
                                         @if ($arqueo->created_at == $arqueo->updated_at)
                                         <td class="text-center text-theme-1 font-medium">CIERRE PENDIENTE</td>
                                         @else
-                                        <td class="text-center font-medium">{{ $arqueo->updated_at  }}</td>
+                                        <td class="text-center font-medium">{{\Carbon\Carbon::parse($arqueo->fecha_cierre)->format('d-m-Y H:m')}}</td>
                                         <small class="font-normal">Caja cerrada</small>
                                         @endif
 
@@ -65,7 +65,7 @@
                                             <button class="btn btn-danger text-white border-0"
                                             onclick="CerrarCaja({{ $arqueo->id }})"
                                             type="button">
-                                                <i class=" fas fa-folder-open f-2x"></i>
+                                                <i class=" fas fa-unlock f-2x"></i>
                                             </button>
                                                     <small class="font-normal ">Cerrar Caja</small>
                                             @else
@@ -73,7 +73,7 @@
                                                     onclick="detalleArqueo({{ $arqueo->caja_id }})"
                                                     type="button">
                                                         <i class=" fas fa-lock f-2x "></i>
-                                                        <small class="font-normal">Cerrar Caja</small>
+                                                        <small class="font-normal">Detalle arqueo</small>
                                                 </button>
                                             @endif
                                         </td>
@@ -102,9 +102,9 @@
     </div>
 
 
-        @include('livewire.arqueos.modal-cierre')
-        @include('livewire.sales.keyboard')
 
+        @include('livewire.sales.keyboard')
+        @include('livewire.arqueos.modal-cierre')
 
     {{-- para el buscador  --}}
     <script>
@@ -127,15 +127,15 @@
 
         function CerrarCaja(id){
             console.log(id);
-            // var modal = document.getElementById('modal-cierre')
-            // @this.selected_id = id
-            // modal.classList.add("overflow-y-auto", "show")
-		    // modal.style.cssText = "margin-top: 0px; margin-left: -100px;  z-index: 10000;"
+            var modal = document.getElementById('modal-cierre')
+            @this.selected_id = id
+            modal.classList.add("overflow-y-auto", "show")
+		    modal.style.cssText = "margin-top: 0px; margin-left: -100px;  z-index: 10000;"
         }
 
         function closeModal()
             {
-                var modal = document.getElementById('modalValorInicio')
+                var modal = document.getElementById('modal-cierre')
                 modal.classList.remove("overflow-y-auto", "show")
                 modal.style.cssText = ""
             }
@@ -144,7 +144,7 @@
         //liteners que vienen desde el frontend
 
      // listeners que vienen desde el front -end
-     window.addEventListener('close-modal-apertura', event => {
+     window.addEventListener('close-modal-cierre', event => {
         closeModal()
     })
     </script>
