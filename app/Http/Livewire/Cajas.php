@@ -31,6 +31,7 @@ class Cajas extends Component
             $cajas = Caja::join('users as u','u.id','cajas.user_id')
                             ->select('cajas.*','u.name as usuario')
                             ->where('cajas.nombre','like',"%{$this->search}%")
+                            ->where('cajas.user_id', Auth()->user()->id)
                             ->orderBy('name','asc')
                             ->paginate($this->pagination);
         }
@@ -38,6 +39,7 @@ class Cajas extends Component
         {
             $cajas = Caja::join('users as u','u.id','cajas.user_id')
             ->select('cajas.*','u.name as usuario')
+            ->where('cajas.user_id', Auth()->user()->id)
             ->orderBy('name','asc')
             ->paginate($this->pagination);
         }
