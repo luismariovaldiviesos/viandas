@@ -15,7 +15,7 @@ class Arqueos extends Component
 {
     use WithPagination;
 
-    public $caja_id='', $user_id ='', $monto_inicial=0, $monto_final=0, $total=0, $obervaciones='',$selected_id=0;
+    public $caja_id='', $user_id ='', $monto_inicial=0, $monto_final=0, $total=0, $observaciones='',$selected_id=0;
     public $action = 'Listado', $componentName='LISTADO DE ARQUEOS DE CAJA', $search, $form = false;
     private $pagination =15;
     protected $paginationTheme='tailwind';
@@ -27,12 +27,14 @@ class Arqueos extends Component
             $arqueos = Arqueo::join('users as u','u.id','arqueos.user_id')
             ->select('arqueos.*','u.name as usuario')
             ->where('arqueos.created_at','like',"%{$this->search}%")
+            ->where('arqueos.user_id', Auth()->user()->id)
             ->orderBy('created_at','asc')
             ->paginate($this->pagination);
         }
         else{
             $arqueos = Arqueo::join('users as u','u.id','arqueos.user_id')
             ->select('arqueos.*','u.name as usuario')
+            ->where('arqueos.user_id', Auth()->user()->id)
             ->orderBy('created_at','asc')
             ->paginate($this->pagination);
         }
