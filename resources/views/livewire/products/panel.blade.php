@@ -62,7 +62,7 @@
                 <div class="mt-4">
                     <div class="input-group">
                         <div class="input-group-text">Precio2</div>
-                        <input type="number"  id="price" wire:model='price2' class="form-control form-control-lg kioskboard"  data-kioskboard-type="numpad" placeholder="">
+                        <input type="number"  id="price2" wire:model='price2' class="form-control form-control-lg kioskboard"  data-kioskboard-type="numpad" placeholder="">
                     </div>
                     @error('price2')
                     <x-alert msg="{{ $message  }}" />
