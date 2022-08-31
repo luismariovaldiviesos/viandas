@@ -65,7 +65,7 @@ class Sales extends Component
 
         $user_id  =  Auth()->user()->id;
         $usuario = User::find($user_id);
-        return  $this->estadoCaja = $usuario->caja->status ;
+     $this->estadoCaja = $usuario->caja->status ?? 'nocajasasignadas' ;
 
     }
 
