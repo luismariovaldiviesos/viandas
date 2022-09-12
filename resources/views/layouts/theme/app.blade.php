@@ -20,9 +20,10 @@
         <script src="{{ asset('js/mc-calendar.min.js') }}"></script>
 
         <link rel="stylesheet" href="{{ asset('css/apexcharts.css') }}" />
-    <script src="{{ asset('js/apexcharts.js') }}"></script>
+        <script src="{{ asset('js/apexcharts.js') }}"></script>
 
 
+        {{-- estilos personalizados  --}}
         <style>
             .image-fit>img{
                 object-fit: containt !important;
@@ -58,7 +59,9 @@
                 <!-- BEGIN: Top Bar -->
                 @include('layouts.theme.topbar')
                 <!-- END: Top Bar -->
+    {{-- ********************slot nos permite desplegar cafda uno de los componentes en la seccion content --}}
                 {{ $slot }}
+    {{-- **********************slot nos permite desplegar cafda uno de los componentes en la seccion content --}}
             </div>
 
             <!-- END: Content -->
@@ -74,8 +77,6 @@
         <!-- BEGIN: JS Assets-->
             @include('layouts.theme.footer')
         <!-- END: JS Assets-->
-
-
 
 
          <!-- para livewire ---------------------------->

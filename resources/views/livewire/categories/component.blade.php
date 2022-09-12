@@ -95,7 +95,7 @@
 
                 const inputSearch = document.getElementById('search')
                 inputSearch.addEventListener('change', (e) => {
-                 @this.search = e.target.value
+                 @this.search = e.target.value  // iguala lo que esta en id search con search del comoponente
                  })
 
             }

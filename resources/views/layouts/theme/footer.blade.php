@@ -21,6 +21,9 @@
         })
     })
 
+    // para las notificaciones de conf iniciales
+
+
     // funcion para destruir en cada uno de los componentes
     function destroy(componentName, methodName =  'destroy', rowId){
         swal({
@@ -33,8 +36,8 @@
             cancelButtonText: 'Cerrar',
             padding: '2em'
         }).then(function(result){
-            if(result.value){
-                window.livewire.emitTo(componentName, methodName, rowId)
+            if(result.value){  // cuando el usuario dice aceptar =  true
+                window.livewire.emitTo(componentName, methodName, rowId) // aqui se emiteTO desde el front al back
                 swal.close()
             }
         })
