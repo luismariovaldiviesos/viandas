@@ -33,7 +33,8 @@
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">USUARIO</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">MONTO INICIAL</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">MONTO FINAL</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">TOTAL</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">TOTAL VENTAS</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">TOTAL CAJA</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">OBSERVACIONES</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">FECHA APERTURA</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">FECHA CIERRE</th>
@@ -49,13 +50,35 @@
                                         <td class="text-center font-medium">{{ number_format($arqueo->monto_inicial, 2 ) }}</td>
                                         <td class="text-center font-medium">{{ number_format($arqueo->monto_final,2 ) }}</td>
                                         <td class="text-center font-medium">{{ number_format($arqueo->total,2 ) }}</td>
+                                        <td class="text-center font-medium">{{ number_format($arqueo->monto_final + $arqueo->total,2 ) }}</td>
                                         <td class="text-center font-medium">{{ $arqueo->observaciones  }}</td>
-                                        <td class="text-center font-medium">{{\Carbon\Carbon::parse($arqueo->created_at)->format('d-m-Y H:m')}}</td>
+
+                                        <td class="text-center font-medium">
+                                            <h6>
+
+                                                {{ $arqueo->created_at->isoFormat(' H:mm') }}
+                                            </h6>
+                                            <small class="font-normal">
+                                                {{\Carbon\Carbon::parse($arqueo->created_at)->isoFormat('LL')}}
+                                            </small>
+
+                                        </td>
+
                                         @if ($arqueo->created_at == $arqueo->updated_at)
                                         <td class="text-center text-theme-1 font-medium">CIERRE PENDIENTE</td>
                                         @else
-                                        <td class="text-center font-medium">{{\Carbon\Carbon::parse($arqueo->fecha_cierre)->format('d-m-Y H:m')}}</td>
-                                        <small class="font-normal">Caja cerrada</small>
+                                        {{-- <td class="text-center font-medium">{{\Carbon\Carbon::parse($arqueo->fecha_cierre)->format('d-m-Y H:m')}}</td>
+                                        <small class="font-normal">Caja cerrada</small> --}}
+                                        <td class="text-center font-medium">
+                                            <h6>
+
+                                                {{\Carbon\Carbon::parse($arqueo->fecha_cierre)->isoFormat('H:mm')}}
+                                            </h6>
+                                            <small class="font-normal">
+                                                {{\Carbon\Carbon::parse($arqueo->fecha_cierre)->isoFormat('LL')}}
+                                            </small>
+
+                                        </td>
                                         @endif
 
 
