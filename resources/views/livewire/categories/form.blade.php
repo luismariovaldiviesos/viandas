@@ -12,7 +12,7 @@
                     <label class="form-label" >Nombre</label>
                     <input type="text" wire:model="name" x-ref="first" id="categoryName"
                     class="form-control kioskboard {{ $errors->first('name') ?  "border-theme-6" : "" }}"
-                    placeholder="ingresa la descripción"
+                    placeholder="nombre de la categoria"
                     >
                     @error('name')
                         <x-alert msg="{{ $message }}" />

@@ -132,7 +132,7 @@
 
         })
 
-        kioskBoard.run('.kioskboard', {})
+        // kioskBoard.run('.kioskboard', {})
     </script>
 
     <script>
