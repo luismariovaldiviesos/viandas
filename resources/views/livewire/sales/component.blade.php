@@ -22,14 +22,19 @@
                     id="content-tab"
                     role="tab" >
                     <i class="fas fa-list mr-2"></i> DETALLE DE VENTA
-                </a>
+                    </a>
 
                 @if ($estadoCaja == 0)
 
-                        {{-- <a data-toggle="tab"
-                        class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center"
-                        role="tab" > --}}
-                        <h1 class="text-2xl font-bold"> <i class="fas fa-lock"></i> DEBE ABRIR CAJA PARA FACTURAR</h1>
+
+                    <a
+                    data-toggle="tab"
+                    data-target="#"
+                    href=""
+                    class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center {{$tabProducts ? 'active' : '' }}"
+                    id="content-tab"
+                    role="tab" >
+                    <i class=" fas fa-folder-open f-2x"></i>DEBE ABRIR CAJA
                     </a>
 
                 @else
@@ -37,6 +42,9 @@
                     <a wire:click="setTabActive('tabCategories')" title="Seleccionar Categoría" data-toggle="tab" data-target="#tabCategory" href="javascript:;" class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center {{$tabCategories ? 'active' : '' }}" id="meta-title-tab" role="tab" aria-selected="false">
                         <i class="fas fa-th-large mr-2"></i> CATEGORÍAS
                     </a>
+
+
+
 
                 @endif
 
@@ -203,6 +211,8 @@
         @include('livewire.sales.modal-customers')
         @include('livewire.sales.script')
         @include('livewire.sales.keyboard')
+
+
 
 
     </div>
