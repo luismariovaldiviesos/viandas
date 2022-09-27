@@ -46,9 +46,18 @@
     window.addEventListener('close-customer-modal', event => {
         closeModalCustomer()
     })
+    window.addEventListener('close-product-modal', event => {
+        closeModalProduct()
+    })
 
     function openModalCustomer() {
 		var modal = document.getElementById("modalCustomer")
+		modal.classList.add("overflow-y-auto", "show")
+		modal.style.cssText = "margin-top: 0px; margin-left: -100px;  z-index: 1000;"
+	}
+
+    function openModalProduct() {
+		var modal = document.getElementById("modalProduct")
 		modal.classList.add("overflow-y-auto", "show")
 		modal.style.cssText = "margin-top: 0px; margin-left: -100px;  z-index: 1000;"
 	}
@@ -59,11 +68,22 @@
 		modal.classList.remove("overflow-y-auto", "show")
 		modal.style.cssText = ""
 	}
+    function closeModalProduct() {
+		var modal = document.getElementById("modalProduct")
+		modal.classList.remove("overflow-y-auto", "show")
+		modal.style.cssText = ""
+	}
 
     //sincronizar valor de propiedades
     const input =  document.getElementById('customer-search')
     input.addEventListener('change', (e) =>{
         @this.searchCustomer = e.target.value
+    })
+
+     //sincronizar valor de propiedades
+     const input2 =  document.getElementById('product-search')
+    input2.addEventListener('change', (e) =>{
+        @this.searchProduct = e.target.value
     })
 
     const inputCash =  document.getElementById('cash')

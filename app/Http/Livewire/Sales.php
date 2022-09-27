@@ -22,14 +22,14 @@ class Sales extends Component
     use CartTrait, PrinterTrait;
 
     // propiedades generales
-    public $search, $cash, $searchCustomer, $customer_id =null,  $changes,  $customerSelected ="Seleccionar Cliente";
+    public $search, $cash, $searchCustomer, $searchProduct, $customer_id =null,  $changes,  $customerSelected ="Seleccionar Cliente", $productSelected = "Buscar producto" ;
 
 
     // mostrar y activar panels
     public $showListProducts = false, $tabProducts =  true, $tabCategories = false;
 
     //collections
-    public $productsList =[], $customers =[];
+    public $productsList =[], $customers =[], $products = [];
 
     //info del carrito
     public $totalCart = 0, $itemsCart= 0, $contentCart=[];
@@ -49,10 +49,18 @@ class Sales extends Component
              ->orderBy('businame','asc')->get()->take(5); //primeros 5 clientes
         else
             $this->customers =  Customer::orderBy('businame','asc')->get()->take(5); //primeros 5 clientes
-
             $this->totalCart = $this->getTotalCart();
             $this->itemsCart = $this->getItemsCart();
             $this->contentCart = $this->getContentCart();
+
+
+        if(strlen($this->searchProduct) > 0)
+            $this->products = Product::where('name','like',"%{$this->searchProduct}%")
+            ->orderBy('name','asc')->get()->take(5);
+        else
+        $this->products =  Product::orderBy('name','asc')->get()->take(5); //primeros 5 clientes
+
+
 
         return view('livewire.sales.component', [
             'categories' => Category::orderBy('name','asc')->get(),
@@ -152,9 +160,18 @@ class Sales extends Component
         $this->dispatchBrowserEvent('close-customer-modal');
     }
 
+    public function searchManualProduct(Product $product)
+    {
+        //dd($id);
+        $this->add2Cart($product);
+        $this->dispatchBrowserEvent('close-product-modal');
+        $this->resetUI();
+
+    }
+
     public function resetUI()
     {
-        $this->reset('tabProducts', 'cash', 'showListProducts', 'tabCategories', 'search', 'searchCustomer', 'customer_id', 'customerSelected', 'totalCart', 'itemsCart', 'productIdSelected', 'productChangesSelected', 'productNameSelected', 'changesProduct');
+        $this->reset('tabProducts', 'cash', 'showListProducts', 'tabCategories', 'search', 'searchCustomer', 'searchProduct', 'customer_id', 'customerSelected', 'totalCart', 'itemsCart', 'productIdSelected', 'productChangesSelected', 'productNameSelected', 'changesProduct');
     }
 
     // SAVE SALE //

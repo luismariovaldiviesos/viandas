@@ -28,6 +28,7 @@
 
 
                     <a
+                    title="Abrir caja en sección cajas"
                     data-toggle="tab"
                     data-target="#"
                     href=""
@@ -173,7 +174,11 @@
             <div class="intro-y box p-5">
                 <div>
                     <h2 class="text-2xl text-center mb-3">Resumen de Venta</h2>
+                    @if ($estadoCaja != 0)
                     <button onclick="openModalCustomer()" class="btn btn-outline-dark w-full mb-3">{{$customerSelected}}</button>
+                    <button onclick="openModalProduct()" class="btn btn-outline-dark w-full mb-3">{{$productSelected}}</button>
+                    @endif
+
                 </div>
                 <div class="mt-3">
                     <h1 class="text-2xl font-bold">Articulos</h1>
@@ -209,6 +214,7 @@
     <!-- END: Post Info -->
         @include('livewire.sales.modal-changes')
         @include('livewire.sales.modal-customers')
+        @include('livewire.sales.modal-products')
         @include('livewire.sales.script')
         @include('livewire.sales.keyboard')
 
