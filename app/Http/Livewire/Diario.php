@@ -27,7 +27,8 @@ class Diario extends Component
     {
         $from = Carbon::now()->format('Y-m-d') . ' 00:00:00';
         $to = Carbon::now()->format('Y-m-d') . ' 23:59:59';
-        $orders = Order::whereBetween('created_at', [$from, $to]);
+        $orders = Order::where('orders.user_id', Auth()->user()->id)
+        ->whereBetween('created_at', [$from, $to]);
         $this->clientes = Customer::all()->count();
         $this->numVentas = $orders->count();
         $this->totVentas  =  number_format($orders->sum('total'),2);

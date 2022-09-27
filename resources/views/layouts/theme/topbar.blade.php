@@ -1,6 +1,6 @@
 <div class="top-bar">
     <!-- BEGIN: Breadcrumb -->
-    <div class="-intro-x breadcrumb mr-auto hidden sm:flex"> <a href="http://luisfax.com">by</a> <i data-feather="chevron-right" class="breadcrumb__icon"></i> <a href="" class="breadcrumb--active">Luis Fax</a> </div>
+    <div class="-intro-x breadcrumb mr-auto hidden sm:flex"> <a href="https://khipuweb.herokuapp.com/">Ir Sitio web</a> <i data-feather="chevron-right" class="breadcrumb__icon"></i> <a href="" class="breadcrumb--active"> Usuario:  {{Auth()->user()->name}}</a> </div>
     <!-- END: Breadcrumb -->
     <!-- BEGIN: Search -->
     <!--
