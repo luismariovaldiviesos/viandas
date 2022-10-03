@@ -21,7 +21,7 @@
                             <thead>
                                 <tr class="text-theme-1">
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >NOMBRE CAJA</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >ESTADI CAJA</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >ESTADO CAJA</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >USUARIOS</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center" >ACCIONES</th>
                                 </tr>
@@ -63,7 +63,7 @@
                                                     <i class=" fas fa-folder-open f-2x"></i>
                                                 </button> --}}
 
-                                                <button class="btn btn-danger text-white border-0"
+                                                <button class="btn btn-primary text-white border-0"
                                                 onclick="Abrircaja({{ $caja->id }})"
                                                 type="button">
                                                     <i class=" fas fa-folder-open f-2x"></i>

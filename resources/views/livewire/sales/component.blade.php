@@ -31,11 +31,11 @@
                     title="Abrir caja en sección cajas"
                     data-toggle="tab"
                     data-target="#"
-                    href=""
+                    href="{{ route('cajas') }}"
                     class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center {{$tabProducts ? 'active' : '' }}"
                     id="content-tab"
                     role="tab" >
-                    <i class=" fas fa-folder-open f-2x"></i>DEBE ABRIR CAJA
+                    <i class=" fas fa-folder-open f-2x"></i> ABRIR CAJA
                     </a>
 
                 @else
