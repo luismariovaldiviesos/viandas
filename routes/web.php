@@ -6,11 +6,14 @@ use App\Http\Livewire\Categories;
 use App\Http\Livewire\Customers;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Diario;
+use App\Http\Livewire\Permisos;
 use App\Http\Livewire\Products;
 use App\Http\Livewire\Reports;
 use App\Http\Livewire\Sales;
 use App\Http\Livewire\Settings;
 use App\Http\Livewire\Users;
+use App\Http\Livewire\Roles;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('diarios', Diario::class)->name('diario');
     Route::get('cajas', Cajas::class)->name('cajas');
     Route::get('arqueos', Arqueos::class)->name('arqueos');
+    Route::get('roles', Roles::class)->name('roles');
+    Route::get('permisos', Permisos::class)->name('permisos');
 
 
 
