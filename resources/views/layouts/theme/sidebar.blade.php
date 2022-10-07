@@ -102,6 +102,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('asignar') }}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> ASIGNAR PERMISOS  </div>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('users') }}" class="side-menu">
                         <div class="side-menu__icon"> <i data-feather="key"></i> </div>
                         <div class="side-menu__title"> USUARIOS  </div>
