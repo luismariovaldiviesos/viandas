@@ -1,3 +1,5 @@
 permisos y accesos
 ventas por usuario
 total ventas mas valor inicial en caja al cerrrra
+
+relaciones par asaber cuantos roles permisos

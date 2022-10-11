@@ -14,7 +14,7 @@ class Asignar extends Component
     use WithPagination;
 
 
-    public $action = 'Listado', $componentName = 'Asinar permisos', $form = false;
+    public $action = 'Listado', $componentName = 'Asignar permisos', $form = false;
     private $pagination = 10;
     protected $paginationTheme = 'tailwind';
 
