@@ -26,23 +26,49 @@ class Cajas extends Component
     public function render()
     {
 
-        if(strlen($this->search) > 0)
-        {
-            $cajas = Caja::join('users as u','u.id','cajas.user_id')
-                            ->select('cajas.*','u.name as usuario')
-                            ->where('cajas.nombre','like',"%{$this->search}%")
-                            ->where('cajas.user_id', Auth()->user()->id)
-                            ->orderBy('name','asc')
-                            ->paginate($this->pagination);
+        if (Auth()->user()->profile == 'Admin') { // si es admin veo todas las cajas del sistema
+            if(strlen($this->search) > 0)
+            {
+
+                $cajas = Caja::join('users as u','u.id','cajas.user_id')
+                                ->select('cajas.*','u.name as usuario')
+                                ->where('cajas.nombre','like',"%{$this->search}%")
+                                //->where('cajas.user_id', Auth()->user()->id)
+                                ->orderBy('name','asc')
+                                ->paginate($this->pagination);
+            }
+            else
+            {
+                $cajas = Caja::join('users as u','u.id','cajas.user_id')
+                ->select('cajas.*','u.name as usuario')
+                //->where('cajas.user_id', Auth()->user()->id)
+                ->orderBy('name','asc')
+                ->paginate($this->pagination);
+            }
         }
-        else
-        {
-            $cajas = Caja::join('users as u','u.id','cajas.user_id')
-            ->select('cajas.*','u.name as usuario')
-            ->where('cajas.user_id', Auth()->user()->id)
-            ->orderBy('name','asc')
-            ->paginate($this->pagination);
+        else{ // si no es admin veo solo als cajas que me pertenecen
+            if(strlen($this->search) > 0)
+            {
+
+                $cajas = Caja::join('users as u','u.id','cajas.user_id')
+                                ->select('cajas.*','u.name as usuario')
+                                ->where('cajas.nombre','like',"%{$this->search}%")
+                                ->where('cajas.user_id', Auth()->user()->id)
+                                ->orderBy('name','asc')
+                                ->paginate($this->pagination);
+            }
+            else
+            {
+                $cajas = Caja::join('users as u','u.id','cajas.user_id')
+                ->select('cajas.*','u.name as usuario')
+                ->where('cajas.user_id', Auth()->user()->id)
+                ->orderBy('name','asc')
+                ->paginate($this->pagination);
+            }
+
         }
+
+
         return view('livewire.cajas.component',
         [
             'cajas' => $cajas,

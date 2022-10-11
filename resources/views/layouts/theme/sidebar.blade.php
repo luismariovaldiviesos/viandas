@@ -1,19 +1,23 @@
 <nav class="side-nav">
+    @hasrole('Admin')
     <a href="{{ url('dash') }}" class="intro-x flex items-center pl-5 pt-4">
         <img alt="logo" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
         <span class="hidden xl:block text-white text-lg ml-3"><span class="font-medium">VENTAS</span> </span>
 
 
     </a>
+    @endhasrole
     <div class="side-nav__devider my-6"></div>
 
     <ul>
+        @hasrole('Admin')
         <li>
             <a href="{{ url('categories') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="layers"></i> </div>
                 <div class="side-menu__title"> CATEGORIAS  </div>
             </a>
         </li>
+        @endhasrole()
 
         <li>
             <a href="{{ route('products') }}" class="side-menu">
@@ -29,12 +33,14 @@
             </a>
         </li>
 
+        @hasrole('Admin')
         <li>
             <a href="{{ route('cajas') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="shopping-cart"></i> </div>
                 <div class="side-menu__title"> CAJAS  </div>
             </a>
         </li>
+        @endhasrole
         <li>
             <a href="{{ route('arqueos') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
@@ -56,12 +62,14 @@
 
         <div class="side-nav__devider my-6"></div>
 
+        @hasrole('admin')
         <li>
             <a href="{{ route('reports') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="calendar"></i> </div>
                 <div class="side-menu__title"> REPORTES  </div>
             </a>
         </li>
+        @endhasrole
 
         <li>
             <a href="{{ route('diario') }}" class="side-menu">
@@ -73,7 +81,11 @@
         <div class="side-nav__devider my-6"></div>
 
 
+
+
         <li>
+
+            @hasrole('Admin')
             <a href="javascript:;" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="settings"></i> </div>
                 <div class="side-menu__title">
@@ -81,6 +93,8 @@
                     <div class="side-menu__sub-icon "> <i data-feather="chevron-down"></i> </div>
                 </div>
             </a>
+            @endhasrole
+
             <ul class="">
 
                 <li>
@@ -115,6 +129,8 @@
                 </li>
             </ul>
         </li>
+
+
 
     </ul>
 

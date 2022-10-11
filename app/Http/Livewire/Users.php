@@ -91,7 +91,8 @@ class Users extends Component
     {
         $this->validate(User::rules($this->selected_id), User::$messages);
 
-        User::updateOrCreate(
+        $user = User::find($this->selected_id);
+        $user::updateOrCreate(
             ['id' => $this->selected_id],
             [
                 'name' =>  $this->name,
@@ -104,6 +105,7 @@ class Users extends Component
             ]
         );
 
+        $user->syncRoles($this->profile);
         $this->noty($this->selected_id > 0 ? 'Usuario actualizado' : 'Usuario registrado');
         $this->resetUI();
     }

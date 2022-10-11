@@ -88,9 +88,9 @@
                                             <button class="btn btn-danger text-white border-0"
                                             onclick="CerrarCaja({{ $arqueo->id }})"
                                             type="button">
-                                                <i class=" fas fa-unlock f-2x"></i>
+                                                Cerrar caja
                                             </button>
-                                                    <small class="font-normal ">Cerrar Caja</small>
+                                                    {{-- <small class="font-normal ">Cerrar Caja</small> --}}
                                             @else
                                                 <button class="btn btn-success text-white border-0"
                                                     onclick="detalleArqueo({{ $arqueo->caja_id }})"
@@ -107,7 +107,7 @@
                                 @empty
                                     <tr class="bg-gray-200 dark:bg-dark-1">
                                         <td colspan="2">
-                                            <h6 class="text-center">    NO HAY PRODUCTOS REGISTRADOS </h6>
+                                            <h6 class="text-center">    NO HAY ARQUEOS REGISTRADOS </h6>
                                         </td>
                                     </tr>
                                 @endforelse

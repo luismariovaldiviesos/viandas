@@ -27,6 +27,9 @@
                 @if ($estadoCaja == 0)
 
 
+                    @can('abrir_caja')
+
+
                     <a
                     title="Abrir caja en sección cajas"
                     data-toggle="tab"
@@ -37,6 +40,7 @@
                     role="tab" >
                     <i class=" fas fa-folder-open f-2x"></i> ABRIR CAJA
                     </a>
+                    @endcan
 
                 @else
 

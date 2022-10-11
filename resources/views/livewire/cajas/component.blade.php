@@ -49,11 +49,15 @@
                                                         <i class=" fas fa-trash f-2x"></i>
                                                     </button>
                                                 @endif --}}
+
+                                                @can('editar_caja')
                                                 <button class="btn btn-warning text-white border-0 ml-3"
                                                     wire:click.prevent="Edit({{ $caja->id }})"
                                                     type="button">
                                                         <i class=" fas fa-edit f-2x"></i>
                                                 </button>
+                                                @endcan
+
 
                                                 @if ($caja->status == 0)
 
@@ -66,7 +70,7 @@
                                                 <button class="btn btn-primary text-white border-0"
                                                 onclick="Abrircaja({{ $caja->id }})"
                                                 type="button">
-                                                    <i class=" fas fa-folder-open f-2x"></i>
+                                                   abrir caja
                                                 </button>
 
                                               @endif

@@ -28,14 +28,14 @@ class Arqueos extends Component
             ->select('arqueos.*','u.name as usuario')
             ->where('arqueos.created_at','like',"%{$this->search}%")
             ->where('arqueos.user_id', Auth()->user()->id)
-            ->orderBy('created_at','asc')
+            ->orderBy('created_at','desc')
             ->paginate($this->pagination);
         }
         else{
             $arqueos = Arqueo::join('users as u','u.id','arqueos.user_id')
             ->select('arqueos.*','u.name as usuario')
             ->where('arqueos.user_id', Auth()->user()->id)
-            ->orderBy('created_at','asc')
+            ->orderBy('created_at','desc')
             ->paginate($this->pagination);
         }
         return view('livewire.arqueos.component', [
