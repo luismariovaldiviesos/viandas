@@ -23,9 +23,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'ci',
+        'phone',
         'email',
+        'profile',
+        'status',
         'password',
-        'profile'
+
     ];
 
     /**
@@ -54,8 +58,11 @@ class User extends Authenticatable
             return
             [
                 'name' => 'required|min:3|max:50|string|unique:users',
+                'ci' => 'required|min:10|max:13|unique:users',
+                'phone' => 'required',
                 'email' => 'required|email|unique:users',
-                'profile'=> 'required|not_in:elegir'
+                'profile'=> 'required|not_in:elegir',
+                'status'=> 'required|not_in:elegir'
             ];
         }
         else
@@ -63,21 +70,38 @@ class User extends Authenticatable
             return
             [
                 'name' => "required|min:3|max:50|string|unique:users,name,{$id}",
+                'ci' => "required|min:10|max:13|unique:users,ci,{$id}",
+                'phone' => 'required',
                 'email' => "required|email|unique:users,email,{$id}",
-                'profile'=> 'required|not_in:elegir'
+                'profile'=> 'required|not_in:elegir',
+                'status'=> 'required|not_in:elegir'
             ];
         }
     }
 
     public static $messages =[
         'name.required' => 'nombre requerido',
+        'name.unique' => 'nombre ya esta en uso',
         'name.min' => 'nombre debe tener al menos 3 caracteres',
         'name.max' => 'nombre debe tener maximo 50 caracteres',
         'name.string' => 'nombre debe tener solo letras',
+
+        'ci.required' => 'ci-ruc requerido',
+        'ci.unique' => 'ci-ruc ya esta registrado en el sistema',
+        'ci.min' => 'ci-ruc debe tener al menos 10 caracteres',
+        'ci.max' => 'ci-ruc debe tener maximo 13 caracteres',
+
+        'phone.required' => 'teléfono es requerido requerido',
+
+
         'email.required' => 'email es requerido',
         'email.unique' => 'email ya esta en uso',
         'email.email' => 'email es inválido',
-        'name.unique' => 'nombre ya esta en uso',
+
+        'status.required' => 'estado  es requerido',
+        'status.not_in' => 'Seleccione un estado  válido',
+
+
         'password.required' => 'password requerido',
         'password.min' => 'password debe tener mínimo 3 caracteres',
         'profile.required' => 'perfil es requerido',

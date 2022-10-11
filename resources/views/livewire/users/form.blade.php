@@ -10,7 +10,7 @@
             <div class="preview">
 
                 <div class="mt-3">
-                    <div class="sm:grid grid-cols-2 gap-5">
+                    <div class="sm:grid grid-cols-3 gap-5">
                         <div>
                             <label  class="form-label">Nombre</label>
                             <input wire:model='name' id="name" type="text" class="form-control form-control-lg border-start-0 kioskboard" maxlength="250">
@@ -20,35 +20,69 @@
                         </div>
 
                         <div>
-                            <label  class="form-label">Email</label>
-                            <input wire:model='email' id="email" type="text" class="form-control form-control-lg border-start-0 kioskboard" maxlength="250">
-                            @error('email')
+                            <label  class="form-label">RUC</label>
+                            <input wire:model='ci' id="ci" type="text" class="form-control form-control-lg border-start-0 kioskboard" maxlength="250">
+                            @error('ci')
                                 <x-alert msg="{{ $message }}" />
                             @enderror
                         </div>
-
                         <div>
-                            <label  class="form-label">Password</label>
-                            <input wire:model='password' id="password" type="password" data-kioskboard-type="numpad" class="form-control form-control-lg border-start-0 kioskboard" maxlength="13">
-                            @error('password')
+                            <label  class="form-label">Teléfono</label>
+                            <input wire:model='phone' id="phone" type="text" class="form-control form-control-lg border-start-0 kioskboard" maxlength="250">
+                            @error('phone')
                                 <x-alert msg="{{ $message }}" />
                             @enderror
                         </div>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-6">
-                    <div class="col-end-2 bg-amber-500">
-                        <label class="form-label">Perfil</label>
-                        <select wire:model='profile' class="form-select form-select-lg sm:mr-2">
-                            <option value="Admin">Administrador</option>
-                            <option value="Employee">Empleado</option>
-                        </select>
-                        @error('profile')
-                        <x-alert msg="{{ $message }}" />
-                    @enderror
+                <div class="mt-3">
+                <div class="sm:grid grid-cols-3 gap-5">
+                    <div>
+                        <label  class="form-label">Email</label>
+                        <input wire:model='email' id="email" type="text" class="form-control form-control-lg border-start-0 kioskboard" maxlength="250">
+                        @error('email')
+                            <x-alert msg="{{ $message }}" />
+                        @enderror
+                    </div>
+                    <div class="grid grid-cols-6">
+                        <div class="col-end-2 bg-amber-500">
+                            <label class="form-label">Perfil</label>
+                            <select wire:model.lazy='profile' class="form-select form-select-lg sm:mr-2">
+                                <option value="Elegir" selected>Elegir</option>
+                                @foreach ($roles as $role )
+                                <option value="{{$role->name}}" >{{$role->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('profile')
+                            <x-alert msg="{{ $message }}" />
+                        @enderror
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-6">
+                        <div class="col-end-2 bg-amber-500">
+                            <label class="form-label">Estado</label>
+                            <select wire:model.lazy='status' class="form-select form-select-lg sm:mr-2">
+                                <option value="Elegir" selected>Elegir</option>
+                                <option value="ACTIVE" selected>Activo</option>
+                                <option value="LOCKED" selected>Bloqueado</option>
+                            </select>
+                            @error('status') <span class="text-danger er">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+
+                    <div>
+                        <label  class="form-label">Password</label>
+                        <input wire:model='password' id="password" type="password" data-kioskboard-type="numpad" class="form-control form-control-lg border-start-0 kioskboard" maxlength="13">
+                        @error('password')
+                            <x-alert msg="{{ $message }}" />
+                        @enderror
                     </div>
                 </div>
+
+                </div>
+
+
 
                 <div class="mt-5">
                     <x-back />

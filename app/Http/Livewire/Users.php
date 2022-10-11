@@ -5,14 +5,16 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Spatie\Permission\Models\Role;
 
 class Users extends Component
 {
 
     use WithPagination;
 
-    public $name='', $email='', $password='', $temppass='', $selected_id ='', $search ='';
-    public $componentName = 'Usuarios',$profile ='Admin', $form  = false;
+    public $name='', $ci='', $phone ='', $email='', $profile ='cajero', $status = 'ACTIVE',  $password='',
+    $temppass='', $selected_id ='', $search ='';
+    public $componentName = 'Usuarios', $form  = false;
 
     public $action = 'Listado';
     protected $paginationTheme = 'tailwind';
@@ -35,7 +37,8 @@ class Users extends Component
         }
         return view('livewire.users.component',
         [
-            'users' => $users
+            'users' => $users,
+            'roles' => Role::orderBy('name','asc')->get()
         ])
         ->layout('layouts.theme.app');
     }
@@ -62,15 +65,19 @@ class Users extends Component
     {
         $this->resetValidation();
         $this->resetPage();
-        $this->reset('name','selected_id','temppass','search','componentName', 'email','password','profile','form');
+        $this->reset('name','ci','phone', 'status','selected_id','temppass','search','componentName', 'email','password','profile','form');
     }
 
     public function Edit(User $user)
     {
+        //dd($user->ci);
         $this->selected_id = $user->id;
         $this->name = $user->name;
+        $this->ci =  $user->ci;
+        $this->phone =  $user->phone;
         $this->email = $user->email;
         $this->profile = $user->profile;
+        $this->status = $user->status;
         $this->password = null;
         $this->temppass = $user->password;
         $this->form = true;
@@ -88,8 +95,11 @@ class Users extends Component
             ['id' => $this->selected_id],
             [
                 'name' =>  $this->name,
+                'ci' => $this->ci,
+                'phone' => $this->phone,
                 'email' =>  $this->email,
                 'profile' =>  $this->profile,
+                'status' => $this->status,
                 'password' => strlen($this->password) > 0 ? bcrypt($this->password) : $this->temppass
             ]
         );
