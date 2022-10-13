@@ -69,6 +69,8 @@ class Cajas extends Component
         }
 
 
+
+
         return view('livewire.cajas.component',
         [
             'cajas' => $cajas,

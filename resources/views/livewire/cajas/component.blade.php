@@ -59,7 +59,7 @@
                                                 @endcan
 
 
-                                                @if ($caja->status == 0)
+                                                @if ($caja->status == 0 && $caja->user_id == Auth()->user()->id)
 
                                                 {{-- <button class="btn btn-danger text-white border-0"
                                                 onclick="abrir('cajas','Abrir', {{ $caja->id }})"
