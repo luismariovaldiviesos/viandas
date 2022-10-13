@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\Impuesto;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -18,6 +19,8 @@ class Products extends Component
     public $action = 'Listado', $componentName='CATALOGO DE PRODUCTOS', $search, $form = false;
     private $pagination =15;
     protected $paginationTheme='tailwind';
+
+    public $selectedImpuestos =[];
 
 
     public function render()
@@ -39,7 +42,9 @@ class Products extends Component
 
         return view('livewire.products.component', [
             'products' => $info,
-            'categories' => Category::orderBy('name','asc')->get()
+            'categories' => Category::orderBy('name','asc')->get(),
+            //'ivas' => Impuesto::where('nombre','IVA')->get()
+            'impuestos' =>  Impuesto::orderBy('id','asc')->get()
         ])->layout('layouts.theme.app');
     }
 
@@ -103,6 +108,12 @@ class Products extends Component
     public function Store()
     {
         sleep(1);
+        $cont = count($this->selectedImpuestos);
+        if($cont <= 0)
+        {
+            $this->noty('agrega al menos un impuesto al producto', 'noty', 'false');
+			return;
+        }
 
         $this->validate(Product::rules($this->selected_id), Product::$messages);
         $product = Product::updateOrCreate(
@@ -148,6 +159,9 @@ class Products extends Component
                 $product->images()->save($img);
             }
         }
+
+        // producto impuesto
+        $product->impuestos()->sync($this->selectedImpuestos, true);
 
         $this->noty($this->selected_id > 0  ?  'Producto actualizado' : 'Producto registrado', 'noty', 'false', 'close-modal');
         $this->resetUI();

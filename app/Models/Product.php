@@ -81,6 +81,13 @@ class Product extends Model
         return $this->morphOne(Image::class, 'model')->latestOfMany();
     }
 
+      // un producto puede tener varios impuestos
+   public function impuestos()
+   {
+        return $this->belongsToMany(Impuesto::class,'impuesto_producto');
+    }
+
+
     //accesors
     public function getImgAttribute()
     {

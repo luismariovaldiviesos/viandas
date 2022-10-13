@@ -30,7 +30,9 @@ class Impuesto extends Model
     ];
 
     // un impuesto pertenece a varios prodcutos
-    // public function productos(){
-    //     return $this->belongsToMany(Product::class, 'impuesto_producto');
-    // }
+    public function productos(){
+        return $this->belongsToMany(Product::class, 'impuesto_producto');
+    }
+
+
 }

@@ -106,6 +106,35 @@
                     <x-alert msg="{{ $message  }}" />
                     @enderror
                 </div>
+                <div class="mt-4">
+
+                     <div class="input-group">
+                        <div class="input-group-text">Seleccionar impuestos</div>
+                        @foreach ($impuestos as $impuesto )
+                        <div class="mt-1">
+                            <label class="inline-flex items-center">
+                            <input type="checkbox" value="{{ $impuesto->id }}" wire:model="selectedImpuestos"  class="form-checkbox h-6 w-6 text-green-500">
+                                 <span class="ml-3 text-sm">{{$impuesto->nombre}} {{$impuesto->porcentaje}}%</span>
+                             </label>
+                        </div>
+                        @endforeach
+                        {{--<div class="input-group-text">IVA</div>
+                        <select wire:model='iva' class="form-select form-select-lg sm:mr-2" name="" id="">
+                            <option value="elegir">Elegir</option>
+                            @foreach ($ivas  as $impuesto )
+                                <option value="{{ $impuesto->id }}">{{ $impuesto->porcentaje }}</option>
+                            @endforeach
+                        </select>
+                        --}}
+                    </div>
+
+
+
+
+                    @error('category')
+                    <x-alert msg="{{ $message  }}" />
+                    @enderror
+                </div>
 
                 <div class="mt-4">
                     <div class="grid grid-flow-col auto-cols-max md:auto-cols-min gap-2">
