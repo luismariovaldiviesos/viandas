@@ -26,8 +26,7 @@ class Products extends Component
 
     public function render()
     {
-        $product = Product::find(22);
-        $this->calculaPVP($product);
+
 
         if(strlen($this->search) > 0)
             $info =  Product::join('categories as c','c.id','products.category_id')
