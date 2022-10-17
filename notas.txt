@@ -1,5 +1,15 @@
-permisos y accesos
-ventas por usuario
 total ventas mas valor inicial en caja al cerrrra
 
-relaciones par asaber cuantos roles permisos
+
+pvp solo calculando impuestos  ok
+
+
+pendientes:
+
+1 se debe mostrar al editar cuantos impuestos grava el producto
+2 descuentos productos 0% por defecto
+3 proveedor y unidad revisar despues si aplica.
+
+
+
+
