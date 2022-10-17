@@ -118,14 +118,6 @@
                              </label>
                         </div>
                         @endforeach
-                        {{--<div class="input-group-text">IVA</div>
-                        <select wire:model='iva' class="form-select form-select-lg sm:mr-2" name="" id="">
-                            <option value="elegir">Elegir</option>
-                            @foreach ($ivas  as $impuesto )
-                                <option value="{{ $impuesto->id }}">{{ $impuesto->porcentaje }}</option>
-                            @endforeach
-                        </select>
-                        --}}
                     </div>
 
 

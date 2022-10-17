@@ -9,13 +9,14 @@ use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use DB;
 
 class Products extends Component
 {
     use WithPagination;
     use WithFileUploads;
 
-    public $name='', $code ='', $cost=0, $price=0, $price2=0, $stock=0, $minstock=0, $category='elegir',$selected_id=0,$gallery = [];
+    public $name='', $code ='', $cost=0, $price=0, $price2=0, $pvp = 0, $stock=0, $minstock=0, $category='elegir',$selected_id=0,$gallery = [];
     public $action = 'Listado', $componentName='CATALOGO DE PRODUCTOS', $search, $form = false;
     private $pagination =15;
     protected $paginationTheme='tailwind';
@@ -25,6 +26,8 @@ class Products extends Component
 
     public function render()
     {
+        $product = Product::find(22);
+        $this->calculaPVP($product);
 
         if(strlen($this->search) > 0)
             $info =  Product::join('categories as c','c.id','products.category_id')
@@ -80,7 +83,8 @@ class Products extends Component
             'selected_id',
             'search',
             'action',
-            'gallery'
+            'gallery',
+            'selectedImpuestos'
         );
     }
 
@@ -131,6 +135,7 @@ class Products extends Component
             ]
         );
 
+        //fotos producto
         if(!empty($this->gallery)){
             if($this->selected_id > 0){ // si es mnayor a cero actualiza
                 //eliminar todas las imagenes fisicamente
@@ -162,9 +167,28 @@ class Products extends Component
 
         // producto impuesto
         $product->impuestos()->sync($this->selectedImpuestos, true);
-
+        $this->pvp =  $this->calculaPVP($product);
+        $affected =  DB::table('products')->where('id', $product->id)->update(['price2' => $this->pvp]);
         $this->noty($this->selected_id > 0  ?  'Producto actualizado' : 'Producto registrado', 'noty', 'false', 'close-modal');
         $this->resetUI();
+    }
+
+    public  function calculaPVP(Product  $product)
+    {
+
+        $porcentaje = 0;
+        foreach($product->impuestos as $impuesto)
+        {
+            $porcentaje = $porcentaje + $impuesto->porcentaje;
+        }
+
+        $impuestoProducto  =  ($product->price * $porcentaje) / 100;
+        $precioFinal  = $product->price  + $impuestoProducto;
+        //dd($porcentaje);
+        //dd($impuestoProducto);
+        //dd($precioFinal);
+        return ($precioFinal);
+
     }
 
 

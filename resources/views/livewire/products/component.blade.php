@@ -32,8 +32,8 @@
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" width="10%"></th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" width="30%">DESCRIPCION</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">CATEGORIA</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">COSTO</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">PRECIO</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">PRECIO SIN IVA</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">PRECIO DE VENTA </th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">STOCK</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">IMPUESTOS</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">ACCIONES</th>
@@ -52,8 +52,8 @@
                                         </td>
 
                                         <td class="text-center">{{ strtoupper($product->category ) }}</td>
-                                        <td class="text-center font-medium">{{ number_format($product->cost,2 ) }}</td>
                                         <td class="text-center font-medium">{{ number_format($product->price,2 ) }}</td>
+                                        <td class="text-center font-medium">{{ number_format($product->price2,2 ) }}</td>
                                         <td class="text-center font-medium">{{ $product->stock  }}</td>
 
                                         {{-- IMPUESTOS --}}
