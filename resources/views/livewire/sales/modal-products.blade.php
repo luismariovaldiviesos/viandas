@@ -23,8 +23,9 @@
                                     <table class="table">
                                         <thead>
                                             <tr class="text-theme-6">
-                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold" width="80%"></th>
-                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold"></th>
+                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold" width="80%">nombre</th>
+                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold">sin impuesto</th>
+                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold">PVP</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -33,9 +34,12 @@
                                                 <td class="border-b dark:border-dark-5 ">
                                                     {{$product->name}}
                                                 </td>
-                                                {{-- <td>
-                                                    <button wire:click="add2Cart({{$product->id}})" class="btn btn-outline-primary">Seleccionar</button>
-                                                </td> --}}
+                                                <td class="border-b dark:border-dark-5 ">
+                                                    {{$product->price}}
+                                                </td>
+                                                <td class="border-b dark:border-dark-5 ">
+                                                    {{$product->price2}}
+                                                </td>
                                                 <td>
                                                     <button wire:click="searchManualProduct({{ $product->id }})" class="btn btn-outline-primary">Seleccionar</button>
                                                 </td>

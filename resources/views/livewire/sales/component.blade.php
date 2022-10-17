@@ -66,7 +66,7 @@
                                         <thead>
                                             <tr class="text-theme-6">
                                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold" width="60%">DESCRIPCIÓN</th>
-                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold">PRECIO</th>
+                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold">PVP</th>
                                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold text-center" width="17%">CANT</th>
                                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold">IMPORTE</th>
                                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold"></th>
@@ -81,7 +81,10 @@
                                                         <small>{{$item->changes}}</small>
                                                     </div>
                                                 </td>
-                                                <td class="border-b dark:border-dark-5 text-center">${{number_format($item->price,2)}}</td>
+                                                <td class="border-b dark:border-dark-5 text-center">${{number_format($item->price2,2)}}
+
+                                                </td>
+
                                                 <td class="border-b dark:border-dark-5 text-center">
                                                     <div class="input-group mt-2">
                                                         <input wire:keydown.enter="updateQty({{$item->id}}, $event.target.value )"
@@ -97,7 +100,7 @@
                                                     <div><small class="text-xs text-theme-1">{{$item->livestock}}</small></div>
                                                 </td>
                                                 <td class="border-b dark:border-dark-5 text-center">
-                                                ${{number_format($item->price * $item->qty,2)}}
+                                                ${{number_format($item->price2 * $item->qty,2)}}
                                             </td>
                                                 <td>
                                                     <div class="inline-flex" role="group" style="font-size: 1.6em!important;">
@@ -156,7 +159,7 @@
                                         </div>
                                     </a>
                                     <a href="javascript:;" class="block font-medium mt-4 text-center truncate">{{$product->name}}</a>
-                                    <h1 class="text-center">${{ number_format($product->price,2) }}</h1>
+                                    <h1 class="text-center">${{ number_format($product->price2,2) }}</h1>
                                 </div>
                             </div>
                             @empty

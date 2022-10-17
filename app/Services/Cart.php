@@ -135,7 +135,7 @@ class Cart {
     public function totalAmount()
     {
         $amount = $this->cart->sum(function ($product){
-            return ($product->price * $product->qty);
+            return ($product->price2 * $product->qty);
         });
         return $amount;
     }
