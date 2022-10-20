@@ -65,25 +65,22 @@
                                     <table class="table">
                                         <thead>
                                             <tr class="text-theme-6">
+                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold text-center" width="15%">CANT</th>
                                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold" width="60%">DESCRIPCIÓN</th>
-                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold">PVP</th>
-                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold text-center" width="17%">CANT</th>
-                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold">IMPORTE</th>
+                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold">P. UNITARIO</th>
+                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold">TARIFA</th>
+                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold">DSTO</th>
+                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold">TOTAL</th>
+                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold">ICE</th>
                                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap font-bold"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @forelse($contentCart as $item)
                                             <tr class="bg-gray-200 dark:bg-dark-1 text-lg">
-                                                <td class="border-b dark:border-dark-5 ">
-                                                    <button onclick="openModal({{$item->id}},'{{$item->changes}}','{{$item->name}}')" class="btn btn-outline-secondary text-theme-1">{{$item->name}}</button>
-                                                    <div>
-                                                        <small>{{$item->changes}}</small>
-                                                    </div>
-                                                </td>
-                                                <td class="border-b dark:border-dark-5 text-center">${{number_format($item->price2,2)}}
 
-                                                </td>
+
+                                                {{-- CANTIDAD --}}
 
                                                 <td class="border-b dark:border-dark-5 text-center">
                                                     <div class="input-group mt-2">
@@ -96,12 +93,49 @@
                                                             <i class="fas fa-redo fa-lg"></i>
                                                         </div>
                                                     </div>
-
-                                                    <div><small class="text-xs text-theme-1">{{$item->livestock}}</small></div>
+                                                    {{-- <div><small class="text-xs text-theme-1">{{$item->livestock}}</small></div> --}}
                                                 </td>
+
+                                                   {{--  FIN CANTIDAD --}}
+
+                                                      {{-- DESCRIPCION --}}
+                                                    <td class="border-b dark:border-dark-5 ">
+                                                        <button onclick="openModal({{$item->id}},'{{$item->changes}}','{{$item->name}}')" class="btn btn-outline-secondary text-theme-1">{{$item->name}}</button>
+                                                        <div>
+                                                            <small>{{$item->changes}}</small>
+                                                        </div>
+                                                    </td>
+
+                                                   {{-- FIN DESCRIPCION  --}}
+
+                                                   {{-- PRECIO UNITARIO  --}}
+
+                                                <td class="border-b dark:border-dark-5 text-center">${{number_format($item->price,2)}}</td>
+
+                                                {{-- FIN PRECIO UNITARIO  --}}
+
+                                                {{-- TARIFA --}}
+
+                                                <td class="border-b dark:border-dark-5 text-center">IMPUESTO</td>
+                                                {{-- FIN TARIFA --}}
+
+                                                     {{-- DESCUENTO --}}
+
+                                                     <td class="border-b dark:border-dark-5 text-center">DESCUENTO</td>
+                                                     {{-- FIN DESCUENTO --}}
+
+                                                  {{-- TOTAL --}}
                                                 <td class="border-b dark:border-dark-5 text-center">
                                                 ${{number_format($item->price2 * $item->qty,2)}}
-                                            </td>
+                                                </td>
+                                                  {{-- FIN TOTAL --}}
+
+                                                   {{-- ICE --}}
+
+                                                   <td class="border-b dark:border-dark-5 text-center">ICE</td>
+                                                   {{-- FIN ICE --}}
+
+
                                                 <td>
                                                     <div class="inline-flex" role="group" style="font-size: 1.6em!important;">
                                                         <button  wire:click.prevent="removeFromCart({{$item->id}})" class=" btn btn-danger"><i class="fas fa-trash "></i></button>
