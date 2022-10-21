@@ -11,5 +11,11 @@ pendientes:
 3 proveedor y unidad revisar despues si aplica.
 
 
+desde aqui cambiamos tabla producto y
+ponemos impuestos como un campo mas de la tabla
+hasta aqui esta construido impuestos como
+tabla independiente
+
+
 
 
