@@ -1,20 +1,5 @@
-total ventas mas valor inicial en caja al cerrrra
-
-
-pvp solo calculando impuestos  ok
-
-
-pendientes:
-
-1 se debe mostrar al editar cuantos impuestos grava el producto
-2 descuentos productos 0% por defecto
-3 proveedor y unidad revisar despues si aplica.
-
-
-desde aqui cambiamos tabla producto y
-ponemos impuestos como un campo mas de la tabla
-hasta aqui esta construido impuestos como
-tabla independiente
+*** revisar impuestos en productos, esta como campo de la tabla producto
+    solo grava dos impuestos : iva e ice
 
 
 
