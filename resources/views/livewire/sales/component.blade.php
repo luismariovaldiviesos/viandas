@@ -238,7 +238,8 @@
                 </div>
                 <div class="mt-3">
                     <h1 class="text-2x1 font-bold">sub total 12%</h1>
-                    <h4 class="text-2x1">${{number_format($this->totIva,2)}}</h4>
+                    <h4 class="text-2x1"> ${{number_format($this->totIva * $item->qty,2)}}</h4>
+
                 </div>
                 <div class="mt-3">
                     <h1 class="text-2x1 font-bold">sub tot no objeto iva</h1>
