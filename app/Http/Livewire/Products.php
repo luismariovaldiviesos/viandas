@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\Image;
-use App\Models\Impuesto;
+
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -21,7 +21,10 @@ class Products extends Component
     private $pagination =15;
     protected $paginationTheme='tailwind';
 
-    public $selectedImpuestos =[];
+    public $iva = 'elegir';
+    public $ice = 'elegir';
+
+   // public $selectedImpuestos =[];
 
 
     public function render()
@@ -46,7 +49,7 @@ class Products extends Component
             'products' => $info,
             'categories' => Category::orderBy('name','asc')->get(),
             //'ivas' => Impuesto::where('nombre','IVA')->get()
-            'impuestos' =>  Impuesto::orderBy('id','asc')->get()
+
         ])->layout('layouts.theme.app');
     }
 
@@ -76,14 +79,15 @@ class Products extends Component
             'code',
             'cost',
             'price',
+            'iva',
+            'ice',
             'price2',
             'stock',
             'minstock',
             'selected_id',
             'search',
             'action',
-            'gallery',
-            'selectedImpuestos'
+            'gallery'
         );
     }
 
@@ -95,11 +99,14 @@ class Products extends Component
 
     public function Edit (Product $product)
     {
+        //dd($product->ice, $product->iva);
         $this->selected_id = $product->id;
         $this->name = $product->name;
         $this->code = $product->code;
         $this->cost = $product->cost;
         $this->price = $product->price;
+        $this->iva = $product->iva;
+        $this->ice = $product->ice;
         $this->price2 = $product->price2;
         $this->stock = $product->stock;
         $this->minstock = $product->minstock;
@@ -111,14 +118,19 @@ class Products extends Component
     public function Store()
     {
         sleep(1);
-        $cont = count($this->selectedImpuestos);
-        if($cont <= 0)
-        {
-            $this->noty('agrega al menos un impuesto al producto', 'noty', 'false');
-			return;
-        }
+        // $cont = count($this->selectedImpuestos);
+        // if($cont <= 0)
+        // {
+        //     $this->noty('agrega al menos un impuesto al producto', 'noty', 'false');
+		// 	return;
+        // }
 
         $this->validate(Product::rules($this->selected_id), Product::$messages);
+
+        $iva = ($this->price * $this->iva)/100;
+        $ice = ($this->price * $this->ice)/100;
+
+        $impuestos = $iva + $ice;
         $product = Product::updateOrCreate(
 
             ['id' => $this->selected_id ],
@@ -127,7 +139,9 @@ class Products extends Component
                 'code' => $this->code,
                 'cost' => $this->cost,
                 'price' => $this->price,
-                'price2' => $this->price2,
+                'iva' => $this->iva,
+                'ice' => $this->ice,
+                'price2' => $this->price + $impuestos,
                 'stock' => $this->stock,
                 'minstock' => $this->minstock,
                 'category_id' => $this->category
@@ -165,9 +179,9 @@ class Products extends Component
         }
 
         // producto impuesto
-        $product->impuestos()->sync($this->selectedImpuestos, true);
-        $this->pvp =  $this->calculaPVP($product);
-        $affected =  DB::table('products')->where('id', $product->id)->update(['price2' => $this->pvp]);
+       // $product->impuestos()->sync($this->selectedImpuestos, true);
+        //$this->pvp =  $this->calculaPVP($product);
+        //$affected =  DB::table('products')->where('id', $product->id)->update(['price2' => $this->pvp]);
         $this->noty($this->selected_id > 0  ?  'Producto actualizado' : 'Producto registrado', 'noty', 'false', 'close-modal');
         $this->resetUI();
     }

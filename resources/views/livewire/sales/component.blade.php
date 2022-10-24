@@ -116,7 +116,7 @@
 
                                                 {{-- TARIFA --}}
 
-                                                <td class="border-b dark:border-dark-5 text-center">IMPUESTO</td>
+                                                <td class="border-b dark:border-dark-5 text-center">{{ $item->iva }}</td>
                                                 {{-- FIN TARIFA --}}
 
                                                      {{-- DESCUENTO --}}
@@ -132,7 +132,7 @@
 
                                                    {{-- ICE --}}
 
-                                                   <td class="border-b dark:border-dark-5 text-center">ICE</td>
+                                                   <td class="border-b dark:border-dark-5 text-center">{{ $item->ice }}</td>
                                                    {{-- FIN ICE --}}
 
 

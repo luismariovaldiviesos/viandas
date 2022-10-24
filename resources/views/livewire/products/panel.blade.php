@@ -62,7 +62,7 @@
                 <div class="mt-4">
                     <div class="input-group">
                         <div class="input-group-text">Precio2</div>
-                        <input type="number"  id="price2" wire:model='price2' class="form-control form-control-lg kioskboard"  data-kioskboard-type="numpad" placeholder="">
+                        <input type="number" readonly  id="price2" wire:model='price2' class="form-control form-control-lg kioskboard"  data-kioskboard-type="numpad" placeholder="">
                     </div>
                     @error('price2')
                     <x-alert msg="{{ $message  }}" />
@@ -108,22 +108,32 @@
                 </div>
                 <div class="mt-4">
 
-                     <div class="input-group">
-                        <div class="input-group-text">Seleccionar impuestos</div>
-                        @foreach ($impuestos as $impuesto )
-                        <div class="mt-1">
-                            <label class="inline-flex items-center">
-                            <input type="checkbox" value="{{ $impuesto->id }}" wire:model="selectedImpuestos"  class="form-checkbox h-6 w-6 text-green-500">
-                                 <span class="ml-3 text-sm">{{$impuesto->nombre}} {{$impuesto->porcentaje}}%</span>
-                             </label>
-                        </div>
-                        @endforeach
+                    <div class="input-group">
+                        <div class="input-group-text">IVA</div>
+                        <select wire:model='iva' class="form-select form-select-lg sm:mr-2" name="" id="">
+                            <option value="elegir">Elegir</option>
+                            <option value="0">0%</option>
+                            <option value="12">12%</option>
+                            <option value="0">No objeto de IVA</option>
+                            <option value="0">Excento de IVA</option>
+                         </select>
                     </div>
+                    @error('iva')
+                    <x-alert msg="{{ $message  }}" />
+                    @enderror
+                </div>
+                <div class="mt-4">
 
+                    <div class="input-group">
+                        <div class="input-group-text">ICE</div>
+                        <select wire:model='ice' class="form-select form-select-lg sm:mr-2" name="" id="">
+                            <option value="elegir">Elegir</option>
+                            <option value="16">16%</option>
+                            <option value="0">No especificado</option>
 
-
-
-                    @error('category')
+                        </select>
+                    </div>
+                    @error('ice')
                     <x-alert msg="{{ $message  }}" />
                     @enderror
                 </div>

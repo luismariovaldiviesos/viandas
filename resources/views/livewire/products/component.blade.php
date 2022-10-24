@@ -32,10 +32,11 @@
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" width="10%"></th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" width="30%">DESCRIPCION</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">CATEGORIA</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">PRECIO SIN IVA</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">PRECIO UNITARIO</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">IVA</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">ICE</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">PRECIO DE VENTA </th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">STOCK</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">IMPUESTOS</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">ACCIONES</th>
                                 </tr>
                             </thead>
@@ -53,21 +54,12 @@
 
                                         <td class="text-center">{{ strtoupper($product->category ) }}</td>
                                         <td class="text-center font-medium">{{ number_format($product->price,2 ) }}</td>
+                                        {{-- IVA --}}
+                                        <td class="text-center font-medium">{{ $product->iva  }}</td>
+                                        {{-- ice --}}
+                                        <td class="text-center font-medium">{{ $product->ice  }}</td>
                                         <td class="text-center font-medium">{{ number_format($product->price2,2 ) }}</td>
                                         <td class="text-center font-medium">{{ $product->stock  }}</td>
-
-                                        {{-- IMPUESTOS --}}
-                                        <td class="text-center font-medium">
-
-                                            @if (count($product->impuestos) > 0)
-                                                @foreach ($product->impuestos as $imp )
-                                                 <h6 class="mb-1 font-medium">{{$imp->nombre}} {{$imp->porcentaje}}%</h6>
-                                                @endforeach
-                                            @else
-                                            <h6 class="mb-1 font-medium">sin impuesto</h6>
-                                             @endif
-
-                                        </td>
 
                                         <td class="dark:border-dark-5 text-center">
                                             <div class="d-flex justify-content-center">

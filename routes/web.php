@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('roles', Roles::class)->name('roles');
     Route::get('permisos', Permisos::class)->name('permisos');
     Route::get('asignar', Asignar::class)->name('asignar');
-    Route::get('impuestos', Impuestos::class)->name('impuestos');
+    // Route::get('impuestos', Impuestos::class)->name('impuestos');
 
 
 

@@ -128,12 +128,12 @@
                     </a>
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="{{ route('impuestos') }}" class="side-menu">
                         <div class="side-menu__icon"> <i data-feather="key"></i> </div>
                         <div class="side-menu__title"> IMPUESTOS  </div>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </li>
 
