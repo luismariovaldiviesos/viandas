@@ -34,6 +34,8 @@ class Sales extends Component
     //info del carrito
     public $totalCart = 0, $itemsCart= 0, $contentCart=[];
 
+    public $subTotSinImpuesto =0;
+
     // producto seleccionado
     public $productIdSelected, $productChangesSelected, $productNameSelected, $changesProduct;
 
@@ -51,6 +53,7 @@ class Sales extends Component
             $this->customers =  Customer::orderBy('businame','asc')->get()->take(5); //primeros 5 clientes
             $this->totalCart = $this->getTotalCart();
             $this->itemsCart = $this->getItemsCart();
+            $this->subTotSinImpuesto =  $this->getTotalSICart();
             $this->contentCart = $this->getContentCart();
 
 
@@ -106,8 +109,11 @@ class Sales extends Component
 
     public function add2Cart(Product $product)
     {
+
        $this->addProductCart($product, 1, $this->changes);
        $this->changes = '';
+       //$this->subTotSinImpuesto = $this->subTotSinImpuesto + $product->price;
+       //dd($this->subTotSinImpuesto);
     }
 
     public function increaseQty(Product $product, $cant=1)

@@ -140,6 +140,14 @@ class Cart {
         return $amount;
     }
 
+    public function totalSinImpuestos()
+    {
+        $amount = $this->cart->sum(function ($product){
+            return ($product->price * $product->qty);
+        });
+        return $amount;
+    }
+
     // obtenemos la cantidad de filas en el carrito
     public function hasProducts(): int
     {

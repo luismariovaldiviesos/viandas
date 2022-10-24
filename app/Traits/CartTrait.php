@@ -20,6 +20,12 @@ trait CartTrait {
         return $cart->totalAmount();
     }
 
+    public  function getTotalSICart()
+    {
+        $cart = new Cart;
+        return $cart->totalSinImpuestos();
+    }
+
     public function countInCart($id)
     {
         $cart = new Cart;

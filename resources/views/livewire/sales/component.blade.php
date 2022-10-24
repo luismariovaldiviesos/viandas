@@ -127,6 +127,7 @@
                                                   {{-- TOTAL --}}
                                                 <td class="border-b dark:border-dark-5 text-center">
                                                 ${{number_format($item->price2 * $item->qty,2)}}
+                                                {{-- <small>{{$this->subTotSinImpuesto}}</small> --}}
                                                 </td>
                                                   {{-- FIN TOTAL --}}
 
@@ -159,6 +160,12 @@
                                             @endforelse
                                         </tbody>
                                     </table>
+
+
+
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -222,13 +229,38 @@
 
                 </div>
                 <div class="mt-3">
-                    <h1 class="text-2xl font-bold">Articulos</h1>
-                    <h3 class="text-2xl">{{$itemsCart}}</h3>
+                    <h1 class="text-2x1 font-bold">ITEMS</h1>
+                    <h4 class="text-2x5">{{$itemsCart}}</h4>
                 </div>
                 <div class="mt-3">
-                    <h1 class="text-2xl font-bold">TOTAL</h1>
-                    <h3 class="text-2xl">${{number_format($totalCart,2)}}</h3>
+                    <h1 class="text-2x1 font-bold">sub TOTAL sin imp</h1>
+                    <h4 class="text-2x1">${{number_format($this->subTotSinImpuesto,2)}}</h4>
                 </div>
+                <div class="mt-3">
+                    <h1 class="text-2x1 font-bold">sub total 12%</h1>
+                    <h4 class="text-2x1">SACAR</h4>
+                </div>
+                <div class="mt-3">
+                    <h1 class="text-2x1 font-bold">sub tot no objeto iva</h1>
+                    <h3 class="text-2x1">SACAR</h3>
+                </div>
+                <div class="mt-3">
+                    <h1 class="text-2x1 font-bold">TOTAL descuento</h1>
+                    <h3 class="text-2x1">SACAR</h3>
+                </div>
+                <div class="mt-3">
+                    <h1 class="text-2x1 font-bold">ICE</h1>
+                    <h3 class="text-2x1">SACAR</h3>
+                </div>
+                <div class="mt-3">
+                    <h1 class="text-2x1 font-bold">iva 12 %</h1>
+                    <h3 class="text-2x1">SACAR</h3>
+                </div>
+                <div class="mt-3">
+                    <h1 class="text-2x1 font-bold">TOTAL a pagar</h1>
+                    <h3 class="text-2x1">${{number_format($totalCart,2)}}</h3>
+                </div>
+
                 <div class="mt-6">
                     <div class="input-group">
                         <div id="input-group-3" class="input-group-text"><i class="fas fa-dollar-sign fa-2x"></i></div>
