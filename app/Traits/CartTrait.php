@@ -20,11 +20,22 @@ trait CartTrait {
         return $cart->totalAmount();
     }
 
+    // FUNCIONES MIAS PARA SACAR IMPUESTOS
+
     public  function getTotalSICart()
     {
         $cart = new Cart;
         return $cart->totalSinImpuestos();
     }
+
+    public  function getTotalIVA()
+    {
+        $cart = new Cart;
+        return $cart->totalIVA();
+
+    }
+
+    // FIMM FUNCIONES MIAS PARA SACAR IMPUESTOS
 
     public function countInCart($id)
     {

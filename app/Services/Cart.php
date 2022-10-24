@@ -92,6 +92,7 @@ class Cart {
         $oldItem = $mycart->where('id', $id)->first();
         $newItem = $oldItem;
         $newItem->qty += $cant;
+        //$iva =  $this->totalIVA();
 
         $this->removeProduct($id);
         $this->addProduct($newItem);
@@ -147,6 +148,16 @@ class Cart {
         });
         return $amount;
     }
+
+    public function totalIVA()
+    {
+        $amount = $this->cart->sum(function ($product){
+            $calculo =  ($product->price * $product->iva) / 100;
+             return ($calculo);
+        });
+        return $amount;
+    }
+
 
     // obtenemos la cantidad de filas en el carrito
     public function hasProducts(): int
