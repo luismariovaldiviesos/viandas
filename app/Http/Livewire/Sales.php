@@ -34,7 +34,7 @@ class Sales extends Component
     //info del carrito
     public $totalCart = 0, $itemsCart= 0, $contentCart=[];
 
-    public $subTotSinImpuesto =0, $totIva = 0 ;
+    public $subTotSinImpuesto =0;
 
     // producto seleccionado
     public $productIdSelected, $productChangesSelected, $productNameSelected, $changesProduct;
@@ -54,7 +54,6 @@ class Sales extends Component
             $this->totalCart = $this->getTotalCart();
             $this->itemsCart = $this->getItemsCart();
             $this->subTotSinImpuesto =  $this->getTotalSICart();
-            $this->totIva  =  $this->getTotalIVA();
             $this->contentCart = $this->getContentCart();
 
 
