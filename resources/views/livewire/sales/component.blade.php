@@ -240,13 +240,13 @@
                 </div>
                 <div class="mt-3">
                     <h1 class="text-2x1 font-bold">sub total 12% (total prod 12 %)</h1>
-                    {{-- <h4 class="text-2x1"> ${{number_format(0.00,2)}}</h4> --}}
+                    <h4 class="text-2x1"> ${{number_format($this->iva12,2)}}</h4>
                     <h4 class="text-2x1">SACAR </h4>
 
                 </div>
                 <div class="mt-3">
                     <h1 class="text-2x1 font-bold">total producto 0%</h1>
-                    <h3 class="text-2x1">SACAR</h3>
+                    <h4 class="text-2x1"> ${{number_format($this->iva0,2)}}</h4>
                 </div>
                 <div class="mt-3">
                     <h1 class="text-2x1 font-bold">TOTAL descuento</h1>
@@ -254,11 +254,11 @@
                 </div>
                 <div class="mt-3">
                     <h1 class="text-2x1 font-bold">ICE (total ice factura)</h1>
-                    <h3 class="text-2x1">SACAR</h3>
+                    <h4 class="text-2x1"> ${{number_format($this->totalIce,2)}}</h4>
                 </div>
                 <div class="mt-3">
                     <h1 class="text-2x1 font-bold">iva 12 % (total iva factura )</h1>
-                    <h3 class="text-2x1">SACAR</h3>
+                    <h4 class="text-2x1"> ${{number_format($this->totalImpuesto12,2)}}</h4>
                 </div>
                 <div class="mt-3">
                     <h1 class="text-2x1 font-bold">TOTAL a pagar</h1>

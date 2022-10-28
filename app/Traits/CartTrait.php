@@ -28,6 +28,31 @@ trait CartTrait {
         return $cart->totalSinImpuestos();
     }
 
+    public function getIva12()
+    {
+        $cart =  new Cart;
+        return $cart->total12();
+    }
+
+    public function getIva0()
+    {
+        $cart =  new Cart;
+        return $cart->total0();
+    }
+
+    //total valor iva
+    public function getImpuesto12()
+    {
+        $cart =  new Cart;
+        return $cart->totalImpuesto12();
+    }
+
+    public function getIce()
+    {
+        $cart =  new Cart;
+        return $cart->totalIce();
+    }
+
 
     // FIMM FUNCIONES MIAS PARA SACAR IMPUESTOS
 

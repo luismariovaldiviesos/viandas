@@ -149,6 +149,52 @@ class Cart {
         return $amount;
     }
 
+    // total del valor que grava 12
+    public function total12()
+    {
+        $amount = $this->cart->sum(function ($product){
+            if( $product->iva > 0){
+                return ($product->price * $product->qty);
+            }
+
+        });
+        return $amount;
+    }
+
+    // total del impuesto 12
+    public function totalImpuesto12()
+    {
+        $amount = $this->cart->sum(function ($product){
+            if( $product->iva > 0){
+                return ($product->iva * $product->qty);
+            }
+
+        });
+        return $amount;
+    }
+    public function totalIce()
+    {
+        $amount = $this->cart->sum(function ($product){
+            if( $product->ice > 0){
+                return ($product->ice * $product->qty);
+            }
+
+        });
+        return $amount;
+    }
+
+    // total del valor que grava 0
+    public function total0()
+    {
+        $amount = $this->cart->sum(function ($product){
+            if( $product->iva <= 0){
+                return ($product->price * $product->qty);
+            }
+
+        });
+        return $amount;
+    }
+
 
 
 

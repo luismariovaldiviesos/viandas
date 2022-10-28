@@ -39,6 +39,9 @@ class Sales extends Component
     // producto seleccionado
     public $productIdSelected, $productChangesSelected, $productNameSelected, $changesProduct;
 
+    // impuestos
+    public $iva12 = 0, $iva0 =0, $totalImpuesto12 =0,  $totalIce=0;
+
     protected $paginationTheme = "bootstrap";
 
     public $estadoCaja;
@@ -55,6 +58,11 @@ class Sales extends Component
             $this->itemsCart = $this->getItemsCart();
             $this->subTotSinImpuesto =  $this->getTotalSICart();
             $this->contentCart = $this->getContentCart();
+            $this->iva12 = $this->getIva12();
+            $this->iva0 = $this->getIva0();
+            $this->totalImpuesto12 = $this->getImpuesto12();
+            $this->totalIce = $this->getIce();
+            //dd($totalImpuesto12);
 
 
 
