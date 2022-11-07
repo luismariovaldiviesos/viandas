@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->decimal('iva',10,2)->after('price'); // agregar
-            $table->decimal('ice',10,2)->after('iva'); // agregar
+            $table->decimal('iva',10,5)->after('price'); // agregar
+            $table->decimal('ice',10,5)->after('iva'); // agregar
         });
     }
 
