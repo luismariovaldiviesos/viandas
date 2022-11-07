@@ -111,7 +111,7 @@
 
                                                    {{-- PRECIO UNITARIO  --}}
 
-                                                <td class="border-b dark:border-dark-5 text-center">${{number_format($item->price,2)}}</td>
+                                                <td class="border-b dark:border-dark-5 text-center">{{number_format($item->price,2)}}</td>
 
                                                 {{-- FIN PRECIO UNITARIO  --}}
 
@@ -121,7 +121,7 @@
                                                 {{-- FIN iva --}}
                                                  {{-- ICE --}}
 
-                                                 <td class="border-b dark:border-dark-5 text-center">{{ $item->ice }}</td>
+                                                 <td class="border-b dark:border-dark-5 text-center">{{ number_format($item->ice, 2) }}</td>
                                                  {{-- FIN ICE --}}
 
                                                      {{-- DESCUENTO --}}
@@ -131,7 +131,7 @@
 
                                                   {{-- TOTAL --}}
                                                 <td class="border-b dark:border-dark-5 text-center">
-                                                ${{number_format($item->price * $item->qty,2)}}
+                                                {{number_format($item->price * $item->qty,2)}}
                                                 {{-- <small>{{$this->subTotSinImpuesto}}</small> --}}
                                                 </td>
                                                   {{-- FIN TOTAL --}}
