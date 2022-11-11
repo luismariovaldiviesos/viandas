@@ -12,7 +12,7 @@ class Product extends Model
     use CartTrait;
 
 
-    protected $fillable =  ['code','name','price','iva','ice','price2','changes','cost','stock','minstock','category_id'];
+    protected $fillable =  ['code','name','price','iva','ice','descuento','price2','changes','cost','stock','minstock','category_id'];
 
 
     //validaciones

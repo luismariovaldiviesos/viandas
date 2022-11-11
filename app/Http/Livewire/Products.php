@@ -16,7 +16,7 @@ class Products extends Component
     use WithPagination;
     use WithFileUploads;
 
-    public $name='', $code ='', $cost=0, $price=0, $price2=0, $pvp = 0, $stock=0, $minstock=0, $category='elegir',$selected_id=0,$gallery = [];
+    public $name='', $code ='', $cost=0, $price=0, $price2=0, $pvp = 0, $descuento = 0,  $stock=0, $minstock=0, $category='elegir',$selected_id=0,$gallery = [];
     public $action = 'Listado', $componentName='CATALOGO DE PRODUCTOS', $search, $form = false;
     private $pagination =15;
     protected $paginationTheme='tailwind';
@@ -81,6 +81,7 @@ class Products extends Component
             'price',
             'iva',
             'ice',
+            'descuento',
             'price2',
             'stock',
             'minstock',
@@ -103,11 +104,12 @@ class Products extends Component
         $this->selected_id = $product->id;
         $this->name = $product->name;
         $this->code = $product->code;
-        $this->cost = $product->cost;
-        $this->price = $product->price;
+        $this->cost = number_format($product->cost,2) ;
+        $this->price = number_format($product->price,2) ;
         $this->iva = $product->iva;
         $this->ice = $product->ice;
-        $this->price2 = $product->price2;
+        $this->descuento = number_format($product->descuento,1);
+        $this->price2 = number_format($product->price2,2) ;
         $this->stock = $product->stock;
         $this->minstock = $product->minstock;
         $this->category = $product->category_id;
@@ -130,7 +132,10 @@ class Products extends Component
         $iva = ($this->price * $this->iva)/100;
         $ice = ($this->price * $this->ice)/100;
 
+       // $descuento  =  $this->descuento;
+        $totalDescuento  =  ($this->price * $this->descuento) /100;
         $impuestos = $iva + $ice;
+        $pvp = $this->price + $impuestos - $totalDescuento;
         $product = Product::updateOrCreate(
 
             ['id' => $this->selected_id ],
@@ -141,7 +146,8 @@ class Products extends Component
                 'price' => $this->price,
                 'iva' => $iva,
                 'ice' => $ice,
-                'price2' => $this->price + $impuestos,
+                'descuento' => $this->descuento,
+                'price2' => $pvp,
                 'stock' => $this->stock,
                 'minstock' => $this->minstock,
                 'category_id' => $this->category

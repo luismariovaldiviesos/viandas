@@ -35,6 +35,7 @@
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">PRECIO UNITARIO</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">IVA</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">ICE</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">DSTO</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">PRECIO DE VENTA </th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">STOCK</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">ACCIONES</th>
@@ -55,9 +56,10 @@
                                         <td class="text-center">{{ strtoupper($product->category ) }}</td>
                                         <td class="text-center font-medium">{{ number_format($product->price,2 ) }}</td>
                                         {{-- IVA --}}
-                                        <td class="text-center font-medium">{{ $product->iva  }}</td>
+                                        <td class="text-center font-medium">{{ number_format($product->iva, 2)  }}</td>
                                         {{-- ice --}}
-                                        <td class="text-center font-medium">{{ $product->ice  }}</td>
+                                        <td class="text-center font-medium">{{ number_format($product->ice, 2)  }}</td>
+                                        <td class="text-center font-medium">{{ number_format($product->descuento,0)}}%</td>
                                         <td class="text-center font-medium">{{ number_format($product->price2,2 ) }}</td>
                                         <td class="text-center font-medium">{{ $product->stock  }}</td>
 
