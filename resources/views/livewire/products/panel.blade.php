@@ -116,7 +116,7 @@
                 <div class="mt-4">
                     <div class="sm:grid grid-cols-2 gap-2">
                         <div class="input-group">
-                            <div class="input-group-text">IVA  {{ $ivaporcentaje }}</div>
+                            <div class="input-group-text">IVA</div>
                             <select wire:model='ivaporcentaje' class="form-select form-select-lg sm:mr-2" name="" id="">
                                 <option value="elegir">Elegir</option>
                                 <option value="0">0%</option>
@@ -126,7 +126,7 @@
                              </select>
                         </div>
                         <div class="input-group">
-                            <div class="input-group-text">ICE {{$iceporcentaje }}</div>
+                            <div class="input-group-text">ICE</div>
                             <select wire:model='iceporcentaje' class="form-select form-select-lg sm:mr-2" name="" id="">
                                 <option value="elegir">Elegir</option>
                                 <option value="16">16%</option>
