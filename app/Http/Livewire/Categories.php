@@ -17,7 +17,7 @@ class Categories extends Component
 
     public $name = '', $selected_id = 0, $photo = '';
     public $action = 'Listado', $componentName = 'Categorías', $search, $form = false;
-    private $pagination = 4;
+    private $pagination = 10;
     protected $paginationTheme = 'tailwind';
 
 

@@ -30,7 +30,7 @@
                             <thead>
                                 <tr class="text-theme-1">
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" width="10%"></th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" width="30%">DESCRIPCION</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" width="20%">DESCRIPCION</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">CATEGORIA</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">PRECIO UNITARIO</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">IVA</th>
@@ -61,7 +61,18 @@
                                         <td class="text-center font-medium">{{ number_format($product->ice, 2)  }}</td>
                                         <td class="text-center font-medium">{{ number_format($product->descuento,0)}}%</td>
                                         <td class="text-center font-medium">{{ number_format($product->price2,2 ) }}</td>
-                                        <td class="text-center font-medium">{{ $product->stock  }}</td>
+                                        @if ($product->stock  <= $product->minstock  )
+                                        <td class="text-center font-medium">
+                                            <button type="button" class="btn btn-danger">
+                                                <span class="badge badge-danger">Alerta {{ $product->stock }}</span>
+                                              </button>
+                                        </td>
+                                        @else
+                                        <td class="text-center font-medium ">
+                                            <button type="text" class="btn btn-outline-primary sm">aceptable</button>
+                                        </td>
+                                        @endif
+
 
                                         <td class="dark:border-dark-5 text-center">
                                             <div class="d-flex justify-content-center">
@@ -163,12 +174,31 @@
                 case 'price2':
                     @this.price2 = e.target.value
                     break
+                case 'pvp':
+                    @this.pvp = e.target.value
+                    break
+                case 'descuento':
+                    @this.descuento = e.target.value
+                    break
                 case 'stock':
                     @this.stock = e.target.value
                     break
                 case 'minstock':
                     @this.minstock = e.target.value
                     break
+                    case 'ivaporcentaje':
+                    @this.ivaporcentaje = e.target.value
+                    break
+                    case 'iceporcentaje':
+                    @this.iceporcentaje = e.target.value
+                    break
+                    case 'iva':
+                    @this.iva = e.target.value
+                    break
+                    case 'ice':
+                    @this.ice = e.target.value
+                    break
+
 
             }
         }))

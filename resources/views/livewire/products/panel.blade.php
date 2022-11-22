@@ -11,7 +11,12 @@
             <div class="modal-header p-5">
                 <h2 class="font-medium text-base mr-auto">Gestión de Productos</h2>
 
-                <x-save class="mt-4 mr-5"/>
+                @if ($this->ivaporcentaje != 'elegir' && $this->iceporcentaje != 'elegir')
+
+                    <x-save class="mt-4 mr-5"/>
+
+                @endif
+
 
             </div>
 
@@ -111,8 +116,8 @@
                 <div class="mt-4">
                     <div class="sm:grid grid-cols-2 gap-2">
                         <div class="input-group">
-                            <div class="input-group-text">IVA</div>
-                            <select wire:model='iva' class="form-select form-select-lg sm:mr-2" name="" id="">
+                            <div class="input-group-text">IVA  {{ $ivaporcentaje }}</div>
+                            <select wire:model='ivaporcentaje' class="form-select form-select-lg sm:mr-2" name="" id="">
                                 <option value="elegir">Elegir</option>
                                 <option value="0">0%</option>
                                 <option value="12">12%</option>
@@ -121,12 +126,11 @@
                              </select>
                         </div>
                         <div class="input-group">
-                            <div class="input-group-text">ICE</div>
-                            <select wire:model='ice' class="form-select form-select-lg sm:mr-2" name="" id="">
+                            <div class="input-group-text">ICE {{$iceporcentaje }}</div>
+                            <select wire:model='iceporcentaje' class="form-select form-select-lg sm:mr-2" name="" id="">
                                 <option value="elegir">Elegir</option>
                                 <option value="16">16%</option>
                                 <option value="0">No especificado</option>
-
                             </select>
                         </div>
                         @error('ice')

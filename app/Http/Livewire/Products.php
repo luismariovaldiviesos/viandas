@@ -21,14 +21,18 @@ class Products extends Component
     private $pagination =15;
     protected $paginationTheme='tailwind';
 
-    public $iva = 'elegir';
-    public $ice = 'elegir';
+    public $ivaporcentaje = 'elegir';
+    public $iceporcentaje = 'elegir';
+
+    public $iva = 0;
+    public $ice = 0;
 
    // public $selectedImpuestos =[];
 
 
     public function render()
     {
+
 
 
         if(strlen($this->search) > 0)
@@ -83,6 +87,8 @@ class Products extends Component
             'ice',
             'descuento',
             'price2',
+            'ivaporcentaje',
+            'iceporcentaje',
             'stock',
             'minstock',
             'selected_id',
@@ -100,7 +106,7 @@ class Products extends Component
 
     public function Edit (Product $product)
     {
-        //dd($product->ice, $product->iva);
+
         $this->selected_id = $product->id;
         $this->name = $product->name;
         $this->code = $product->code;
@@ -113,29 +119,63 @@ class Products extends Component
         $this->stock = $product->stock;
         $this->minstock = $product->minstock;
         $this->category = $product->category_id;
+        if($this->iva > 0)
+        {
+            $this->ivaporcentaje = ($this->iva *100) / $this->price;
+        }
+        else{
+            $this->ivaporcentaje = 'elegir';
+        }
+
+        if($this->ice > 0)
+        {
+            $this->iceporcentaje = ($this->ice *100) / $this->price;
+        }
+        else{
+            $this->iceporcentaje = 'elegir';
+        }
+
         $this->noty('', 'open-modal', false);
+
+
+        //dd($this->iva, $this->iva);
     }
 
 
     public function Store()
     {
+
+        //dd($this->ivaporcentaje, $this->iceporcentaje);
         sleep(1);
-        // $cont = count($this->selectedImpuestos);
-        // if($cont <= 0)
-        // {
-        //     $this->noty('agrega al menos un impuesto al producto', 'noty', 'false');
-		// 	return;
-        // }
-
         $this->validate(Product::rules($this->selected_id), Product::$messages);
+        // if($this->ivaporcentaje == 'elegir' || $this->iceporcentaje == 'elegir')
+        // {
+        //     $this->noty('validar porcentaje iva y/o ice');
+        //     return ;
+        // }
+        // descuento
 
-        $iva = ($this->price * $this->iva)/100;
-        $ice = ($this->price * $this->ice)/100;
+        if($this->descuento > 0)
+        {
+            $totalDescuento  =  ($this->price * $this->descuento) /100;
+            $precioConDescuento =   $this->price - $totalDescuento;
+            $this->iva = ($precioConDescuento * $this->ivaporcentaje)/100;
+            $this->ice = ($precioConDescuento * $this->iceporcentaje)/100;
+            $impuestos = $this->iva + $this->ice;
+            $this->price = $precioConDescuento;
+            $pvp = $this->price + $impuestos;
+        }
+        else{
+            $this->iva = ($this->price * $this->ivaporcentaje)/100;
+            $this->ice = ($this->price * $this->iceporcentaje)/100;
+            $impuestos = $this->iva + $this->ice;
+            $pvp = $this->price + $impuestos;
+       }
 
-       // $descuento  =  $this->descuento;
-        $totalDescuento  =  ($this->price * $this->descuento) /100;
-        $impuestos = $iva + $ice;
-        $pvp = $this->price + $impuestos - $totalDescuento;
+       //dd($iva);
+
+
+      // dd("precio" . $this->price, "desto" . $this->descuento,  "impustos" . $impuestos,  "pvp" . $pvp );
         $product = Product::updateOrCreate(
 
             ['id' => $this->selected_id ],
@@ -144,8 +184,8 @@ class Products extends Component
                 'code' => $this->code,
                 'cost' => $this->cost,
                 'price' => $this->price,
-                'iva' => $iva,
-                'ice' => $ice,
+                'iva' => $this->iva,
+                'ice' => $this->ice,
                 'descuento' => $this->descuento,
                 'price2' => $pvp,
                 'stock' => $this->stock,
