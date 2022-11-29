@@ -116,21 +116,20 @@
                 <div class="mt-4">
                     <div class="sm:grid grid-cols-2 gap-2">
                         <div class="input-group">
-                            <div class="input-group-text">IVA</div>
+                            <div class="input-group-text">IVA {{ number_format($iva,2)  }}</div>
                             <select wire:model='ivaporcentaje' class="form-select form-select-lg sm:mr-2" name="" id="">
                                 <option value="elegir">Elegir</option>
                                 <option value="0">0%</option>
                                 <option value="12">12%</option>
-                                <option value="0">No objeto de IVA</option>
-                                <option value="0">Excento de IVA</option>
+
                              </select>
                         </div>
                         <div class="input-group">
-                            <div class="input-group-text">ICE</div>
+                            <div class="input-group-text">ICE {{ number_format($ice,2)  }}</div>
                             <select wire:model='iceporcentaje' class="form-select form-select-lg sm:mr-2" name="" id="">
                                 <option value="elegir">Elegir</option>
+                                <option value="0">0%</option>
                                 <option value="16">16%</option>
-                                <option value="0">No especificado</option>
                             </select>
                         </div>
                         @error('ice')

@@ -6,6 +6,7 @@ use App\Http\Livewire\Cajas;
 use App\Http\Livewire\Categories;
 use App\Http\Livewire\Customers;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Descuentos;
 use App\Http\Livewire\Diario;
 use App\Http\Livewire\Impuestos;
 use App\Http\Livewire\Permisos;
@@ -44,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('roles', Roles::class)->name('roles');
     Route::get('permisos', Permisos::class)->name('permisos');
     Route::get('asignar', Asignar::class)->name('asignar');
-    // Route::get('impuestos', Impuestos::class)->name('impuestos');
+    Route::get('descuentos', Descuentos::class)->name('descuentos');
 
 
 

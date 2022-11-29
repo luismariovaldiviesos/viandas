@@ -47,7 +47,6 @@ class Reports extends Component
         if ($this->userId != 'TODOS'){
 
             $uid = trim(explode("|", $this->userId)[1]);
-
             $orders = Order::whereBetween('created_at', [$from, $to])
             ->where('user_id', $uid)
             ->orderBy('id', 'desc')

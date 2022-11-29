@@ -63,5 +63,24 @@
     }
 
 
+    function revoque(componentName, methodName =  'revoque', rowId){
+        swal({
+            title: '¿ confirmas eliminar el descuento ?',
+            text: '',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Eliminar',
+            confirmButtonColor: '#e7515a',
+            cancelButtonText: 'Cerrar',
+            padding: '2em'
+        }).then(function(result){
+            if(result.value){  // cuando el usuario dice aceptar =  true
+                window.livewire.emitTo(componentName, methodName, rowId) // aqui se emiteTO desde el front al back
+                swal.close()
+            }
+        })
+    }
+
+
 </script>
 

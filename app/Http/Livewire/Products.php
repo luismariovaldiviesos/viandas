@@ -107,6 +107,7 @@ class Products extends Component
     public function Edit (Product $product)
     {
 
+        //dd($product);
         $this->selected_id = $product->id;
         $this->name = $product->name;
         $this->code = $product->code;
@@ -119,21 +120,22 @@ class Products extends Component
         $this->stock = $product->stock;
         $this->minstock = $product->minstock;
         $this->category = $product->category_id;
-        if($this->iva > 0)
-        {
-            $this->ivaporcentaje = ($this->iva *100) / $this->price;
-        }
-        else{
-            $this->ivaporcentaje = 'elegir';
-        }
+        //dd($this->iva, $this->ice);
+        // if($this->iva > 0)
+        // {
+        //     $this->ivaporcentaje = ($this->iva *100) / $this->price;
+        // }
+        // else{
+        //     $this->ivaporcentaje = 'elegir';
+        // }
 
-        if($this->ice > 0)
-        {
-            $this->iceporcentaje = ($this->ice *100) / $this->price;
-        }
-        else{
-            $this->iceporcentaje = 'elegir';
-        }
+        // if($this->ice > 0)
+        // {
+        //     $this->iceporcentaje = ($this->ice *100) / $this->price;
+        // }
+        // else{
+        //     $this->iceporcentaje = 'elegir';
+        // }
 
         $this->noty('', 'open-modal', false);
 
@@ -145,15 +147,9 @@ class Products extends Component
     public function Store()
     {
 
-        //dd($this->ivaporcentaje, $this->iceporcentaje);
-        sleep(1);
+         sleep(1);
         $this->validate(Product::rules($this->selected_id), Product::$messages);
-        // if($this->ivaporcentaje == 'elegir' || $this->iceporcentaje == 'elegir')
-        // {
-        //     $this->noty('validar porcentaje iva y/o ice');
-        //     return ;
-        // }
-        // descuento
+
 
         if($this->descuento > 0)
         {
@@ -162,8 +158,7 @@ class Products extends Component
             $this->iva = ($precioConDescuento * $this->ivaporcentaje)/100;
             $this->ice = ($precioConDescuento * $this->iceporcentaje)/100;
             $impuestos = $this->iva + $this->ice;
-            $this->price = $precioConDescuento;
-            $pvp = $this->price + $impuestos;
+            $pvp = $precioConDescuento + $impuestos;
         }
         else{
             $this->iva = ($this->price * $this->ivaporcentaje)/100;
@@ -172,10 +167,6 @@ class Products extends Component
             $pvp = $this->price + $impuestos;
        }
 
-       //dd($iva);
-
-
-      // dd("precio" . $this->price, "desto" . $this->descuento,  "impustos" . $impuestos,  "pvp" . $pvp );
         $product = Product::updateOrCreate(
 
             ['id' => $this->selected_id ],
