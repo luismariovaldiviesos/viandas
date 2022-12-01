@@ -120,27 +120,12 @@ class Products extends Component
         $this->stock = $product->stock;
         $this->minstock = $product->minstock;
         $this->category = $product->category_id;
-        //dd($this->iva, $this->ice);
-        // if($this->iva > 0)
-        // {
-        //     $this->ivaporcentaje = ($this->iva *100) / $this->price;
-        // }
-        // else{
-        //     $this->ivaporcentaje = 'elegir';
-        // }
 
-        // if($this->ice > 0)
-        // {
-        //     $this->iceporcentaje = ($this->ice *100) / $this->price;
-        // }
-        // else{
-        //     $this->iceporcentaje = 'elegir';
-        // }
 
         $this->noty('', 'open-modal', false);
 
 
-        //dd($this->iva, $this->iva);
+
     }
 
 

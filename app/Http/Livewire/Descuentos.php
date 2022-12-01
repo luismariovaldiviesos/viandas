@@ -28,13 +28,20 @@ class Descuentos extends Component
 
     public function Revoque(Product $product)
     {
-        // hacer el mismo metodo create or update
-        $desc = ($product->price * $product->descuento)/100;
-        $newPrice = $product->price2 + $desc;
-        $impuestos =  $product->iva + $product->ice;
-        $pvp = $newPrice + $impuestos;
-        $newDescuent = 0.00;
-        $affectedRows = Product::where('id', '=', $product->id)->update(['price2' => $pvp, 'descuento' => $newDescuent]);
+
+            $totalDescuento  =  ($product->price * $product->descuento) /100;
+            $precioConDescuento =   $product->price - $totalDescuento;
+            $precioSinDescuento = $precioConDescuento + $totalDescuento;
+            $impuestos = $product->iva + $product->ice;
+            $pvpsindsto = $precioSinDescuento + $impuestos;
+            $newDescuent =0.00;
+            // dd('descuento:', $totalDescuento, 'precio con descuento:', $precioConDescuento,
+            // 'precio sin descuento:', $precioSinDescuento, 'impuestos:', $impuestos, 'pvp sin descuento:', $pvpsindsto);
+
+
+        //$affectedRows = Product::where('id', '=', $product->id)->update(['price2' => $pvp, 'descuento' => $newDescuent]);
+        Product::where('id', '=', $product->id)->update(['price2' => $pvpsindsto, 'descuento'=> $newDescuent]);
+
         $this->noty('Se eliminó el descuento');
 
     }
