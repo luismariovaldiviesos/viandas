@@ -40,7 +40,7 @@ class Sales extends Component
     public $productIdSelected, $productChangesSelected, $productNameSelected, $changesProduct;
 
     // impuestos
-    public $iva12 = 0, $iva0 =0, $totalImpuesto12 =0,  $totalIce=0;
+    public $iva12 = 0, $iva0 =0, $totalImpuesto12 =0,  $totalIce=0, $totalDscto=0;
 
     protected $paginationTheme = "bootstrap";
 
@@ -62,6 +62,7 @@ class Sales extends Component
             $this->iva0 = $this->getIva0();
             $this->totalImpuesto12 = $this->getImpuesto12();
             $this->totalIce = $this->getIce();
+            $this->totalDscto = $this->getDscto();
             //dd($totalImpuesto12);
 
 

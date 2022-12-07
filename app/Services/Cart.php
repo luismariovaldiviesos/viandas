@@ -195,6 +195,20 @@ class Cart {
         return $amount;
     }
 
+      // total del DESCUENTO
+      public function totalDsto()
+      {
+          $amount = $this->cart->sum(function ($product){
+              if( $product->descuento > 0){
+                $desc = ($product->qty * $product->descuento) /100;
+                  return $desc;
+              }
+
+          });
+          return $amount;
+      }
+
+
 
 
 

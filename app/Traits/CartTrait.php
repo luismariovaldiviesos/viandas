@@ -53,6 +53,12 @@ trait CartTrait {
         return $cart->totalIce();
     }
 
+    public function getDscto()
+    {
+        $cart =  new Cart;
+        return $cart->totalDsto();
+    }
+
 
     // FIMM FUNCIONES MIAS PARA SACAR IMPUESTOS
 
