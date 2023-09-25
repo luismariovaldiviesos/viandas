@@ -225,6 +225,7 @@
                 <div>
                     <h2 class="text-2xl text-center mb-3">Resumen de Venta</h2>
                     @if ($estadoCaja != 0)
+                    {{-- openModalCutomer funcion de arcivo script --}}
                     <button onclick="openModalCustomer()" class="btn btn-outline-dark w-full mb-3">{{$customerSelected}}</button>
                     <button onclick="openModalProduct()" class="btn btn-outline-dark w-full mb-3">{{$productSelected}}</button>
                     @endif

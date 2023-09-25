@@ -62,7 +62,7 @@
 
         <div class="side-nav__devider my-6"></div>
 
-        @hasrole('admin')
+        @hasrole('Admin')
         <li>
             <a href="{{ route('reports') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="calendar"></i> </div>

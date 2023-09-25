@@ -95,7 +95,7 @@ class Permisos extends Component
     public function Destroy(Permission $permiso)
     {
         $permiso->delete();
-        $this->noty('Se eliminó el rol');
+        $this->noty('Se eliminó el permiso');
     }
 
 
