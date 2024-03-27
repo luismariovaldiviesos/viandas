@@ -100,7 +100,7 @@
 
     @endif
 
-    @include('livewire.sales.keyboard')
+    {{-- @include('livewire.sales.keyboard') --}}
 
 
 

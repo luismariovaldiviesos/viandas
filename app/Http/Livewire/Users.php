@@ -91,8 +91,9 @@ class Users extends Component
     {
         $this->validate(User::rules($this->selected_id), User::$messages);
 
-        $user = User::find($this->selected_id);
-        $user::updateOrCreate(
+       // $user = User::find($this->selected_id);
+        //dd($this->name);
+        $user =  User::updateOrCreate(
             ['id' => $this->selected_id],
             [
                 'name' =>  $this->name,
@@ -113,12 +114,14 @@ class Users extends Component
 
     public function Destroy(User $user)
     {
-        if ($user->sales->count() < 1) {
-            $user->delete();
-            $this->noty("El usuario <b>$user->name</b> fue eliminado del sistema");
-        } else{
-            $this->noty('no es posible eliminar el usuario, tiene ventas asociadas');
-        }
+        // if ($user->sales->count() < 1) {
+        //     $user->delete();
+        //     $this->noty("El usuario <b>$user->name</b> fue eliminado del sistema");
+        // } else{
+        //     $this->noty('no es posible eliminar el usuario, tiene ventas asociadas');
+        // }
+        $user->delete();
+        $this->noty("El usuario <b>$user->name</b> fue eliminado del sistema");
     }
 
 }

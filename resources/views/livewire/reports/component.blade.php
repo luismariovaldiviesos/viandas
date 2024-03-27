@@ -59,7 +59,7 @@
                             </thead>
                             <tbody>
 
-                                @forelse ($orders as $order )
+                                {{-- @forelse ($orders as $order )
                                     <tr class="dark:bg-dark-1 {{$loop->index % 2 >0 ? 'bg-gray-200' : '' }} font-normal">
                                         <td class="text-center"> {{ $order->id }} </td>
                                         <td class="text-center"> ${{ number_format($order->total,2) }} </td>
@@ -80,31 +80,31 @@
                                             <h6 class="text-center">SIN INFORMACIÓN</h6>
                                         </td>
                                     </tr>
-                                @endforelse
+                                @endforelse --}}
 
                             </tbody>
-                            <tfoot>
+                            {{-- <tfoot>
                                 <tr class="font-large bg-theme-26   text-white">
                                     <td>TOTALES</td>
                                     <td class="text-center">${{number_format($orders->sum('total'),2) }}</td>
                                     <td class="text-center">{{$orders->sum('items')}}</td>
                                 </tr>
-                            </tfoot>
+                            </tfoot> --}}
                         </table>
                     </div>
                 </div>
             </div>
             <div class="col-span-12 p-5">
-                @if(count($orders) > 0)
+                {{-- @if(count($orders) > 0)
                 {{$orders->links()}}
-                @endif
+                @endif --}}
             </div>
         </div>
     </div>
 
     @include('livewire.reports.detail')
     @include('livewire.reports.modal-users')
-    @include('livewire.sales.keyboard')
+    {{-- @include('livewire.sales.keyboard') --}}
 
 
 <script>

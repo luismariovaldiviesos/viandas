@@ -31,21 +31,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('categories', Categories::class)->name('categories');
-    Route::get('products', Products::class)->name('products');
+    // Route::get('categories', Categories::class)->name('categories');
+    // Route::get('products', Products::class)->name('products');
     Route::get('customers', Customers::class)->name('customers');
     Route::get('users', Users::class)->name('users');
-    Route::get('sales', Sales::class)->name('sales');
-    Route::get('reports', Reports::class)->name('reports');
+    // Route::get('sales', Sales::class)->name('sales');
+     Route::get('reports', Reports::class)->name('reports');
     Route::get('dash', Dashboard::class)->name('dash');
     Route::get('settings', Settings::class)->name('settings');
-    Route::get('diarios', Diario::class)->name('diario');
-    Route::get('cajas', Cajas::class)->name('cajas');
-    Route::get('arqueos', Arqueos::class)->name('arqueos');
+    // Route::get('diarios', Diario::class)->name('diario');
+    // Route::get('cajas', Cajas::class)->name('cajas');
+    // Route::get('arqueos', Arqueos::class)->name('arqueos');
     Route::get('roles', Roles::class)->name('roles');
     Route::get('permisos', Permisos::class)->name('permisos');
     Route::get('asignar', Asignar::class)->name('asignar');
-    Route::get('descuentos', Descuentos::class)->name('descuentos');
+    // Route::get('descuentos', Descuentos::class)->name('descuentos');
 
 
 

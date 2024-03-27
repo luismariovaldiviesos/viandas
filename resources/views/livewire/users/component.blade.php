@@ -42,13 +42,13 @@
 
                                         <td class="dark:border-dark-5 text-center">
                                             <div class="d-flex justify-content-center">
-                                                @if ($user->sales->count() < 1)
+                                                {{-- @if ($user->sales->count() < 1) --}}
                                                     <button class="btn btn-danger text-white border-0"
                                                     onclick="destroy('users','Destroy', {{ $user->id }})"
                                                     type="button">
                                                         <i class=" fas fa-trash f-2x"></i>
                                                     </button>
-                                                @endif
+                                                {{-- @endif --}}
                                                 <button class="btn btn-warning text-white border-0 ml-3"
                                                     wire:click.prevent="Edit({{ $user->id }})"
                                                     type="button">
@@ -83,7 +83,7 @@
 
     @endif
 
-    @include('livewire.sales.keyboard')
+    {{-- @include('livewire.sales.keyboard') --}}
 
 
     {{-- para el buscador  --}}

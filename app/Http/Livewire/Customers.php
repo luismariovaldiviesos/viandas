@@ -102,13 +102,15 @@ class Customers extends Component
 
     public function Destroy(Customer $customer)
     {
-        if($customer->orders->count() < 1)
-        {
-            $customer->delete();
-            $this->noty("El cliente <b>$customer->businame </b> ha sido elmininado");
-        }else{
-            $this->noty("El cliente tiene ventas relacionadas, no es posible eliminarlo");
-        }
+        // if($customer->orders->count() < 1)
+        // {
+        //     $customer->delete();
+        //     $this->noty("El cliente <b>$customer->businame </b> ha sido elmininado");
+        // }else{
+        //     $this->noty("El cliente tiene ventas relacionadas, no es posible eliminarlo");
+        // }
+        $customer->delete();
+       $this->noty("El cliente <b>$customer->businame </b> ha sido elmininado");
     }
 
 }

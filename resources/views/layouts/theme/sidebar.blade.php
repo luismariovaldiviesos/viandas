@@ -2,7 +2,7 @@
     @hasrole('Admin')
     <a href="{{ url('dash') }}" class="intro-x flex items-center pl-5 pt-4">
         <img alt="logo" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
-        <span class="hidden xl:block text-white text-lg ml-3"><span class="font-medium">VENTAS</span> </span>
+        <span class="hidden xl:block text-white text-lg ml-3"><span class="font-medium">DASHBOARD</span> </span>
 
 
     </a>
@@ -10,43 +10,43 @@
     <div class="side-nav__devider my-6"></div>
 
     <ul>
-        @hasrole('Admin')
+        {{-- @hasrole('Admin')
         <li>
             <a href="{{ url('categories') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="layers"></i> </div>
                 <div class="side-menu__title"> CATEGORIAS  </div>
             </a>
         </li>
-        @endhasrole()
+        @endhasrole() --}}
 
-        <li>
+        {{-- <li>
             <a href="{{ route('products') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="coffee"></i> </div>
                 <div class="side-menu__title"> PRODUCTOS  </div>
             </a>
-        </li>
+        </li> --}}
 
-        <li>
+        {{-- <li>
             <a href="{{ route('sales') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="dollar-sign"></i> </div>
                 <div class="side-menu__title"> FACTURAR  </div>
             </a>
-        </li>
+        </li> --}}
 
-        @hasrole('Admin')
+        {{-- @hasrole('Admin')
         <li>
             <a href="{{ route('cajas') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="shopping-cart"></i> </div>
                 <div class="side-menu__title"> CAJAS  </div>
             </a>
         </li>
-        @endhasrole
-        <li>
+        @endhasrole --}}
+        {{-- <li>
             <a href="{{ route('arqueos') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
                 <div class="side-menu__title"> ARQUEOS  </div>
             </a>
-        </li>
+        </li> --}}
 
         <div class="side-nav__devider my-6"></div>
 
@@ -71,12 +71,12 @@
         </li>
         @endhasrole
 
-        <li>
+        {{-- <li>
             <a href="{{ route('diario') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="eye"></i> </div>
                 <div class="side-menu__title"> VENTA DIARIA  </div>
             </a>
-        </li>
+        </li> --}}
 
         <div class="side-nav__devider my-6"></div>
 
@@ -85,7 +85,7 @@
 
         <li>
 
-            @hasrole('Admin')
+            {{-- @hasrole('Admin') --}}
             <a href="javascript:;" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="settings"></i> </div>
                 <div class="side-menu__title">
@@ -93,7 +93,7 @@
                     <div class="side-menu__sub-icon "> <i data-feather="chevron-down"></i> </div>
                 </div>
             </a>
-            @endhasrole
+            {{-- @endhasrole --}}
 
             <ul class="">
 
@@ -128,12 +128,12 @@
                     </a>
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="{{ route('descuentos') }}" class="side-menu">
                         <div class="side-menu__icon"> <i data-feather="key"></i> </div>
                         <div class="side-menu__title"> Descuentos  </div>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- <li>
                     <a href="{{ route('impuestos') }}" class="side-menu">

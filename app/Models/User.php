@@ -111,32 +111,32 @@ class User extends Authenticatable
 
  //relaciones
 
-    public function image()
-    {
-        return $this->morphOne(Image::class, 'model')->withDefault();
+     public function image()
+     {
+         return $this->morphOne(Image::class, 'model')->withDefault();
     }
 
-    public function sales()
-    {
-        return $this->hasMany(Order::class);
-    }
+    // public function sales()
+    // {
+    //     return $this->hasMany(Order::class);
+    // }
 
 
    // accesores y mutators
 
-   public function getAvatarAttribute()
-   {
-        $img =  $this->image->file;
-        if($img != null )
-        {
-            if(file_exists('storage/avatars/'. $img))
-            return 'storage/avatars' . $img;
-            else
-            return 'storage/default_avatar.JPG';
-        }
+//    public function getAvatarAttribute()
+//    {
+//         $img =  $this->image->file;
+//         if($img != null )
+//         {
+//             if(file_exists('storage/avatars/'. $img))
+//             return 'storage/avatars' . $img;
+//             else
+//             return 'storage/default_avatar.JPG';
+//         }
 
-        return 'storage/default_avatar.JPG';
-   }
+//         return 'storage/default_avatar.JPG';
+//    }
 
 
    public  function caja ()

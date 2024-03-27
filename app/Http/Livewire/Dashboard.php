@@ -22,15 +22,15 @@ class Dashboard extends Component
     public function render()
     {
 
-        $this->listYears =[];
-        $currentYear =  date('Y') -1;
-        for ($i=1; $i < 7 ; $i++) {
-            array_push($this->listYears, $currentYear +$i);
-        }
+        // $this->listYears =[];
+        // $currentYear =  date('Y') -1;
+        // for ($i=1; $i < 7 ; $i++) {
+        //     array_push($this->listYears, $currentYear +$i);
+        // }
 
-        $this->getTop5();
-        $this->getWeekSales();
-        $this->getSalesMonth();
+        // $this->getTop5();
+        // $this->getWeekSales();
+        // $this->getSalesMonth();
 
         return view('livewire.dash.component')->layout('layouts.theme.app');
     }
