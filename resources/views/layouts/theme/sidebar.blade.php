@@ -85,7 +85,7 @@
 
         <li>
 
-            {{-- @hasrole('Admin') --}}
+            @hasrole('Admin')
             <a href="javascript:;" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="settings"></i> </div>
                 <div class="side-menu__title">
@@ -93,7 +93,7 @@
                     <div class="side-menu__sub-icon "> <i data-feather="chevron-down"></i> </div>
                 </div>
             </a>
-            {{-- @endhasrole --}}
+            @endhasrole
 
             <ul class="">
 

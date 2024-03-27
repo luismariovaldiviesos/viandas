@@ -24,7 +24,31 @@ class UserSeeder extends Seeder
             'status' => 'ACTIVE',
             'password' => bcrypt('administrador')
         ]);
+        $user = User::create([
+            'name' => 'Pedro  Castro',
+            'ci' => '0104562178',
+            'phone' => '0987256288',
+            'email' => 'officer@mail.com',
+            'profile' => 'Official',
+            'status' => 'ACTIVE',
+            'password' => bcrypt('officer')
+        ]);
 
-        $user->syncRoles('Admin');
+
+        $usuarios = User::all();
+        foreach ($usuarios as $user) {
+          if($user->profile === 'Admin')
+          {
+            $user->assignRole('Admin');
+            $user->syncRoles('Admin');
+          }
+
+          elseif($user->profile === 'Official')
+          {
+            $user->assignRole('Official');
+            $user->syncRoles('Official');
+          }
+
+        }
     }
 }
