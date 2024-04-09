@@ -8,6 +8,7 @@ use App\Http\Livewire\Customers;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Descuentos;
 use App\Http\Livewire\Diario;
+use App\Http\Livewire\Entradas;
 use App\Http\Livewire\Impuestos;
 use App\Http\Livewire\Permisos;
 use App\Http\Livewire\Products;
@@ -31,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
 
-    // Route::get('categories', Categories::class)->name('categories');
+    Route::get('entradas', Entradas::class)->name('entradas');
     // Route::get('products', Products::class)->name('products');
     Route::get('customers', Customers::class)->name('customers');
     Route::get('users', Users::class)->name('users');

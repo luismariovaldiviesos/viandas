@@ -10,6 +10,35 @@
     <div class="side-nav__devider my-6"></div>
 
     <ul>
+        <li>
+            <a href="javascript:;.html" class="side-menu side-menu--active">
+                <div class="side-menu__icon"> <i data-feather="home"></i> </div>
+                <div class="side-menu__title">
+                    Menús
+                    <div class="side-menu__sub-icon transform rotate-180"> <i data-feather="chevron-down"></i> </div>
+                </div>
+            </a>
+            <ul class="side-menu__sub-open">
+                <li>
+                    <a href="entradas" class="side-menu side-menu--active">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> Entrada </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="side-menu-light-dashboard-overview-2.html" class="side-menu">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> Plato principal</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="side-menu-light-dashboard-overview-3.html" class="side-menu">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> Postre </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
         {{-- @hasrole('Admin')
         <li>
             <a href="{{ url('categories') }}" class="side-menu">
@@ -19,12 +48,12 @@
         </li>
         @endhasrole() --}}
 
-         <li>
+         {{-- <li>
             <a href="{{ route('menus') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="coffee"></i> </div>
                 <div class="side-menu__title"> MENUS  </div>
             </a>
-        </li>
+        </li> --}}
 
         {{-- <li>
             <a href="{{ route('sales') }}" class="side-menu">

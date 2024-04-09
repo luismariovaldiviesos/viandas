@@ -10,11 +10,11 @@
             <div class="preview">
                 <div x-data="{}" x-init="setTimeout(() => { refs.first.focus() }, 900  )">
                     <label class="form-label" >Nombre</label>
-                    <input type="text" wire:model="name" x-ref="first" id="categoryName"
-                    class="form-control kioskboard {{ $errors->first('name') ?  "border-theme-6" : "" }}"
-                    placeholder="nombre de la categoria"
+                    <input type="text" wire:model="descripcion" x-ref="first" id="categoryName"
+                    class="form-control kioskboard {{ $errors->first('descripcion') ?  "border-theme-6" : "" }}"
+                    placeholder="nombre"
                     >
-                    @error('name')
+                    @error('descripcion')
                         <x-alert msg="{{ $message }}" />
                     @enderror
                 </div>
@@ -51,7 +51,7 @@
         const inputCatName = document.getElementById('categoryName')
         if(inputCatName){
             inputCatName.addEventListener('change', ()=> {
-                @this.name = e.target.value
+                @this.descripcion = e.target.value
             })
         }
     </script>

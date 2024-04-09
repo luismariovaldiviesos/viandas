@@ -26,28 +26,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($categories as $category )
+                                 @forelse ($entradas as $entrada )
                                     <tr class=" dark:bg-dark-1 {{ $loop->index % 2> 0 ? 'bg-gray-200' : '' }}">
                                         <td>
-                                            <img src="{{ $category->img }}" data-action="zoom" alt="img-category" width="100">
+                                            <img src="{{ $entrada->img }}" data-action="zoom" alt="img-category" width="100">
                                         </td>
 
                                         <td class="dark:border-dark-5">
-                                            <h6 class="mb-1 font-medium">{{ $category->name }}</h6>
-                                            <small class="font-normal">{{ $category->products->count() }} Productos</small>
+                                            <h6 class="mb-1 font-medium">{{ $entrada->descripcion }}</h6>
+
                                         </td>
 
                                         <td class="dark:border-dark-5 text-center">
                                             <div class="d-flex justify-content-center">
-                                                @if ($category->products->count() < 1)
+                                                {{-- @if ($category->products->count() < 1) --}}
                                                     <button class="btn btn-danger text-white border-0"
-                                                    onclick="destroy('categories','Destroy', {{ $category->id }})"
+                                                    onclick="destroy('entradas','Destroy', {{ $entrada->id }})"
                                                     type="button">
                                                         <i class=" fas fa-trash f-2x"></i>
                                                     </button>
-                                                @endif
+                                                {{-- @endif --}}
                                                 <button class="btn btn-warning text-white border-0 ml-3"
-                                                    wire:click.prevent="Edit({{ $category->id }})"
+                                                    wire:click.prevent="Edit({{ $entrada->id }})"
                                                     type="button">
                                                         <i class=" fas fa-edit f-2x"></i>
                                                     </button>
@@ -57,7 +57,7 @@
                                 @empty
                                     <tr class="bg-gray-200 dark:bg-dark-1">
                                         <td colspan="2">
-                                            <h6 class="text-center">    NO HAY CATEGORIAS REGISTRADAS </h6>
+                                            <h6 class="text-center">    NO HAY ENTRADAS REGISTRADAS </h6>
                                         </td>
                                     </tr>
                                 @endforelse
@@ -68,7 +68,7 @@
             </div>
 
             <div class="col-spam-12 p-5">
-                {{ $categories->links() }}
+                 {{ $entradas->links() }}
             </div>
 
 
@@ -76,11 +76,11 @@
         </div>
     @else
 
-        @include('livewire.categories.form')
+        @include('livewire.entradas.form')
 
     @endif
 
-    @include('livewire.sales.keyboard')
+    {{-- @include('livewire.sales.keyboard') --}}
 
 
     {{-- para el buscador  --}}
