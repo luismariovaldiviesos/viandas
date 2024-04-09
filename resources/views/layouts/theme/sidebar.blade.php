@@ -19,12 +19,12 @@
         </li>
         @endhasrole() --}}
 
-        {{-- <li>
-            <a href="{{ route('products') }}" class="side-menu">
+         <li>
+            <a href="{{ route('menus') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="coffee"></i> </div>
-                <div class="side-menu__title"> PRODUCTOS  </div>
+                <div class="side-menu__title"> MENUS  </div>
             </a>
-        </li> --}}
+        </li>
 
         {{-- <li>
             <a href="{{ route('sales') }}" class="side-menu">
