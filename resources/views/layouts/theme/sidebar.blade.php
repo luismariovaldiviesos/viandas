@@ -32,9 +32,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="side-menu-light-dashboard-overview-3.html" class="side-menu">
+                    <a href="postres" class="side-menu">
                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="side-menu__title"> Postre </div>
+                        <div class="side-menu__title"> Postres </div>
                     </a>
                 </li>
             </ul>
