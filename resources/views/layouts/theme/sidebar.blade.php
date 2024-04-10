@@ -26,9 +26,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="side-menu-light-dashboard-overview-2.html" class="side-menu">
+                    <a href="pps" class="side-menu">
                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="side-menu__title"> Plato principal</div>
+                        <div class="side-menu__title"> Platos principales</div>
                     </a>
                 </li>
                 <li>
