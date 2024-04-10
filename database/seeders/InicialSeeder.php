@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Customer;
+use App\Models\Entrada;
+use App\Models\Postre;
+use App\Models\Pp;
 use App\Models\Setting;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -46,5 +49,46 @@ class InicialSeeder extends Seeder
             'leyend' => 'Gracias por su compra',
             'printer' => 'epson',
         ]);
+
+
+        Entrada::create([
+            'descripcion' => 'Sopa de lenteja'
+        ]);
+        Entrada::create([
+            'descripcion' => 'Sopa de fideo'
+        ]);
+        Entrada::create([
+            'descripcion' => 'Caldo de res'
+        ]);
+        Entrada::create([
+            'descripcion' => 'Sopa de Arveja'
+        ]);
+
+        Pp::create([
+            'descripcion' => 'Lomo salteado'
+        ]);
+        Pp::create([
+            'descripcion' => 'Seco de pollo'
+        ]);
+        Pp::create([
+            'descripcion' => 'Arroz con camarones'
+        ]);
+        Pp::create([
+            'descripcion' => 'Corvina'
+        ]);
+
+        Postre::create([
+            'descripcion' => 'tres leches'
+        ]);
+        Postre::create([
+            'descripcion' => 'duraznos en almibar'
+        ]);
+        Postre::create([
+            'descripcion' => 'torta de chocolate'
+        ]);
+        Postre::create([
+            'descripcion' => 'fruta confitada'
+        ]);
+
     }
 }
