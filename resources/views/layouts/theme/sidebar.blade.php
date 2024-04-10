@@ -14,26 +14,32 @@
             <a href="javascript:;.html" class="side-menu side-menu--active">
                 <div class="side-menu__icon"> <i data-feather="home"></i> </div>
                 <div class="side-menu__title">
-                    Menús
+                    Platos y Postres
                     <div class="side-menu__sub-icon transform rotate-180"> <i data-feather="chevron-down"></i> </div>
                 </div>
             </a>
             <ul class="side-menu__sub-open">
                 <li>
                     <a href="entradas" class="side-menu side-menu--active">
-                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="side-menu__title"> Entrada </div>
+                        <div class="side-menu__icon"> <i data-feather="tool"></i> </div>
+                        <div class="side-menu__title"> ARMAR MENÚ </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="entradas" class="side-menu side-menu--active">
+                        <div class="side-menu__icon"> <i data-feather="layers"></i> </div>
+                        <div class="side-menu__title"> Entradas</div>
                     </a>
                 </li>
                 <li>
                     <a href="pps" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__icon"> <i data-feather="codesandbox"></i> </div>
                         <div class="side-menu__title"> Platos principales</div>
                     </a>
                 </li>
                 <li>
                     <a href="postres" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__icon"> <i data-feather="coffee"></i> </div>
                         <div class="side-menu__title"> Postres </div>
                     </a>
                 </li>
