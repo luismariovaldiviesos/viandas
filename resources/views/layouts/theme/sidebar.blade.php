@@ -20,7 +20,7 @@
             </a>
             <ul class="side-menu__sub-open">
                 <li>
-                    <a href="entradas" class="side-menu side-menu--active">
+                    <a href="menus" class="side-menu side-menu--active">
                         <div class="side-menu__icon"> <i data-feather="tool"></i> </div>
                         <div class="side-menu__title"> ARMAR MENÚ </div>
                     </a>

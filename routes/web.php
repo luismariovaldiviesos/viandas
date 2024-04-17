@@ -10,6 +10,7 @@ use App\Http\Livewire\Descuentos;
 use App\Http\Livewire\Diario;
 use App\Http\Livewire\Entradas;
 use App\Http\Livewire\Impuestos;
+use App\Http\Livewire\Menus;
 use App\Http\Livewire\Permisos;
 use App\Http\Livewire\Postres;
 use App\Http\Livewire\Pps;
@@ -37,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('entradas', Entradas::class)->name('entradas');
     Route::get('pps', Pps::class)->name('pps');
     Route::get('postres', Postres::class)->name('postres');
+    Route::get('menus', Menus::class)->name('menus');
     Route::get('customers', Customers::class)->name('customers');
     Route::get('users', Users::class)->name('users');
     // Route::get('sales', Sales::class)->name('sales');

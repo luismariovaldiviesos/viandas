@@ -54,4 +54,14 @@ class Entrada extends Model
      }
 
 
+     //relaciones
+
+     //puede estar en varios menus
+     //vemoas
+    public function menus(){
+        return $this->belongsTo(Menu::class);
+    }
+
+
+
 }
