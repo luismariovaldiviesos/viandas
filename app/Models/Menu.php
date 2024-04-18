@@ -14,7 +14,7 @@ class Menu extends Model
     {
         if($id <= 0){
 
-            return
+            return  //crear
             [
                 'base' => 'required',
                 'precio' => 'required',
@@ -47,6 +47,8 @@ class Menu extends Model
         'postre_id.required' => 'El postre del menú es requerido ',
 
     ];
+
+
 
     // unmenu pertenece a  una entrada
 

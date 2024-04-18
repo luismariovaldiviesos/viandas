@@ -22,7 +22,7 @@
                                 <tr class="text-theme-6">
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >COMPONENTES BASE</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >ENTRADA</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >PRINCIPAL</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >SEGUNDO</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap " >POSTRE</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">ACCIONES</th>
 

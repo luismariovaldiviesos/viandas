@@ -84,6 +84,15 @@ class Menus extends Component
     public function Edit(Menu $menu)
     {
 
+        $this->selected_id = $menu->id;
+        $this->base = $menu->base;
+        $this->precio = $menu->precio;
+        $this->entrada_id = $menu->entrada_id;
+        $this->pp_id = $menu->pp_id;
+        $this->postre_id = $menu->postre_id;
+        $this->entradaSelected  = Entrada::where('id',$this->entrada_id)->first()->descripcion;
+        $this->ppSelected  = Pp::where('id',$this->pp_id)->first()->descripcion;
+        $this->postreSelected  = Postre::where('id',$this->postre_id)->first()->descripcion;
         $this->action = 'Editar';
         $this->form = true;
 
@@ -92,29 +101,25 @@ class Menus extends Component
     public function Store()
     {
 
-        // $this->validate([
-        //     'entrada_id' => 'required',
-        //     'pp_id' => 'required',
-        //     'postre_id' => 'required',
-        //     'base' => 'required',
-        //     'precio' => 'required|numeric',
-        // ]);
-
-       // dd($this->entradaSelected, $this->entrada_id, $this->ppSelected, $this->pp_id, $this->postreSelected, $this->postre_id, $this->precio);
-        //dd($this->ppSelected, $this->precio);
-        //sleep(1);
-        //$this->validate(Menu::rules($this->selected_id), Menu::$messages);
-        //dd("legamos");
-          Menu::updateOrCreate(
+          if(Menu::where('entrada_id', $this->entrada_id)
+                        ->where('pp_id', $this->pp_id)
+                        ->where('postre_id', $this->postre_id)
+                        ->where('id', '!=' , $this->selected_id)
+                        ->exists()
+                        ){
+                            $this->noty('la combinación del menú ya existe', 'noty', 'false');
+                            return;
+                        }
+        Menu::updateOrCreate(
             ['id' => $this->selected_id],
-            [
-                'base' => $this->ppSelected,
-                'precio' => $this->precio,
-                'entrada_id' => $this->entrada_id,
-                'pp_id' => $this->pp_id,
-                'postre_id' => $this->postre_id
-            ]
-            );
+                [
+                    'base' => $this->ppSelected,
+                    'precio' => $this->precio,
+                     'entrada_id' => $this->entrada_id,
+                     'pp_id' => $this->pp_id,
+                     'postre_id' => $this->postre_id
+                ]
+         );
         $this->noty($this->selected_id < 1 ? 'Menú Registrado' : 'Menú Actualizado', 'noty', false, 'close-modal');
         $this->resetUI();
     }
@@ -181,5 +186,12 @@ class Menus extends Component
         $this->dispatchBrowserEvent('close-postre-modal');
     }
 
+
+    public function Destroy(Menu $menu)
+    {
+        dd('validar si se elimina o no cuadno tenga pedidos');
+        $menu->delete();
+        $this->noty('Se eliminó la Categoría');
+    }
 
 }
