@@ -23,7 +23,8 @@
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >COMPONENTES BASE</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >ENTRADA</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >PRINCIPAL</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center" >POSTRE</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap " >POSTRE</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">ACCIONES</th>
 
                                 </tr>
                             </thead>
@@ -52,11 +53,11 @@
                                                         <i class=" fas fa-trash f-2x"></i>
                                                     </button>
                                                 {{-- @endif --}}
-                                                {{-- <button class="btn btn-warning text-white border-0 ml-3"
-                                                    wire:click.prevent="Edit({{ $pp->id }})"
+                                                 <button class="btn btn-warning text-white border-0 ml-3"
+                                                    wire:click.prevent="Edit({{ $menu->id }})"
                                                     type="button">
                                                         <i class=" fas fa-edit f-2x"></i>
-                                                </button> --}}
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>

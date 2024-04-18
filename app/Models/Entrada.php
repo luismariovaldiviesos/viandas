@@ -58,9 +58,9 @@ class Entrada extends Model
 
      //puede estar en varios menus
      //vemoas
-    public function menus(){
-        return $this->belongsTo(Menu::class);
-    }
+    // public function menus(){
+    //     return $this->belongsTo(Menu::class);
+    // }
 
 
 

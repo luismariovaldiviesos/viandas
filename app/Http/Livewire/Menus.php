@@ -6,6 +6,7 @@ use App\Models\Entrada;
 use App\Models\Menu;
 use App\Models\Postre;
 use App\Models\Pp;
+use GuzzleHttp\Psr7\Request;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 
@@ -91,44 +92,31 @@ class Menus extends Component
     public function Store()
     {
 
+        // $this->validate([
+        //     'entrada_id' => 'required',
+        //     'pp_id' => 'required',
+        //     'postre_id' => 'required',
+        //     'base' => 'required',
+        //     'precio' => 'required|numeric',
+        // ]);
 
-        //dd($this->entradaSelected, $this->entrada_id, $this->ppSelected, $this->pp_id, $this->postreSelected, $this->postre_id);
-        sleep(1);
-        $this->validate(Menu::rules($this->selected_id), Menu::$messages);
-
-
-
-        // $pp = Pp::updateOrCreate(
-        //     ['id' => $this->selected_id],
-        //     ['descripcion' => $this->descripcion]
-        // );
-
-        // // image
-        // if (!empty($this->photo)) {
-        //     // delete all images in drive
-        //     $tempImg = $pp->image->file;
-        //     if ($tempImg != null && file_exists('storage/pps/' . $tempImg)) {
-        //         unlink('storage/pps/' . $tempImg);
-        //     }
-        //     // delete relationship image from db
-        //     $pp->image()->delete();
-
-        //     // generate random file name
-        //     $customFileName = uniqid() . '_.' . $this->photo->extension();
-        //     $this->photo->storeAs('public/pps', $customFileName);
-
-        //     // save image record
-        //     $img = Image::create([
-        //         'model_id' => $pp->id,
-        //         'model_type' => 'App\Models\Pp',
-        //         'file' => $customFileName
-        //     ]);
-
-        //     // save relationship
-        //     $pp->image()->save($img);
-        // }
-        // $this->noty($this->selected_id < 1 ? 'Plato principal Registrado' : 'Plato principal Actualizado', 'noty', false, 'close-modal');
-        // $this->resetUI();
+       // dd($this->entradaSelected, $this->entrada_id, $this->ppSelected, $this->pp_id, $this->postreSelected, $this->postre_id, $this->precio);
+        //dd($this->ppSelected, $this->precio);
+        //sleep(1);
+        //$this->validate(Menu::rules($this->selected_id), Menu::$messages);
+        //dd("legamos");
+          Menu::updateOrCreate(
+            ['id' => $this->selected_id],
+            [
+                'base' => $this->ppSelected,
+                'precio' => $this->precio,
+                'entrada_id' => $this->entrada_id,
+                'pp_id' => $this->pp_id,
+                'postre_id' => $this->postre_id
+            ]
+            );
+        $this->noty($this->selected_id < 1 ? 'Menú Registrado' : 'Menú Actualizado', 'noty', false, 'close-modal');
+        $this->resetUI();
     }
 
 
