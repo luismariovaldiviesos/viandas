@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('base');
             $table->decimal('precio',10,2)->default(0);
+            $table->boolean('activo')->default(false);
             $table->foreignId('entrada_id')->constrained();
             $table->foreignId('pp_id')->constrained();
             $table->foreignId('postre_id')->constrained();

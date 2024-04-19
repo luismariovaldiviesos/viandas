@@ -24,6 +24,7 @@
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >ENTRADA</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >SEGUNDO</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap " >POSTRE</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap " >MENU DEL DIA</th>
                                     <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center">ACCIONES</th>
 
                                 </tr>
@@ -42,6 +43,20 @@
                                         </td>
                                         <td class="dark:border-dark-5">
                                             <h6 class="mb-1 font-medium">{{ $menu->postre->descripcion }}</h6>
+                                        </td>
+                                        <td class="dark:border-dark-5">
+
+                                            <div class="n-check">
+                                                <label class="new-control new-checkbox checkbox-primary h5">
+                                                    <input type="checkbox"
+                                                    wire:change="syncPermiso($('#p' + {{ $menu->id }}).is(':checked'), '{{ $menu->id }}' )"
+                                                    id="p{{ $menu->id }}"
+                                                    value="{{ $menu->id }}"
+                                                    class="new-control-input"
+                                                    {{ $menu->activo == 1 ? 'checked' : '' }}
+                                                    >
+                                                </label>
+                                            </div>
                                         </td>
 
                                         <td class="dark:border-dark-5 text-center">

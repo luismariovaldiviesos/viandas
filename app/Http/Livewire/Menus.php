@@ -100,7 +100,7 @@ class Menus extends Component
 
     public function Store()
     {
-        $base =  $this->ppSelected . ' ' . $this->entradaSelected;
+        $base =  $this->ppSelected . ' '. 'Y '.' ' . $this->entradaSelected;
         //dd($base);
           if(Menu::where('entrada_id', $this->entrada_id)
                         ->where('pp_id', $this->pp_id)
@@ -185,6 +185,24 @@ class Menus extends Component
         $this->postreSelected = $postre->descripcion;
         $this->postre_id = $postre->id;
         $this->dispatchBrowserEvent('close-postre-modal');
+    }
+
+
+    public function syncPermiso($state, $idmenu)
+    {
+            $menu = Menu::find($idmenu);
+            //dd($menu);
+        //dd($state, $idmenu);
+            if ($state) {
+                $menu->activo =  true;
+                $menu->save();
+                $this->noty("Menú $menu->base ES EL MENÚ DEL DIA", 'noty', false);
+            }else {
+                $menu->activo =  false;
+                $menu->save();
+                $this->noty("Menú $menu->base YA NO ES EL MENÚ DEL DIA", 'noty', false);
+            }
+
     }
 
 
