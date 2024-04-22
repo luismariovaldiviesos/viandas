@@ -11,6 +11,7 @@ use App\Http\Livewire\Diario;
 use App\Http\Livewire\Entradas;
 use App\Http\Livewire\Impuestos;
 use App\Http\Livewire\Menus;
+use App\Http\Livewire\Pedidos;
 use App\Http\Livewire\Permisos;
 use App\Http\Livewire\Postres;
 use App\Http\Livewire\Pps;
@@ -41,7 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('menus', Menus::class)->name('menus');
     Route::get('customers', Customers::class)->name('customers');
     Route::get('users', Users::class)->name('users');
-    // Route::get('sales', Sales::class)->name('sales');
+    Route::get('pedidos', Pedidos::class)->name('pedidos');
      Route::get('reports', Reports::class)->name('reports');
     Route::get('dash', Dashboard::class)->name('dash');
     Route::get('settings', Settings::class)->name('settings');

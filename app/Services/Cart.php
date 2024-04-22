@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\Product;
+use App\Models\Menu;
+
 use Illuminate\Support\Collection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
@@ -26,7 +27,7 @@ class Cart {
     // obtener contenido del carrito
     public function getContent(): Collection
     {
-        return $this->cart->sortBy(['name', ['name','asc']]);
+        return $this->cart->sortBy(['base', ['base','asc']]);
     }
 
      // guardar el carrito en sesion
@@ -37,9 +38,9 @@ class Cart {
     }
 
      // agregar un producto al carrito
-    public function addProduct($product, $cant = 1, $changes = 0 ) : void
+    public function addMenu($menu, $cant = 1, $changes = 0 ) : void
     {
-        $pre = Arr::add($product, 'qty', $cant);
+        $pre = Arr::add($menu, 'qty', $cant);
         $this->validate($pre);
         $this->cart->push($pre);
         $this->save();
@@ -52,8 +53,8 @@ class Cart {
         $oldItem =  $mycart->where('id', $id)->first();
         $newItem = $oldItem;
         $newItem->changes =  $changes;
-        $this->removeProduct($id);
-        $this->addProduct($newItem);
+        $this->removeMenu($id);
+        $this->addMenu($newItem);
     }
 
       // remover cambios a un producto / platillo
@@ -63,8 +64,8 @@ class Cart {
         $oldItem = $mycart->where('id', $id)->first();
         $newItem = $oldItem;
         $newItem->changes = '';
-        $this->removeProduct($id);
-        $this->addProduct($newItem);
+        $this->removeMenu($id);
+        $this->addMenu($newItem);
     }
 
       // validar si existe X producto en carrito
@@ -94,8 +95,8 @@ class Cart {
         $newItem->qty += $cant;
         //$iva =  $this->totalIVA();
 
-        $this->removeProduct($id);
-        $this->addProduct($newItem);
+        $this->removeMenu($id);
+        $this->addMenu($newItem);
     }
 
      // decrementar cantidad de X producto en carrito
@@ -106,8 +107,8 @@ class Cart {
         $newItem = $oldItem;
         $newItem->qty -= $cant;
 
-        $this->removeProduct($id);
-        if($newItem->qty > 0) $this->addProduct($newItem);
+        $this->removeMenu($id);
+        if($newItem->qty > 0) $this->addMenu($newItem);
     }
 
      // reemplazar cantidad de X producto en carrito
@@ -118,16 +119,16 @@ class Cart {
         $newItem = $oldItem;
         $newItem->qty = $cant;
         $this->validate($newItem);
-        $this->removeProduct($id);
-        $this->addProduct($newItem);
+        $this->removeMenu($id);
+        $this->addMenu($newItem);
 
     }
 
       // eliminar producto del carrito
-    public function  removeProduct($id): void
+    public function  removeMenu($id): void
     {
-        $this->cart = $this->cart->reject(function (Product $product) use ($id){
-            return $product->id === $id;
+        $this->cart = $this->cart->reject(function (Menu $menu) use ($id){
+            return $menu->id === $id;
         });
         $this->save();
     }
@@ -241,9 +242,9 @@ class Cart {
     {
         $validator = Validator::make($item->toArray(), [
             'id' => 'required',
-            'price' => 'required|numeric',
+            'precio' => 'required|numeric',
             'qty' => 'required|numeric|min:1',
-            'name' => 'required',
+            'base' => 'required',
         ]);
 
         if ($validator->fails()) {

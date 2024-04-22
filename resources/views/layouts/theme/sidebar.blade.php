@@ -61,12 +61,12 @@
             </a>
         </li> --}}
 
-        {{-- <li>
-            <a href="{{ route('sales') }}" class="side-menu">
+         <li>
+            <a href="{{ route('pedidos') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="dollar-sign"></i> </div>
-                <div class="side-menu__title"> FACTURAR  </div>
+                <div class="side-menu__title"> TOMAR PEDIDOS</div>
             </a>
-        </li> --}}
+        </li>
 
         {{-- @hasrole('Admin')
         <li>

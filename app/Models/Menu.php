@@ -49,6 +49,13 @@ class Menu extends Model
     // ];
 
 
+    //menus activos
+    public static function activos()
+    {
+        return self::where('activo',true)->get();
+    }
+
+
 
     // unmenu pertenece a  una entrada
 

@@ -81,15 +81,17 @@ trait CartTrait {
         $this->noty('CANTIDAD ACTUALIZADA');
     }
 
-    public function addProductCart($product, $cant=1, $changes ='')
+    public function addMenuCart($product, $cant=1, $changes ='')
     {
         $cart = new Cart;
         if($cart->existsInCart($product->id))
         {
             $cart->updateQuantity($product->id, $cant);
+            //dd($cart);
             $this->noty('CANTIDAD ACTUALIZADA');
         } else{
-            $cart->addProduct($product, $cant, $changes);
+            $cart->addMenu($product, $cant, $changes);
+            //dd($cart);
             $this->noty('PRODUCTO AGREGADO');
         }
     }
@@ -113,10 +115,10 @@ trait CartTrait {
         $this->noty('CANTIDAD ACTUALIZADA');
     }
 
-    public function removeProductCart($id)
+    public function removeMenuCart($id)
     {
         $cart = new Cart;
-        $cart->removeProduct($id);
+        $cart->removeMenu($id);
 
     }
 
