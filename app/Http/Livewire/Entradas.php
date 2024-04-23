@@ -14,7 +14,7 @@ class Entradas extends Component
     use WithPagination;
     use WithFileUploads;
 
-    public $descripcion = '', $selected_id = 0, $photo = '';
+    public $descripcion = '', $precio = 0, $selected_id = 0, $photo = '';
     public $action = 'Listado', $componentName = 'Entradas', $search, $form = false;
     private $pagination = 10;
     protected $paginationTheme = 'tailwind';
@@ -63,26 +63,31 @@ class Entradas extends Component
         // regresar a la página inicial del componente
         $this->resetPage();
         // regresar propiedades a su valor por defecto
-        $this->reset('descripcion', 'selected_id', 'search', 'action', 'componentName', 'photo', 'form');
+        $this->reset('descripcion','precio', 'selected_id', 'search', 'action', 'componentName', 'photo', 'form');
     }
 
     public function Edit(Entrada $entrada)
     {
         $this->selected_id = $entrada->id;
         $this->descripcion = $entrada->descripcion;
+        $this->precio = $entrada->precio;
         $this->action = 'Editar';
         $this->form = true;
 
     }
     public function Store()
     {
-        sleep(1);
-
+        //sleep(1);
+        //dd($this->precio);
         $this->validate(Entrada::rules($this->selected_id), Entrada::$messages);
 
         $entrada = Entrada::updateOrCreate(
             ['id' => $this->selected_id],
-            ['descripcion' => $this->descripcion]
+            [
+                'descripcion' => $this->descripcion,
+                'precio' => $this->precio
+            ]
+
         );
 
         // image

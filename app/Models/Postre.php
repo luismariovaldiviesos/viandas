@@ -8,17 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Postre extends Model
 {
     use HasFactory;
-    protected $fillable = ['descripcion'];
+    protected $fillable = ['descripcion','precio'];
 
     public static function rules($id)
     {
         if ($id <= 0) {
             return [
-                'descripcion' => 'required|min:3|max:50|unique:postres'
+                'descripcion' => 'required|min:3|max:50|unique:postres',
+                'precio' => 'required|numeric'
             ];
         } else {
             return [
-                'descripcion' => "required|min:3|max:50|unique:postres,descripcion,{$id}"
+                'descripcion' => "required|min:3|max:50|unique:postres,descripcion,{$id}",
+                'precio' => 'required|numeric'
             ];
         }
     }
@@ -27,7 +29,9 @@ class Postre extends Model
         'descripcion.required' => 'descripcion requerido',
         'descripcion.min' => 'El descripcion debe tener al menos 3 caracteres',
         'descripcion.max' => 'El descripcion debe tener máximo 50 caracteres',
-        'descripcion.unique' => 'El postre ya existe en sistema'
+        'descripcion.unique' => 'El postre ya existe en sistema',
+        'precio.required' => 'El precio del plato principal es requerido',
+        'precio.numeric' => 'El precio del plato principal debe ser en números',
     ];
 
     // relationships

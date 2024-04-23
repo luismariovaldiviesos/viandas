@@ -13,7 +13,7 @@ class Pps extends Component
 {
     use WithPagination;
     use WithFileUploads;
-    public $descripcion = '', $selected_id = 0, $photo = '';
+    public $descripcion = '', $precio = 0, $selected_id = 0, $photo = '';
     public $action = 'Listado', $componentName = 'Platos Principales', $search, $form = false;
     private $pagination = 10;
     protected $paginationTheme = 'tailwind';
@@ -61,13 +61,14 @@ class Pps extends Component
         // regresar a la página inicial del componente
         $this->resetPage();
         // regresar propiedades a su valor por defecto
-        $this->reset('descripcion', 'selected_id', 'search', 'action', 'componentName', 'photo', 'form');
+        $this->reset('descripcion','precio' ,'selected_id', 'search', 'action', 'componentName', 'photo', 'form');
     }
 
     public function Edit(Pp $pp)
     {
         $this->selected_id = $pp->id;
         $this->descripcion = $pp->descripcion;
+        $this->precio = $pp->precio;
         $this->action = 'Editar';
         $this->form = true;
 
@@ -81,7 +82,10 @@ class Pps extends Component
 
         $pp = Pp::updateOrCreate(
             ['id' => $this->selected_id],
-            ['descripcion' => $this->descripcion]
+            [
+                'descripcion' => $this->descripcion,
+                'precio' => $this->precio
+            ]
         );
 
         // image

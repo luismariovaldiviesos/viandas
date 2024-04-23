@@ -20,9 +20,10 @@
                         <table class="table">
                             <thead>
                                 <tr class="text-theme-1">
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" width="10%"></th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" width="70%">DESCRIPCION</th>
-                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">ACCIONES</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" ></th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >DESCRIPCION</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >PRECIO</th>
+                                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center" >ACCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,7 +35,9 @@
 
                                         <td class="dark:border-dark-5">
                                             <h6 class="mb-1 font-medium">{{ $entrada->descripcion }}</h6>
-
+                                        </td>
+                                        <td class="dark:border-dark-5">
+                                            <h6 class="mb-1 font-medium">{{ $entrada->precio }}</h6>
                                         </td>
 
                                         <td class="dark:border-dark-5 text-center">

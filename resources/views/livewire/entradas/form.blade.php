@@ -18,6 +18,16 @@
                         <x-alert msg="{{ $message }}" />
                     @enderror
                 </div>
+                <div x-data="{}" x-init="setTimeout(() => { refs.first.focus() }, 900  )">
+                    <label class="form-label" >Precio</label>
+                    <input type="number" wire:model="precio" x-ref="first" id="categoryName"
+                    class="form-control kioskboard {{ $errors->first('precio') ?  "border-theme-6" : "" }}"
+                    placeholder="nombre"
+                    >
+                    @error('precio')
+                        <x-alert msg="{{ $message }}" />
+                    @enderror
+                </div>
 
                 <div class="mt-3">
                     <label class="form-label">Imagen</label>

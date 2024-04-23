@@ -52,42 +52,54 @@ class InicialSeeder extends Seeder
 
 
         Entrada::create([
-            'descripcion' => 'Sopa de lenteja'
+            'descripcion' => 'Sopa de lenteja',
+            'precio' => 0.50
         ]);
         Entrada::create([
-            'descripcion' => 'Sopa de fideo'
+            'descripcion' => 'Sopa de fideo',
+            'precio' => 0.50
         ]);
         Entrada::create([
-            'descripcion' => 'Caldo de res'
+            'descripcion' => 'Caldo de res',
+            'precio' => 0.50
         ]);
         Entrada::create([
-            'descripcion' => 'Sopa de Arveja'
+            'descripcion' => 'Sopa de Arveja',
+            'precio' => 0.50
         ]);
 
         Pp::create([
-            'descripcion' => 'Lomo salteado'
+            'descripcion' => 'Lomo salteado',
+            'precio' => 2.25
         ]);
         Pp::create([
-            'descripcion' => 'Seco de pollo'
+            'descripcion' => 'Seco de pollo',
+            'precio' => 2.25
         ]);
         Pp::create([
-            'descripcion' => 'Arroz con camarones'
+            'descripcion' => 'Arroz con camarones',
+            'precio' => 2.25
         ]);
         Pp::create([
-            'descripcion' => 'Corvina'
+            'descripcion' => 'Corvina',
+            'precio' => 2.25
         ]);
 
         Postre::create([
-            'descripcion' => 'tres leches'
+            'descripcion' => 'tres leches',
+            'precio' => 0.25
         ]);
         Postre::create([
-            'descripcion' => 'duraznos en almibar'
+            'descripcion' => 'duraznos en almibar',
+            'precio' => 0.25
         ]);
         Postre::create([
-            'descripcion' => 'torta de chocolate'
+            'descripcion' => 'torta de chocolate',
+            'precio' => 0.25
         ]);
         Postre::create([
-            'descripcion' => 'fruta confitada'
+            'descripcion' => 'fruta confitada',
+            'precio' => 0.25
         ]);
 
     }

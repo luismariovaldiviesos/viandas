@@ -15,7 +15,7 @@ class Postres extends Component
     use WithPagination;
     use WithFileUploads;
     public $descripcion = '', $selected_id = 0, $photo = '';
-    public $action = 'Listado', $componentName = 'Postres', $search, $form = false;
+    public $action = 'Listado', $precio=0, $componentName = 'Postres', $search, $form = false;
     private $pagination = 10;
     protected $paginationTheme = 'tailwind';
 
@@ -63,13 +63,14 @@ class Postres extends Component
         // regresar a la página inicial del componente
         $this->resetPage();
         // regresar propiedades a su valor por defecto
-        $this->reset('descripcion', 'selected_id', 'search', 'action', 'componentName', 'photo', 'form');
+        $this->reset('descripcion','precio', 'selected_id', 'search', 'action', 'componentName', 'photo', 'form');
     }
 
     public function Edit(Postre $postre)
     {
         $this->selected_id = $postre->id;
         $this->descripcion = $postre->descripcion;
+        $this->precio =  $postre->precio;
         $this->action = 'Editar';
         $this->form = true;
 
@@ -83,7 +84,10 @@ class Postres extends Component
 
         $postre = Postre::updateOrCreate(
             ['id' => $this->selected_id],
-            ['descripcion' => $this->descripcion]
+            [
+                'descripcion' => $this->descripcion,
+                'precio' => $this->precio
+            ]
         );
 
         // image

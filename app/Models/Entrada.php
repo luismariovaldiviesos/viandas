@@ -10,17 +10,19 @@ class Entrada extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['descripcion'];
+    protected $fillable = ['descripcion','precio'];
 
     public static function rules($id)
     {
         if ($id <= 0) {
             return [
-                'descripcion' => 'required|min:3|max:50|unique:entradas'
+                'descripcion' => 'required|min:3|max:50|unique:entradas',
+                'precio' => 'required|numeric'
             ];
         } else {
             return [
-                'descripcion' => "required|min:3|max:50|unique:entradas,descripcion,{$id}"
+                'descripcion' => "required|min:3|max:50|unique:entradas,descripcion,{$id}",
+                'precio' => 'required|numeric'
             ];
         }
     }
@@ -29,7 +31,9 @@ class Entrada extends Model
         'descripcion.required' => 'descripcion requerido',
         'descripcion.min' => 'El descripcion debe tener al menos 3 caracteres',
         'descripcion.max' => 'El descripcion debe tener máximo 50 caracteres',
-        'descripcion.unique' => 'La entrada ya existe en sistema'
+        'descripcion.unique' => 'La entrada ya existe en sistema',
+        'precio.required' => 'El precio del plato principal es requerido',
+        'precio.numeric' => 'El precio del plato principal debe ser en números',
     ];
 
     // relationships

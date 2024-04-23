@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('pps', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion');
+            $table->decimal('precio')->default(0);
             $table->timestamps();
         });
     }
