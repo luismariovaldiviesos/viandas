@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Entrada;
+use App\Models\Extra;
 use App\Models\Menu;
 use App\Models\Postre;
 use App\Models\Pp;
@@ -198,11 +199,25 @@ class Menus extends Component
     public function syncPermiso($state, $idmenu)
     {
             $menu = Menu::find($idmenu);
-            //dd($menu);
-        //dd($state, $idmenu);
+            //dd($menu->entrada->descripcion, $menu->pp->descripcion, $menu->postre->descripcion);
+            //dd($menu->entrada->precio, $menu->pp->precio, $menu->postre->precio);
             if ($state) {
                 $menu->activo =  true;
                 $menu->save();
+                //aqui debe ir el registro de extras
+                Extra::query()->delete();
+                Extra::create([
+                    'descripcion' => $menu->entrada->descripcion,
+                    'precio' => $menu->entrada->precio,
+                ]);
+                Extra::create([
+                    'descripcion' => $menu->pp->descripcion,
+                    'precio' => $menu->pp->precio,
+                ]);
+                Extra::create([
+                    'descripcion' => $menu->postre->descripcion,
+                    'precio' => $menu->postre->precio,
+                ]);
                 $this->noty("Menú $menu->base ES EL MENÚ DEL DIA", 'noty', false);
             }else {
                 $menu->activo =  false;
