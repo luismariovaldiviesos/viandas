@@ -205,7 +205,15 @@ class Menus extends Component
                 $menu->activo =  true;
                 $menu->save();
                 //aqui debe ir el registro de extras
-                Extra::query()->delete();
+                //obtiene el conteo actual de extras
+                $extrasCount = Extra::count();
+                $maxExtras = 6;
+                 // Si ya hay  o más, solo borra los extras más antiguos que excedan de 6
+                 if ($extrasCount >= $maxExtras) {
+                    Extra::oldest()->take($extrasCount - $maxExtras + 3)->delete();  // Asegura espacio para 3 nuevos extras
+                }
+
+                //Extra::query()->delete();
                 Extra::create([
                     'descripcion' => $menu->entrada->descripcion,
                     'precio' => $menu->entrada->precio,
