@@ -77,13 +77,13 @@
                     @enderror
                 </div> --}}
 
-                <div>
+                {{-- <div>
                     <label  class="form-label">PRECIO MENÚ</label>
                     <input wire:model='precio' class="form-control form-control-m border-start-0 kioskboard" maxlength="250">
                     @error('precio')
                         <x-alert msg="{{ $message }}" />
                     @enderror
-                </div>
+                </div> --}}
 
 
 

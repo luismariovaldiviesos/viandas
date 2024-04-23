@@ -29,6 +29,9 @@ class Menus extends Component
     // para seleccionar entradas, pps y postres
     public $entradas = [], $pps = [], $postres = [];
 
+    //precios
+    public $precio_entrada, $precio_pp, $precio_postre;
+
     public $searchEntrada , $searchPP, $searchPostre;
 
 
@@ -101,7 +104,8 @@ class Menus extends Component
     public function Store()
     {
         $base =  $this->ppSelected . ' '. 'Y '.' ' . $this->entradaSelected;
-        //dd($base);
+        $this->precio  =  $this->precio_entrada+$this->precio_pp+$this->precio_postre;
+        //dd($this->precio);
           if(Menu::where('entrada_id', $this->entrada_id)
                         ->where('pp_id', $this->pp_id)
                         ->where('postre_id', $this->postre_id)
@@ -171,12 +175,14 @@ class Menus extends Component
         //dd($entrada);
         $this->entradaSelected =  $entrada->descripcion;
         $this->entrada_id = $entrada->id;
+        $this->precio_entrada =  $entrada->precio;
         $this->dispatchBrowserEvent('close-usuario-modal');
     }
     public function searchManualPP(Pp $pp){
         //dd($entrada);
         $this->ppSelected =  $pp->descripcion;
         $this->pp_id = $pp->id;
+        $this->precio_pp =  $pp->precio;
         $this->dispatchBrowserEvent('close-pp-modal');
     }
 
@@ -184,6 +190,7 @@ class Menus extends Component
     {
         $this->postreSelected = $postre->descripcion;
         $this->postre_id = $postre->id;
+        $this->precio_postre =  $postre->precio;
         $this->dispatchBrowserEvent('close-postre-modal');
     }
 
