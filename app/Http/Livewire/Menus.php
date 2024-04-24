@@ -230,6 +230,9 @@ class Menus extends Component
             }else {
                 $menu->activo =  false;
                 $menu->save();
+                Extra::where('descripcion', $menu->entrada->descripcion)->delete();
+                Extra::where('descripcion', $menu->pp->descripcion)->delete();
+                Extra::where('descripcion', $menu->postre->descripcion)->delete();
                 $this->noty("Menú $menu->base YA NO ES EL MENÚ DEL DIA", 'noty', false);
             }
 
