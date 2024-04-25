@@ -10,7 +10,7 @@ class Entrada extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['descripcion','precio'];
+    protected $fillable = ['descripcion','precio','activo'];
 
     public static function rules($id)
     {

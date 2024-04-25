@@ -71,6 +71,7 @@ class Entradas extends Component
         $this->selected_id = $entrada->id;
         $this->descripcion = $entrada->descripcion;
         $this->precio = $entrada->precio;
+        //$this->activo = $entrada->activo;
         $this->action = 'Editar';
         $this->form = true;
 
@@ -85,7 +86,8 @@ class Entradas extends Component
             ['id' => $this->selected_id],
             [
                 'descripcion' => $this->descripcion,
-                'precio' => $this->precio
+                'precio' => $this->precio,
+                'activo' => false
             ]
 
         );

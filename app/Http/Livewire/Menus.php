@@ -202,37 +202,31 @@ class Menus extends Component
             //dd($menu->entrada->descripcion, $menu->pp->descripcion, $menu->postre->descripcion);
             //dd($menu->entrada->precio, $menu->pp->precio, $menu->postre->precio);
             if ($state) {
+                //dd($menu->entrada->id);
                 $menu->activo =  true;
                 $menu->save();
-                //aqui debe ir el registro de extras
-                //obtiene el conteo actual de extras
-                $extrasCount = Extra::count();
-                $maxExtras = 6;
-                 // Si ya hay  o más, solo borra los extras más antiguos que excedan de 6
-                 if ($extrasCount >= $maxExtras) {
-                    Extra::oldest()->take($extrasCount - $maxExtras + 3)->delete();  // Asegura espacio para 3 nuevos extras
-                }
-
-                //Extra::query()->delete();
-                Extra::create([
-                    'descripcion' => $menu->entrada->descripcion,
-                    'precio' => $menu->entrada->precio,
-                ]);
-                Extra::create([
-                    'descripcion' => $menu->pp->descripcion,
-                    'precio' => $menu->pp->precio,
-                ]);
-                Extra::create([
-                    'descripcion' => $menu->postre->descripcion,
-                    'precio' => $menu->postre->precio,
-                ]);
+                $entrada =  Entrada::findOrFail($menu->entrada_id);
+                $entrada->activo = true;
+                $entrada->save();
+                $pp =  Pp::findOrFail($menu->pp_id);
+                $pp->activo = true;
+                $pp->save();
+                $postre =  Postre::findOrFail($menu->postre_id);
+                $postre->activo = true;
+                $postre->save();
                 $this->noty("Menú $menu->base ES EL MENÚ DEL DIA", 'noty', false);
             }else {
                 $menu->activo =  false;
                 $menu->save();
-                Extra::where('descripcion', $menu->entrada->descripcion)->delete();
-                Extra::where('descripcion', $menu->pp->descripcion)->delete();
-                Extra::where('descripcion', $menu->postre->descripcion)->delete();
+                $entrada =  Entrada::findOrFail($menu->entrada_id);
+                $entrada->activo = false;
+                $entrada->save();
+                $pp =  Pp::findOrFail($menu->pp_id);
+                $pp->activo = false;
+                $pp->save();
+                $postre =  Postre::findOrFail($menu->postre_id);
+                $postre->activo = false;
+                $postre->save();
                 $this->noty("Menú $menu->base YA NO ES EL MENÚ DEL DIA", 'noty', false);
             }
 

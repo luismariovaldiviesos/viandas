@@ -53,53 +53,65 @@ class InicialSeeder extends Seeder
 
         Entrada::create([
             'descripcion' => 'Sopa de lenteja',
-            'precio' => 0.50
+            'precio' => 0.50,
+            'activo' => false
         ]);
         Entrada::create([
             'descripcion' => 'Sopa de fideo',
-            'precio' => 0.50
+            'precio' => 0.50,
+            'activo' => false
         ]);
         Entrada::create([
             'descripcion' => 'Caldo de res',
-            'precio' => 0.50
+            'precio' => 0.50,
+            'activo' => false
         ]);
         Entrada::create([
             'descripcion' => 'Sopa de Arveja',
-            'precio' => 0.50
+            'precio' => 0.50,
+            'activo' => false
         ]);
 
         Pp::create([
             'descripcion' => 'Lomo salteado',
-            'precio' => 2.25
+            'precio' => 2.25,
+            'activo' => false
         ]);
         Pp::create([
             'descripcion' => 'Seco de pollo',
-            'precio' => 2.25
+            'precio' => 2.25,
+            'activo' => false
         ]);
         Pp::create([
             'descripcion' => 'Arroz con camarones',
-            'precio' => 2.25
+            'precio' => 2.25,
+            'activo' => false
         ]);
         Pp::create([
             'descripcion' => 'Corvina',
-            'precio' => 2.25
+            'precio' => 2.25,
+            'activo' => false
         ]);
 
         Postre::create([
             'descripcion' => 'tres leches',
-            'precio' => 0.25
+            'precio' => 0.25,
+            'activo' => false
         ]);
         Postre::create([
             'descripcion' => 'duraznos en almibar',
-            'precio' => 0.25
+            'precio' => 0.25,
+            'activo' => false
         ]);
         Postre::create([
             'descripcion' => 'torta de chocolate',
-            'precio' => 0.25
+            'precio' => 0.25,
+            'activo' => false
         ]);
         Postre::create([
             'descripcion' => 'fruta confitada',
-            'precio' => 0.25
+            'precio' => 0.25,
+            'activo' => false
         ]);
 
     }

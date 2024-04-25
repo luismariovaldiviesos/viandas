@@ -86,7 +86,8 @@ class Postres extends Component
             ['id' => $this->selected_id],
             [
                 'descripcion' => $this->descripcion,
-                'precio' => $this->precio
+                'precio' => $this->precio,
+                'activo' => false
             ]
         );
 

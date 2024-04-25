@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('descripcion');
             $table->decimal('precio')->default(0);
+            $table->boolean('activo')->default(false);
             $table->timestamps();
         });
     }
