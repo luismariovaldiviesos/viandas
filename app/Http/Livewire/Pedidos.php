@@ -17,7 +17,7 @@ class Pedidos extends Component
 
     // mostrar y activar panels
     //public $tabMenus = true, $tabPedidos =  false, $tabExtras = false;
-    public $showListProducts = false, $tabProducts =  true, $tabCategories = false;
+    public $showListProducts = false, $tabProducts =  true, $tabCategories = false, $tabExtras= false;
 
     //collections
     public $menusList =[], $customers =[], $extras = [];
@@ -36,6 +36,7 @@ class Pedidos extends Component
     public function render()
     {
         $menus = Menu::activos();
+
         if(strlen($this->searchCustomer) > 0)
             $this->customers =  Customer::where('businame','like',"%{$this->searchCustomer}%")
              ->orderBy('businame','asc')->get()->take(5); //primeros 5 clientes
@@ -60,11 +61,20 @@ class Pedidos extends Component
         if ($tabName == 'tabProducts') {
             $this->tabProducts = true;
             $this->tabCategories = false;
+            $this->tabExtras = false;
         }
-        else
+        elseif($tabName == 'tabExtras')
         {
+
+            $this->tabProducts = false;
+            $this->tabCategories = false;
+            $this->tabExtras = true;
+
+        }
+        else{
             $this->tabProducts = false;
             $this->showListProducts = false;
+            $this->tabExtras = false;
             $this->tabCategories = true;
         }
     }

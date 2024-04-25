@@ -16,13 +16,24 @@
                     <i class="fas fa-list mr-2"></i> DETALLE DE VENTA
                     </a>
 
-
-
-
-
-                    <a wire:click="setTabActive('tabCategories')" title="Seleccionar Categoría" data-toggle="tab" data-target="#tabCategory" href="javascript:;" class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center {{$tabCategories ? 'active' : '' }}" id="meta-title-tab" role="tab" aria-selected="false">
+                    <a wire:click="setTabActive('tabCategories')"
+                    title="Seleccionar Categoría"
+                    data-toggle="tab"
+                    data-target="#tabCategory"
+                    href="javascript:;"
+                    class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center {{$tabCategories ? 'active' : '' }}"
+                    id="meta-title-tab" role="tab" aria-selected="false">
                         <i class="fas fa-th-large mr-2"></i> MENUS
                     </a>
+
+                    <a wire:click="setTabActive('tabExtras')"
+                    title="Seleccionar Extra"
+                    data-toggle="tab" data-target="#tabExtras"
+                    href="javascript:;"
+                    class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center {{$tabExtras ? 'active' : '' }}"
+                    id="meta-title-tab" role="tab" aria-selected="false">
+                    <i class="fas fa-th-large mr-2"></i> EXTRAS {{ $tabExtras }}
+                </a>
 
 
 
@@ -34,6 +45,7 @@
                 </div>
 
                 <div class="post__content tab-content">
+                    {{-- PEDIDOS --}}
                     <div id="tabProducts" class="tab-pane {{$tabProducts ? 'active' : '' }}" role="tabpanel" aria-labelledby="content-tab">
                         <div class="p-5" id="striped-rows-table">
                             <div class="preview">
@@ -132,6 +144,11 @@
                             </div>
                         </div>
                     </div>
+
+                      {{-- FIN PEDIDOS --}}
+
+
+                {{-- MENUS --}}
                 <div id="tabCategory" class="tab-pane p-5 {{$tabCategories ? 'active' : '' }}" role="tabpanel" aria-labelledby="content-tab">
                         <div class="intro-y grid grid-cols-12 gap-3 sm:gap-4 mt-2">
                         {{-- <div class="post__tabs nav nav-tabs flex-col sm:flex-row bg-gray-300 dark:bg-dark-2 text-gray-600" role="tablist"> --}}
@@ -153,6 +170,28 @@
                         </div>
                     </div>
                 </div>
+
+                {{-- FIN MENUS --}}
+
+
+
+                 {{-- EXTRAS --}}
+
+                 <div id="tabExtras" class="tab-pane  {{$tabExtras ? 'active' : '' }}" role="tabpanel" aria-labelledby="content-tab">
+                    <div class="p-5" id="striped-rows-table">
+                        <div class="preview">
+                            <div class="overflow-x-auto">
+
+                            </div>
+                        </div>
+                    </div>
+
+                 </div>
+
+                 {{-- FIN EXTRAS --}}
+
+
+
             </div>
 
         </div>
