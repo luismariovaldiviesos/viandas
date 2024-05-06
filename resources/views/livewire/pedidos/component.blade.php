@@ -33,16 +33,8 @@
                     class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center {{$tabExtras ? 'active' : '' }}"
                     id="meta-title-tab" role="tab" aria-selected="false">
                     <i class="fas fa-th-large mr-2"></i> EXTRAS {{ $tabExtras }}
-                </a>
-
-
-
-
-
-
-
-
-                </div>
+                    </a>
+               </div>
 
                 <div class="post__content tab-content">
                     {{-- PEDIDOS --}}
@@ -151,7 +143,6 @@
                 {{-- MENUS --}}
                 <div id="tabCategory" class="tab-pane p-5 {{$tabCategories ? 'active' : '' }}" role="tabpanel" aria-labelledby="content-tab">
                         <div class="intro-y grid grid-cols-12 gap-3 sm:gap-4 mt-2">
-                        {{-- <div class="post__tabs nav nav-tabs flex-col sm:flex-row bg-gray-300 dark:bg-dark-2 text-gray-600" role="tablist"> --}}
                             @if(!$showListProducts)
                                 @if (count($menus) > 0)
                                     @foreach ($menus as $menu )
@@ -164,7 +155,11 @@
                                     </div>
                                     @endforeach
                                     @else  {{-- Si no hay elementos, muestra este mensaje --}}
-                                    <h1>CONFIGURAR MENÚ DEL DIA</h1>
+                                    <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 xxl:col-span-2">
+                                        <div class="file box rounded-md px-5 pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
+                                         <h1 class="text-center">CONFIGURAR MENU DEL DIA</h1>
+                                        </div>
+                                    </div>
                                 @endif
                             @endif
                         </div>
@@ -178,14 +173,11 @@
                  {{-- EXTRAS --}}
 
                  <div id="tabExtras" class="tab-pane  {{$tabExtras ? 'active' : '' }}" role="tabpanel" aria-labelledby="content-tab">
-                    <div class="p-5" id="striped-rows-table">
-                        <div class="preview">
-                            <div class="overflow-x-auto">
-
-                            </div>
+                    @if ($tabExtras)
+                        <div class="intro-y grid grid-cols-12 gap-3 sm:gap-4 mt-2">
+                             nos quedamos aqui
                         </div>
-                    </div>
-
+                    @endif
                  </div>
 
                  {{-- FIN EXTRAS --}}

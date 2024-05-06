@@ -3,7 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Models\Customer;
+use App\Models\Entrada;
 use App\Models\Menu;
+use App\Models\Postre;
+use App\Models\Pp;
 use App\Traits\CartTrait;
 use Livewire\Component;
 
@@ -36,6 +39,18 @@ class Pedidos extends Component
     public function render()
     {
         $menus = Menu::activos();
+        // Obtener registros activos de Platos Principales
+        $platosPrincipales = Pp::where('activo', true)->get();
+
+        // Obtener registros activos de Entradas
+        $entradas = Entrada::where('activo', true)->get();
+
+        // Obtener registros activos de Postres
+        $postres = Postre::where('activo', true)->get();
+
+        // Combinar todas las colecciones en una sola
+        $extras = $platosPrincipales->merge($entradas)->merge($postres);
+        dd($extras);
 
         if(strlen($this->searchCustomer) > 0)
             $this->customers =  Customer::where('businame','like',"%{$this->searchCustomer}%")
@@ -52,7 +67,7 @@ class Pedidos extends Component
             ->orderBy('base','asc')->get()->take(5);
         else
         $this->menusList =  Menu::orderBy('base','asc')->get()->take(5); //primeros 5 clientes
-        return view('livewire.pedidos.component', ['menus' => $menus]) ->layout('layouts.theme.app');;
+        return view('livewire.pedidos.component', ['menus' => $menus, 'extras' => $extras]) ->layout('layouts.theme.app');;
     }
 
 
