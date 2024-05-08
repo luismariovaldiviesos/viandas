@@ -23,7 +23,7 @@ class Pedidos extends Component
     public $showListProducts = false, $tabProducts =  true, $tabCategories = false, $tabExtras= false;
 
     //collections
-    public $menusList =[], $customers =[], $extras = [];
+    public $menusList =[], $customers =[];
      //info del carrito
      public $totalCart = 0, $itemsCart= 0, $contentCart=[];
 
@@ -47,10 +47,10 @@ class Pedidos extends Component
 
         // Obtener registros activos de Postres
         $postres = Postre::where('activo', true)->get();
-
+        //dd($postres);
         // Combinar todas las colecciones en una sola
-        $extras = $platosPrincipales->merge($entradas)->merge($postres);
-        dd($extras);
+        $extras = $platosPrincipales->concat($entradas)->concat($postres);
+       // dd($extras->count());
 
         if(strlen($this->searchCustomer) > 0)
             $this->customers =  Customer::where('businame','like',"%{$this->searchCustomer}%")

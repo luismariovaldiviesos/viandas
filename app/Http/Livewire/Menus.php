@@ -104,7 +104,7 @@ class Menus extends Component
 
     public function Store()
     {
-        $base =  $this->ppSelected . ' '. 'Y '.' ' . $this->entradaSelected;
+        $base =  $this->ppSelected . ' '. '+'.' ' . $this->entradaSelected . ' '. '+'.' '. $this->postreSelected ;
         $this->precio  =  $this->precio_entrada+$this->precio_pp+$this->precio_postre;
         //dd($this->precio);
           if(Menu::where('entrada_id', $this->entrada_id)

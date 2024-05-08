@@ -175,7 +175,9 @@
                  <div id="tabExtras" class="tab-pane  {{$tabExtras ? 'active' : '' }}" role="tabpanel" aria-labelledby="content-tab">
                     @if ($tabExtras)
                         <div class="intro-y grid grid-cols-12 gap-3 sm:gap-4 mt-2">
-                             nos quedamos aqui
+                            @foreach ($extras as  $extra)
+                            <a href="javascript:;" class="block font-medium text-center">{{$extra->descripcion}}</a>
+                            @endforeach
                         </div>
                     @endif
                  </div>
