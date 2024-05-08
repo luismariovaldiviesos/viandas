@@ -176,7 +176,11 @@
                     @if ($tabExtras)
                         <div class="intro-y grid grid-cols-12 gap-3 sm:gap-4 mt-2">
                             @foreach ($extras as  $extra)
-                            <a href="javascript:;" class="block font-medium text-center">{{$extra->descripcion}}</a>
+                            <div wire:click="add2Cart({{$extra->id}})" class="file box rounded-md p-5 relative zoom-in">
+
+                                <a href="javascript:;" class="block font-medium text-center">{{$extra->descripcion}}</a>
+
+                            </div>
                             @endforeach
                         </div>
                     @endif
