@@ -39,18 +39,7 @@ class Pedidos extends Component
     public function render()
     {
         $menus = Menu::activos();
-        // Obtener registros activos de Platos Principales
-        $platosPrincipales = Pp::where('activo', true)->get();
 
-        // Obtener registros activos de Entradas
-        $entradas = Entrada::where('activo', true)->get();
-
-        // Obtener registros activos de Postres
-        $postres = Postre::where('activo', true)->get();
-        //dd($postres);
-        // Combinar todas las colecciones en una sola
-        $extras = $platosPrincipales->concat($entradas)->concat($postres);
-       // dd($extras->count());
 
         if(strlen($this->searchCustomer) > 0)
             $this->customers =  Customer::where('businame','like',"%{$this->searchCustomer}%")
@@ -67,7 +56,7 @@ class Pedidos extends Component
             ->orderBy('base','asc')->get()->take(5);
         else
         $this->menusList =  Menu::orderBy('base','asc')->get()->take(5); //primeros 5 clientes
-        return view('livewire.pedidos.component', ['menus' => $menus, 'extras' => $extras]) ->layout('layouts.theme.app');;
+        return view('livewire.pedidos.component', ['menus' => $menus]) ->layout('layouts.theme.app');;
     }
 
 

@@ -26,14 +26,14 @@
                         <i class="fas fa-th-large mr-2"></i> MENUS
                     </a>
 
-                    <a wire:click="setTabActive('tabExtras')"
+                    {{-- <a wire:click="setTabActive('tabExtras')"
                     title="Seleccionar Extra"
                     data-toggle="tab" data-target="#tabExtras"
                     href="javascript:;"
                     class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center {{$tabExtras ? 'active' : '' }}"
                     id="meta-title-tab" role="tab" aria-selected="false">
                     <i class="fas fa-th-large mr-2"></i> EXTRAS {{ $tabExtras }}
-                    </a>
+                    </a> --}}
                </div>
 
                 <div class="post__content tab-content">
@@ -172,7 +172,7 @@
 
                  {{-- EXTRAS --}}
 
-                 <div id="tabExtras" class="tab-pane  {{$tabExtras ? 'active' : '' }}" role="tabpanel" aria-labelledby="content-tab">
+                 {{-- <div id="tabExtras" class="tab-pane  {{$tabExtras ? 'active' : '' }}" role="tabpanel" aria-labelledby="content-tab">
                     @if ($tabExtras)
                         <div class="intro-y grid grid-cols-12 gap-3 sm:gap-4 mt-2">
                             @foreach ($extras as  $extra)
@@ -184,7 +184,7 @@
                             @endforeach
                         </div>
                     @endif
-                 </div>
+                 </div> --}}
 
                  {{-- FIN EXTRAS --}}
 
