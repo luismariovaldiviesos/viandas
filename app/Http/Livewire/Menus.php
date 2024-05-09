@@ -116,6 +116,8 @@ class Menus extends Component
                             $this->noty('la combinación del menú ya existe', 'noty', 'false');
                             return;
                         }
+
+        // Crea o actualiza el menú completo
         Menu::updateOrCreate(
             ['id' => $this->selected_id],
                 [
@@ -126,8 +128,68 @@ class Menus extends Component
                      'postre_id' => $this->postre_id
                 ]
          );
-        $this->noty($this->selected_id < 1 ? 'Menú Registrado' : 'Menú Actualizado', 'noty', false, 'close-modal');
-        $this->resetUI();
+
+         //desgloce
+
+          // Si $this->selected_id es menor que 1, significa que es un nuevo registro
+          if($this->selected_id < 1){
+
+             // Crear componentes como menús individuales si es necesario
+             $this->createdIndividualComponent($this->ppSelected,$this->precio_pp);
+             $this->createdIndividualComponent($this->entradaSelected,$this->precio_entrada);
+             $this->createdIndividualComponent($this->postreSelected,$this->precio_postre);
+
+          }
+
+        //  Menu::updateOrCreate(
+        //     ['id' => $this->selected_id],
+        //         [
+        //             'base' => $this->ppSelected,
+        //             'precio' => $this->precio_pp,
+        //              'entrada_id' => 1,
+        //              'pp_id' => 1,
+        //              'postre_id' => 1
+        //         ]
+        //  );
+        //  Menu::updateOrCreate(
+        //     ['id' => $this->selected_id],
+        //         [
+        //             'base' => $this->entradaSelected,
+        //             'precio' => $this->precio_entrada,
+        //              'entrada_id' => 1,
+        //              'pp_id' => 1,
+        //              'postre_id' => 1
+        //         ]
+        //  );
+        //  Menu::updateOrCreate(
+        //     ['id' => $this->selected_id],
+        //         [
+        //             'base' => $this->postreSelected,
+        //             'precio' => $this->precio_postre,
+        //              'entrada_id' => 1,
+        //              'pp_id' => 1,
+        //              'postre_id' => 1
+        //         ]
+        //  );
+         $this->noty($this->selected_id < 1 ? 'Menú Registrado' : 'Menú Actualizado', 'noty', false, 'close-modal');
+         $this->resetUI();
+    }
+
+
+
+    private function createdIndividualComponent($componentName, $componentPrice){
+
+        Menu::updateOrCreate(
+            [
+            'base' =>  $componentName
+            ],
+            [
+                'precio' => $componentPrice,
+                'entrada_id' => 1,
+                'pp_id' => 1,
+                'postre_id' => 1
+            ]
+        );
     }
 
 
@@ -205,28 +267,12 @@ class Menus extends Component
                 //dd($menu->entrada->id);
                 $menu->activo =  true;
                 $menu->save();
-                $entrada =  Entrada::findOrFail($menu->entrada_id);
-                $entrada->activo = true;
-                $entrada->save();
-                $pp =  Pp::findOrFail($menu->pp_id);
-                $pp->activo = true;
-                $pp->save();
-                $postre =  Postre::findOrFail($menu->postre_id);
-                $postre->activo = true;
-                $postre->save();
+
                 $this->noty("Menú $menu->base ES EL MENÚ DEL DIA", 'noty', false);
             }else {
                 $menu->activo =  false;
                 $menu->save();
-                $entrada =  Entrada::findOrFail($menu->entrada_id);
-                $entrada->activo = false;
-                $entrada->save();
-                $pp =  Pp::findOrFail($menu->pp_id);
-                $pp->activo = false;
-                $pp->save();
-                $postre =  Postre::findOrFail($menu->postre_id);
-                $postre->activo = false;
-                $postre->save();
+
                 $this->noty("Menú $menu->base YA NO ES EL MENÚ DEL DIA", 'noty', false);
             }
 
