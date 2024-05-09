@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pp extends Model
 {
     use HasFactory;
-    protected $fillable = ['descripcion','precio','activo'];
+    protected $fillable = ['descripcion','precio'];
 
     public static function rules($id)
     {

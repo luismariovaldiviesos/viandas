@@ -86,8 +86,7 @@ class Entradas extends Component
             ['id' => $this->selected_id],
             [
                 'descripcion' => $this->descripcion,
-                'precio' => $this->precio,
-                'activo' => false
+                'precio' => $this->precio
             ]
 
         );
