@@ -166,30 +166,6 @@
                     </div>
                 </div>
 
-                {{-- FIN MENUS --}}
-
-
-
-                 {{-- EXTRAS --}}
-
-                 {{-- <div id="tabExtras" class="tab-pane  {{$tabExtras ? 'active' : '' }}" role="tabpanel" aria-labelledby="content-tab">
-                    @if ($tabExtras)
-                        <div class="intro-y grid grid-cols-12 gap-3 sm:gap-4 mt-2">
-                            @foreach ($extras as  $extra)
-                            <div wire:click="add2Cart({{$extra->id}})" class="file box rounded-md p-5 relative zoom-in">
-
-                                <a href="javascript:;" class="block font-medium text-center">{{$extra->descripcion}}</a>
-
-                            </div>
-                            @endforeach
-                        </div>
-                    @endif
-                 </div> --}}
-
-                 {{-- FIN EXTRAS --}}
-
-
-
             </div>
 
         </div>
