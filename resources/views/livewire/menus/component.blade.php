@@ -8,13 +8,20 @@
 
             <h2 class="text-lg font-medium text-center text-them-1 py-4">
                 {{ $componentName }}
+                <button wire:click.prevent="Setear()" class="btn btn-danger shadow-md mr-2 w-full sm:w-auto">SETEAR</button>
             </h2>
 
             {{-- AQUI LLAMAMOS AL COMPONENTE SEARH --}}
                 <x-search />
             {{-- AQUI LLAMAMOS AL COMPONENTE SEARH --}}
 
+
+
+
+
+
             <div class="p-5">
+
                 <div class="preview">
                     <div class="overflow-x-auto">
                         <table class="table">

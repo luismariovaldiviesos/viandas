@@ -278,6 +278,16 @@ class Menus extends Component
 
     }
 
+    public function Setear(){
+        $activos  =  Menu::where('activo',true)->get();
+        foreach($activos as $item){
+
+            $item->activo =  false;
+            $item->save();
+        }
+        $this->noty("NO EXISTE MENÚS DIARIOS", 'noty', false);
+    }
+
 
     public function Destroy(Menu $menu)
     {
