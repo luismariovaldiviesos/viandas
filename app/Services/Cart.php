@@ -136,78 +136,78 @@ class Cart {
      // obtenemos total en carrito
     public function totalAmount()
     {
-        $amount = $this->cart->sum(function ($product){
-            return ($product->price2 * $product->qty);
+        $amount = $this->cart->sum(function ($menu){
+            return ($menu->precio * $menu->qty);
         });
         return $amount;
     }
 
-    public function totalSinImpuestos()
-    {
-        $amount = $this->cart->sum(function ($product){
-            return ($product->price * $product->qty);
-        });
-        return $amount;
-    }
+    // public function totalSinImpuestos()
+    // {
+    //     $amount = $this->cart->sum(function ($product){
+    //         return ($product->price * $product->qty);
+    //     });
+    //     return $amount;
+    // }
 
     // total del valor que grava 12
-    public function total12()
-    {
-        $amount = $this->cart->sum(function ($product){
-            if( $product->iva > 0){
-                return ($product->price * $product->qty);
-            }
+    // public function total12()
+    // {
+    //     $amount = $this->cart->sum(function ($product){
+    //         if( $product->iva > 0){
+    //             return ($product->price * $product->qty);
+    //         }
 
-        });
-        return $amount;
-    }
+    //     });
+    //     return $amount;
+    // }
 
     // total del impuesto 12
-    public function totalImpuesto12()
-    {
-        $amount = $this->cart->sum(function ($product){
-            if( $product->iva > 0){
-                return ($product->iva * $product->qty);
-            }
+    // public function totalImpuesto12()
+    // {
+    //     $amount = $this->cart->sum(function ($product){
+    //         if( $product->iva > 0){
+    //             return ($product->iva * $product->qty);
+    //         }
 
-        });
-        return $amount;
-    }
-    public function totalIce()
-    {
-        $amount = $this->cart->sum(function ($product){
-            if( $product->ice > 0){
-                return ($product->ice * $product->qty);
-            }
+    //     });
+    //     return $amount;
+    // }
+    // public function totalIce()
+    // {
+    //     $amount = $this->cart->sum(function ($product){
+    //         if( $product->ice > 0){
+    //             return ($product->ice * $product->qty);
+    //         }
 
-        });
-        return $amount;
-    }
+    //     });
+    //     return $amount;
+    // }
 
     // total del valor que grava 0
-    public function total0()
-    {
-        $amount = $this->cart->sum(function ($product){
-            if( $product->iva <= 0){
-                return ($product->price * $product->qty);
-            }
+    // public function total0()
+    // {
+    //     $amount = $this->cart->sum(function ($product){
+    //         if( $product->iva <= 0){
+    //             return ($product->price * $product->qty);
+    //         }
 
-        });
-        return $amount;
-    }
+    //     });
+    //     return $amount;
+    // }
 
       // total del DESCUENTO
-      public function totalDsto()
-      {
-          $amount = $this->cart->sum(function ($product){
-              if( $product->descuento > 0){
-                $desc = ($product->qty * $product->descuento) /100;
-                  return $desc;
-              }
+    //   public function totalDsto()
+    //   {
+    //       $amount = $this->cart->sum(function ($product){
+    //           if( $product->descuento > 0){
+    //             $desc = ($product->qty * $product->descuento) /100;
+    //               return $desc;
+    //           }
 
-          });
-          return $amount;
-      }
+    //       });
+    //       return $amount;
+    //   }
 
 
 
