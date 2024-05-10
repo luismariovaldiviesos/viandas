@@ -157,7 +157,7 @@
                                     @else  {{-- Si no hay elementos, muestra este mensaje --}}
                                     <div class="intro-y col-span-6 sm:col-span-4 md:col-span-3 xxl:col-span-2">
                                         <div class="file box rounded-md px-5 pt-8 pb-5 px-3 sm:px-5 relative zoom-in">
-                                         <h1 class="text-center">CONFIGURAR MENU DEL DIA</h1>
+                                            <a href="{{ route('menus') }}" class="block font-medium text-center">CONFIGURAR MENÚ DIA</a>
                                         </div>
                                     </div>
                                 @endif
