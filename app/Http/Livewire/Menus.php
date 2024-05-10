@@ -141,36 +141,6 @@ class Menus extends Component
 
           }
 
-        //  Menu::updateOrCreate(
-        //     ['id' => $this->selected_id],
-        //         [
-        //             'base' => $this->ppSelected,
-        //             'precio' => $this->precio_pp,
-        //              'entrada_id' => 1,
-        //              'pp_id' => 1,
-        //              'postre_id' => 1
-        //         ]
-        //  );
-        //  Menu::updateOrCreate(
-        //     ['id' => $this->selected_id],
-        //         [
-        //             'base' => $this->entradaSelected,
-        //             'precio' => $this->precio_entrada,
-        //              'entrada_id' => 1,
-        //              'pp_id' => 1,
-        //              'postre_id' => 1
-        //         ]
-        //  );
-        //  Menu::updateOrCreate(
-        //     ['id' => $this->selected_id],
-        //         [
-        //             'base' => $this->postreSelected,
-        //             'precio' => $this->precio_postre,
-        //              'entrada_id' => 1,
-        //              'pp_id' => 1,
-        //              'postre_id' => 1
-        //         ]
-        //  );
          $this->noty($this->selected_id < 1 ? 'Menú Registrado' : 'Menú Actualizado', 'noty', false, 'close-modal');
          $this->resetUI();
     }
