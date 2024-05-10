@@ -20,7 +20,7 @@ class Pedidos extends Component
 
     // mostrar y activar panels
     //public $tabMenus = true, $tabPedidos =  false, $tabExtras = false;
-    public $showListProducts = false, $tabProducts =  true, $tabCategories = false, $tabExtras= false;
+    public $showListProducts = false, $tabProducts =  true, $tabCategories = false;
 
     //collections
     public $menusList =[], $customers =[];
@@ -155,7 +155,15 @@ class Pedidos extends Component
 
     public function resetUI()
     {
-        $this->reset('tabProducts', 'cash', 'showListProducts', 'tabCategories', 'search', 'searchCustomer', 'searchProduct', 'customer_id', 'customerSelected', 'totalCart', 'itemsCart', 'productIdSelected', 'productChangesSelected', 'productNameSelected', 'changesProduct');
+        // $this->reset('tabProducts', 'cash', 'showListProducts', 'tabCategories', 'search', 'searchCustomer',
+        // 'searchMenu', 'customer_id', 'customerSelected', 'totalCart', 'itemsCart',
+        // 'menuIdSelected', 'productChangesSelected', 'productNameSelected', 'changesProduct');
+
+        $this->reset('showListProducts','tabProducts','tabCategories','search','cash','searchCustomer',
+                    'searchMenu','customer_id','changes','customerSelected','menuSelected','menusList',
+                    'customers','totalCart','itemsCart','contentCart','menuIdSelected','menuChangesSelected',
+                    'menuNameSelected','changesMenu'
+            );
     }
 
     // SAVE SALE //

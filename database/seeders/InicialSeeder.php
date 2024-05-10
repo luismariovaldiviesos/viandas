@@ -29,6 +29,50 @@ class InicialSeeder extends Seeder
             'phone' => '999999',
             'notes' => 'consumidor final por defecto'
         ]);
+        $customer = Customer::create([
+            'businame' => 'Andres Perez',
+            'typeidenti' => 'ci',
+            'valueidenti' => '0999999998',
+            'address' => 'dirección',
+            'address' => 'dirección',
+            'email' => 'andres@mail',
+            'phone' => '999999',
+            'notes' => ''
+        ]);
+
+        $customer = Customer::create([
+            'businame' => 'Julia crespo',
+            'typeidenti' => 'ci',
+            'valueidenti' => '0999999997',
+            'address' => 'dirección',
+            'address' => 'dirección',
+            'email' => 'julia@mail',
+            'phone' => '999999',
+            'notes' => 'consumidor final por defecto'
+        ]);
+
+        $customer = Customer::create([
+            'businame' => 'Joaquin Valdivieso',
+            'typeidenti' => 'ci',
+            'valueidenti' => '0999999996',
+            'address' => 'dirección',
+            'address' => 'dirección',
+            'email' => 'joaquin@mail',
+            'phone' => '999999',
+            'notes' => 'consumidor final por defecto'
+        ]);
+
+        $customer = Customer::create([
+            'businame' => 'Ximena  Chocho',
+            'typeidenti' => 'ci',
+            'valueidenti' => '0999999995',
+            'address' => 'dirección',
+            'address' => 'dirección',
+            'email' => 'xime@mail',
+            'phone' => '999999',
+            'notes' => 'consumidor final por defecto'
+        ]);
+
 
 
         Setting::create([

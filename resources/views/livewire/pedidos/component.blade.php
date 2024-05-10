@@ -26,6 +26,7 @@
                         <i class="fas fa-th-large mr-2"></i> MENUS
                     </a>
 
+
                     {{-- <a wire:click="setTabActive('tabExtras')"
                     title="Seleccionar Extra"
                     data-toggle="tab" data-target="#tabExtras"
@@ -222,7 +223,7 @@
                     <h1>Ingresar el Efectivo</h1>
                 </div>
                 <div class="mt-8">
-                    @if($totalCart > 0 && ($cash >= $totalCart))
+                    @if($totalCart > 0 && ($cash >= $totalCart) && ($customerSelected !="Seleccionar Cliente"))
                         {{-- <button wire:loading.attr="disabled" wire:target="storeSale" wire:click.prevent="storeSale" class="btn btn-primary w-full"><i class="fas fa-database mr-2"></i> Guardar Venta</button> --}}
                         <button wire:loading.attr="disabled" wire:target="storeSale" wire:click.prevent="storeSale(true)" class="btn btn-outline-primary w-full mt-5"><i class="fas fa-receipt mr-2"></i> Guardar e Imprimir</button>
                     @endif
@@ -230,7 +231,7 @@
                     @if($totalCart >0)
                         <button onclick="Cancel()" class="btn btn-danger w-full mt-5">
                         <i class="fas fa-trash mr-2"> </i>
-                        Cancelar Venta</button>
+                        Cancelar Pedido</button>
                     @endif
 
                 </div>
