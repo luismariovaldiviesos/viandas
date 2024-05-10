@@ -7,8 +7,11 @@
             <div class="intro-y box">
 
             <h2 class="text-lg font-medium text-center text-them-1 py-4">
+
+                    <a href="{{ route('pedidos') }}" class="btn btn-warning shadow-md mr-2 w-full sm:w-auto">TOMAR PEDIDOS</a>
+
                 {{ $componentName }}
-                <button wire:click.prevent="Setear()" class="btn btn-danger shadow-md mr-2 w-full sm:w-auto">SETEAR</button>
+                <button wire:click.prevent="Setear()" class="btn btn-danger shadow-md mr-2 w-full sm:w-auto">QUITAR MENUS</button>
             </h2>
 
             {{-- AQUI LLAMAMOS AL COMPONENTE SEARH --}}
