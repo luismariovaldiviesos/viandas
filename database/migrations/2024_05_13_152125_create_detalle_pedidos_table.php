@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('detalle_pedidos', function (Blueprint $table) {
             $table->id();
-            $table->decimal('total',10,2);
-            $table->integer('items')->default(0);
-            $table->decimal('descuento',10,2)->default(0);
-            $table->enum('estado',['Pendiente','Pagado'])->default('Pendiente');
-            $table->foreignId('customer_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('pedido_id')->constrained();
+            $table->foreignId('menu_id')->constrained();
+            $table->integer('cantidad');
+            $table->decimal('precio',10,2);
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('detalle_pedidos');
     }
 };

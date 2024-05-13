@@ -71,6 +71,12 @@ class Menu extends Model
         return $this->belongsTo(Postre::class);
     }
 
+    public function pedidos()
+    {
+       return $this->hasMany(DetallePedido::class);
+    }
+
+
     // una renta pertenece a un inquilino
     // public function tenant()
     // {

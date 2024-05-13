@@ -3,11 +3,14 @@
 namespace App\Http\Livewire;
 
 use App\Models\Customer;
+use App\Models\DetallePedido;
 use App\Models\Entrada;
 use App\Models\Menu;
+use App\Models\Pedido;
 use App\Models\Postre;
 use App\Models\Pp;
 use App\Traits\CartTrait;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Pedidos extends Component
@@ -187,34 +190,34 @@ class Pedidos extends Component
             } else{
                 $this->customer_id = Customer::where('businame', 'consumidor final')->first()->id;
             }
-
+                //dd($this->customer_id);
 
             //**********  se graba primero la venta */
-            $sale = Order::create([
+            $pedido = Pedido::create([
                 'total' => $this->getTotalCart(),
                 'items' => $this->getItemsCart(),
                 'descuento' => 0,
-                'estado' => 'Pending',
+                'estado' => 'Pendiente',
                 'user_id' => Auth()->user()->id,
                 'customer_id' =>  $this->customer_id
             ]);
 
             //**********  si hay venta se guarda detalle venta */
-            if ($sale) {
+            if ($pedido) {
                 $items = $this->getContentCart();
-                foreach ($items as  $item) {
-                    OrderDetail::create([
-                        'order_id' => $sale->id,
-                        'product_id' => $item->id,
-                        'quantity' => $item->qty,
-                        'price' => $item->price,
-                        'changes' => $item->changes
+                //dd($items);
+                foreach ($items as  $menu) {
+                    DetallePedido::create([
+                        'pedido_id' => $pedido->id,  //pedido id
+                        'menu_id' => $menu->id, // menu
+                        'cantidad' => $menu->qty,  //menu
+                        'precio' => $menu->precio  //menu
                     ]);
 
                     //**********  actualizamos stock */
-                    $product = Product::find($item->id);
-                    $product->stock = $product->stock - $item->qty;
-                    $product->save();
+                    // $product = Product::find($item->id);
+                    // $product->stock = $product->stock - $item->qty;
+                    // $product->save();
                 }
             }
 
@@ -223,7 +226,7 @@ class Pedidos extends Component
             $this->clearCart();
             $this->resetUI();
 
-            if ($print) $this->PrintTicket($sale->id);
+            //if ($print) $this->PrintTicket($sale->id);
 
             $this->noty('VENTA REGISTRADA CON EXITO');
 
