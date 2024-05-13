@@ -192,12 +192,9 @@ class Pedidos extends Component
             //**********  se graba primero la venta */
             $sale = Order::create([
                 'total' => $this->getTotalCart(),
-                'shipping' =>  0,
                 'items' => $this->getItemsCart(),
-                'discount' => 0,
-                'cash' => $this->cash,
-                'type' => 'Web',
-                'status' => 'Pending',
+                'descuento' => 0,
+                'estado' => 'Pending',
                 'user_id' => Auth()->user()->id,
                 'customer_id' =>  $this->customer_id
             ]);
