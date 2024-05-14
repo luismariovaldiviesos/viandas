@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Pedido;
 use DateTime;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -11,11 +12,12 @@ use Livewire\Component;
 class Dashboard extends Component
 {
 
-    public $year, $salesByMonth_Data = [], $top5Data =[], $weekSales_Data=[], $listYears=[] ;
+    public $year, $salesByMonth_Data = [], $top5Data =[], $weekSales_Data=[], $listYears=[], $dia ;
+    public $pedidos ;
 
     public function mount()
     {
-        if ($this->year == '') $this->year = date('Y');
+        if ($this->dia == '') $this->dia = date('d-m-Y');
     }
 
 
@@ -31,6 +33,9 @@ class Dashboard extends Component
         // $this->getTop5();
         // $this->getWeekSales();
         // $this->getSalesMonth();
+
+        $this->pedidos =  Pedido::where('estado','Pendiente')->get();
+        //dd($this->pedidos);
 
         return view('livewire.dash.component')->layout('layouts.theme.app');
     }
