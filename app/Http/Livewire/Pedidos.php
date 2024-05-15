@@ -23,10 +23,10 @@ class Pedidos extends Component
 
     // mostrar y activar panels
     //public $tabMenus = true, $tabPedidos =  false, $tabExtras = false;
-    public $showListProducts = false, $tabProducts =  true, $tabCategories = false;
+    public $showListProducts = false, $tabProducts =  false, $tabCategories = false, $tabDiario =  true;
 
     //collections
-    public $menusList =[], $customers =[];
+    public $menusList =[], $customers =[], $date="Seleccione fecha pedido";
      //info del carrito
      public $totalCart = 0, $itemsCart= 0, $contentCart=[];
 
@@ -34,14 +34,21 @@ class Pedidos extends Component
      public $subTotSinImpuesto =0;
      // producto seleccionado
      public $menuIdSelected, $menuChangesSelected, $menuNameSelected, $changesMenu;
+     public $pedidos ;
 
      protected $paginationTheme = "bootstrap";
+
+     public function mount()
+     {
+         //if ($this->date == '') $this->date = date('d-m-Y');
+     }
 
 
 
     public function render()
     {
         $menus = Menu::activos();
+        $this->pedidos =  Pedido::where('estado','Pendiente')->get();
 
 
         if(strlen($this->searchCustomer) > 0)
@@ -68,20 +75,20 @@ class Pedidos extends Component
         if ($tabName == 'tabProducts') {
             $this->tabProducts = true;
             $this->tabCategories = false;
-            $this->tabExtras = false;
+            $this->tabDiario = false;
         }
-        elseif($tabName == 'tabExtras')
+        elseif($tabName == 'tabDiario')
         {
 
             $this->tabProducts = false;
             $this->tabCategories = false;
-            $this->tabExtras = true;
+            $this->tabDiario = true;
 
         }
         else{
             $this->tabProducts = false;
             $this->showListProducts = false;
-            $this->tabExtras = false;
+            $this->tabDiario = false;
             $this->tabCategories = true;
         }
     }
@@ -165,7 +172,7 @@ class Pedidos extends Component
         $this->reset('showListProducts','tabProducts','tabCategories','search','cash','searchCustomer',
                     'searchMenu','customer_id','changes','customerSelected','menuSelected','menusList',
                     'customers','totalCart','itemsCart','contentCart','menuIdSelected','menuChangesSelected',
-                    'menuNameSelected','changesMenu'
+                    'menuNameSelected','changesMenu','tabDiario'
             );
     }
 
