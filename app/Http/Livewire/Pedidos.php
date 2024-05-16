@@ -10,6 +10,7 @@ use App\Models\Pedido;
 use App\Models\Postre;
 use App\Models\Pp;
 use App\Traits\CartTrait;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -26,7 +27,7 @@ class Pedidos extends Component
     public $showListProducts = false, $tabProducts =  false, $tabCategories = false, $tabDiario =  true;
 
     //collections
-    public $menusList =[], $customers =[], $date="Seleccione fecha pedido";
+    public $menusList =[], $customers =[], $hoy, $manana;
      //info del carrito
      public $totalCart = 0, $itemsCart= 0, $contentCart=[];
 
@@ -40,7 +41,11 @@ class Pedidos extends Component
 
      public function mount()
      {
-         //if ($this->date == '') $this->date = date('d-m-Y');
+         $date =  Carbon::now();
+         $this->hoy = $date->format('Y-m-d');
+         $this->manana = now()->addDay()->format('Y-m-d');
+
+        // dd($hoy, $mañana);
      }
 
 

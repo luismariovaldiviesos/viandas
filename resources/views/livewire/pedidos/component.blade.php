@@ -255,10 +255,10 @@
     <!-- BEGIN: Post Info -->
         <div class="col-span-12 lg:col-span-3">
             <div class="intro-y box p-5">
+                @include('livewire.pedidos.fechas')
                 <div>
-                    <h2 class="text-2xl text-center mb-3">Resumen de Venta</h2>
 
-                    <button onclick="openModalDate()" class="btn btn-outline-dark w-full mb-3">{{$date}}</button>
+                    <h2 class="text-2xl text-center mb-3">Resumen de Venta</h2>
                     <button onclick="openModalCustomer()" class="btn btn-outline-dark w-full mb-3">{{$customerSelected}}</button>
                     <button onclick="openModalProduct()" class="btn btn-outline-dark w-full mb-3">{{$menuSelected}}</button>
 
