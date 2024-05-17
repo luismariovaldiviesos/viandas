@@ -27,7 +27,7 @@ class Pedidos extends Component
     public $showListProducts = false, $tabProducts =  false, $tabCategories = false, $tabDiario =  true;
 
     //collections
-    public $menusList =[], $customers =[], $hoy, $manana;
+    public $menusList =[], $customers =[], $hoy, $manana, $fechaPedido;
      //info del carrito
      public $totalCart = 0, $itemsCart= 0, $contentCart=[];
 
