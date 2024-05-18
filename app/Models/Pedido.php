@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     use HasFactory;
-    protected $fillable = ['total','items','descuento','estado','customer_id','user_id']; //fecha del pedido created_at
+    protected $fillable = ['total','items','descuento','estado','fechapedido','customer_id','user_id']; //fecha del pedido created_at
 
 
       //relaciones

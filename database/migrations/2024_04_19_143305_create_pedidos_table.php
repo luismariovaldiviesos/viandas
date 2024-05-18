@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('items')->default(0);
             $table->decimal('descuento',10,2)->default(0);
             $table->enum('estado',['Pendiente','Pagado'])->default('Pendiente');
+            $table->date('fechapedido');
             $table->foreignId('customer_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();

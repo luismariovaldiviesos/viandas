@@ -210,6 +210,7 @@ class Pedidos extends Component
                 'items' => $this->getItemsCart(),
                 'descuento' => 0,
                 'estado' => 'Pendiente',
+                'fechapedido' => $this->fechaPedido,
                 'user_id' => Auth()->user()->id,
                 'customer_id' =>  $this->customer_id
             ]);
