@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('detalle_pedidos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pedido_id')->constrained();
-            $table->foreignId('menu_id')->constrained();
+            $table->foreignId('pedido_id')->constrained('pedidos')->onDelete('cascade');;
+            $table->foreignId('menu_id')->constrained('menus');
             $table->integer('cantidad');
             $table->decimal('precio',10,2);
             $table->timestamps();

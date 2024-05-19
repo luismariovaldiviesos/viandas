@@ -98,7 +98,7 @@
                                                                 wire:click.prevent="Edit({{ $pedido->id }})"
                                                                 type="button">
 
-                                                                    <small>despachar</small>
+                                                                <i class=" fas fa-edit f-2x"></i>
                                                                 </button>
                                                         </div>
                                                     </td>

@@ -7,3 +7,5 @@ imprimir pdf con pedidos de hoy para que se despache
 los pediddos deben cancelarse desde la cuenta del usaurio
 cada usario debe tener un consumo semanal y se debe visualizar al
 finalizar la semana o las fechas que se escojan
+
+quitar menus del dia
