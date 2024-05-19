@@ -635,6 +635,12 @@ select {
 .col-span-6 {
   grid-column: span 6 / span 6;
 }
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
 .col-end-2 {
   grid-column-end: 2;
 }
@@ -739,6 +745,9 @@ select {
 .mb-5 {
   margin-bottom: 1.25rem;
 }
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
 .mt-12 {
   margin-top: 3rem;
 }
@@ -759,9 +768,6 @@ select {
 }
 .-mb-10 {
   margin-bottom: -2.5rem;
-}
-.mb-3 {
-  margin-bottom: 0.75rem;
 }
 .mr-1 {
   margin-right: 0.25rem;
@@ -929,14 +935,14 @@ select {
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.grid-cols-6 {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-}
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 .grid-cols-7 {
   grid-template-columns: repeat(7, minmax(0, 1fr));
@@ -962,20 +968,20 @@ select {
 .justify-items-center {
   justify-items: center;
 }
-.gap-4 {
-  gap: 1rem;
-}
 .gap-5 {
   gap: 1.25rem;
+}
+.gap-4 {
+  gap: 1rem;
 }
 .gap-6 {
   gap: 1.5rem;
 }
-.gap-2 {
-  gap: 0.5rem;
-}
 .gap-3 {
   gap: 0.75rem;
+}
+.gap-2 {
+  gap: 0.5rem;
 }
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -1102,13 +1108,13 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
-.bg-amber-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(245 158 11 / var(--tw-bg-opacity));
-}
 .bg-gray-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+.bg-amber-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 158 11 / var(--tw-bg-opacity));
 }
 .fill-current {
   fill: currentColor;
@@ -1127,6 +1133,9 @@ select {
 }
 .p-3 {
   padding: 0.75rem;
+}
+.p-12 {
+  padding: 3rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -1168,13 +1177,17 @@ select {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
 }
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 .py-3 {
   padding-top: 0.75rem;
@@ -1187,10 +1200,6 @@ select {
 .py-0 {
   padding-top: 0px;
   padding-bottom: 0px;
-}
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
 }
 .pt-8 {
   padding-top: 2rem;
@@ -1222,20 +1231,20 @@ select {
 .pl-5 {
   padding-left: 1.25rem;
 }
-.pr-10 {
-  padding-right: 2.5rem;
-}
 .pt-5 {
   padding-top: 1.25rem;
+}
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+.pr-10 {
+  padding-right: 2.5rem;
 }
 .pl-4 {
   padding-left: 1rem;
 }
 .pb-10 {
   padding-bottom: 2.5rem;
-}
-.pb-5 {
-  padding-bottom: 1.25rem;
 }
 .text-left {
   text-align: left;
@@ -1272,13 +1281,13 @@ select {
   font-size: 1rem;
   line-height: 1.5rem;
 }
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 .font-medium {
   font-weight: 500;
@@ -1614,12 +1623,12 @@ select {
 }
 @media (min-width: 640px) {
 
-  .sm\:col-span-6 {
-    grid-column: span 6 / span 6;
-  }
-
   .sm\:col-span-4 {
     grid-column: span 4 / span 4;
+  }
+
+  .sm\:col-span-6 {
+    grid-column: span 6 / span 6;
   }
 
   .sm\:-my-px {
@@ -1763,10 +1772,6 @@ select {
     grid-column: span 6 / span 6;
   }
 
-  .md\:col-span-4 {
-    grid-column: span 4 / span 4;
-  }
-
   .md\:ml-0 {
     margin-left: 0px;
   }
@@ -1802,20 +1807,20 @@ select {
     grid-column: span 6 / span 6;
   }
 
-  .lg\:col-span-8 {
-    grid-column: span 8 / span 8;
-  }
-
-  .lg\:col-span-4 {
-    grid-column: span 4 / span 4;
-  }
-
   .lg\:col-span-9 {
     grid-column: span 9 / span 9;
   }
 
   .lg\:col-span-3 {
     grid-column: span 3 / span 3;
+  }
+
+  .lg\:col-span-8 {
+    grid-column: span 8 / span 8;
+  }
+
+  .lg\:col-span-4 {
+    grid-column: span 4 / span 4;
   }
 
   .lg\:mt-6 {
@@ -1829,24 +1834,24 @@ select {
 }
 @media (min-width: 1280px) {
 
-  .xl\:col-span-6 {
-    grid-column: span 6 / span 6;
-  }
-
   .xl\:col-span-3 {
     grid-column: span 3 / span 3;
   }
 
-  .xl\:col-span-12 {
-    grid-column: span 12 / span 12;
+  .xl\:col-span-2 {
+    grid-column: span 2 / span 2;
   }
 
   .xl\:col-span-4 {
     grid-column: span 4 / span 4;
   }
 
-  .xl\:col-span-2 {
-    grid-column: span 2 / span 2;
+  .xl\:col-span-6 {
+    grid-column: span 6 / span 6;
+  }
+
+  .xl\:col-span-12 {
+    grid-column: span 12 / span 12;
   }
 
   .xl\:mt-2 {
