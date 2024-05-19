@@ -35,9 +35,10 @@ class Pedidos extends Component
      public $subTotSinImpuesto =0;
      // producto seleccionado
      public $menuIdSelected, $menuChangesSelected, $menuNameSelected, $changesMenu;
-     public $pedidos ;
+
 
      protected $paginationTheme = "bootstrap";
+     private $pagination = 10;
 
      public function mount()
      {
@@ -53,7 +54,11 @@ class Pedidos extends Component
     public function render()
     {
         $menus = Menu::activos();
-        $this->pedidos =  Pedido::where('estado','Pendiente')->get();
+        $from = Carbon::now()->format('Y-m-d'). ' 00:00:00';
+        $to = Carbon::now()->format('Y-m-d'). ' 23:59:59';
+        $pedidos =  Pedido::whereBetween('fechapedido', [$from, $to])
+            ->where('estado','Pendiente') ->orderBy('id', 'desc')
+            ->paginate($this->pagination);
 
 
         if(strlen($this->searchCustomer) > 0)
@@ -71,7 +76,7 @@ class Pedidos extends Component
             ->orderBy('base','asc')->get()->take(5);
         else
         $this->menusList =  Menu::orderBy('base','asc')->get()->take(5); //primeros 5 clientes
-        return view('livewire.pedidos.component', ['menus' => $menus]) ->layout('layouts.theme.app');;
+        return view('livewire.pedidos.component', ['menus' => $menus, 'pedidos' => $pedidos]) ->layout('layouts.theme.app');;
     }
 
 
@@ -268,7 +273,7 @@ class Pedidos extends Component
     {
         $this->clearCart();
         $this->resetUI();
-        $this->noty('VENTA CANCELADA');
+        $this->noty('PEDIDO CANCELADO');
     }
 
 }

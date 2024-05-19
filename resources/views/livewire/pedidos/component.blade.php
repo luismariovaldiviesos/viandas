@@ -205,7 +205,11 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
+                    <div class="col-spam-12 p-5">
+                        {{ $pedidos->links() }}
+                   </div>
 
                       {{-- FIN PEDIDOS --}}
 
