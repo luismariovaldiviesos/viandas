@@ -257,7 +257,9 @@ class Pedidos extends Component
 
 
     public  function Edit(Pedido $pedido){
-        dd($pedido);
+        $pedido->estado = 'Despachado';
+        $pedido->save();
+        $this->noty('PEDIDO DESPACHADO');
     }
 
     public function Destroy(Pedido $pedido)
