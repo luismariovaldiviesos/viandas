@@ -21,6 +21,7 @@ use App\Http\Livewire\Sales;
 use App\Http\Livewire\Settings;
 use App\Http\Livewire\Users;
 use App\Http\Livewire\Roles;
+use App\Http\Livewire\CuentasClientes;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,7 +47,7 @@ Route::middleware(['auth'])->group(function () {
      Route::get('reports', Reports::class)->name('reports');
     Route::get('dash', Dashboard::class)->name('dash');
     Route::get('settings', Settings::class)->name('settings');
-    // Route::get('diarios', Diario::class)->name('diario');
+    Route::get('cuentasclientes', CuentasClientes::class)->name('cuentasclientes');
     // Route::get('cajas', Cajas::class)->name('cajas');
     // Route::get('arqueos', Arqueos::class)->name('arqueos');
     Route::get('roles', Roles::class)->name('roles');

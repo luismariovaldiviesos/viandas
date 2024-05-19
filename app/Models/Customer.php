@@ -64,5 +64,14 @@ class Customer extends Model
         return $this->HasMany(Pedido::class);
     }
 
+    public function pedidosNoPagados (){
+
+        return $this->pedidos()
+                        ->select('customer_id', DB::raw('SUM(total) as total_pedidos'))
+                        ->whereNull('fechapago')
+                        ->gropuBy('customer_id');
+
+    }
+
 
 }
