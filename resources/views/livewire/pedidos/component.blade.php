@@ -89,15 +89,16 @@
                                                     <td class="dark:border-dark-5 text-center">
                                                         <div class="d-flex justify-content-center">
                                                                 <button class="btn btn-danger text-white border-0"
-                                                                onclick="destroy('dashboard','Destroy', {{ $pedido->id }})"
+                                                                onclick="destroy('pedidos','Destroy', {{ $pedido->id }})"
                                                                 type="button">
                                                                     <i class=" fas fa-trash f-2x"></i>
                                                                 </button>
 
-                                                            <button class="btn btn-warning text-white border-0 ml-3"
+                                                                <button class="btn btn-warning text-white border-0 ml-3"
                                                                 wire:click.prevent="Edit({{ $pedido->id }})"
                                                                 type="button">
-                                                                    <i class=" fas fa-edit f-2x"></i>
+
+                                                                    <small>despachar</small>
                                                                 </button>
                                                         </div>
                                                     </td>
@@ -173,19 +174,7 @@
 
                                                 {{-- FIN PRECIO UNITARIO  --}}
 
-                                                {{-- iva --}}
 
-                                                {{-- <td class="border-b dark:border-dark-5 text-center">{{number_format($item->iva,2)}}</td> --}}
-                                                {{-- FIN iva --}}
-                                                 {{-- ICE --}}
-
-                                                 {{-- <td class="border-b dark:border-dark-5 text-center">{{ number_format($item->ice,2) }}</td> --}}
-                                                 {{-- FIN ICE --}}
-
-                                                     {{-- DESCUENTO --}}
-
-                                                     {{-- <td class="border-b dark:border-dark-5 text-center">%{{ number_format(  $item->descuento) }}</td> --}}
-                                                     {{-- FIN DESCUENTO --}}
 
                                                   {{-- TOTAL --}}
                                                 <td class="border-b dark:border-dark-5 text-center">

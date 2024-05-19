@@ -251,7 +251,18 @@ class Pedidos extends Component
     }
 
 
-    public $listeners = ['cancelSale'];
+    public  function Edit(Pedido $pedido){
+        dd($pedido);
+    }
+
+    public function Destroy(Pedido $pedido)
+    {
+        $pedido->delete();
+        $this->noty('Se eliminó el pedido');
+    }
+
+
+    public $listeners = ['cancelSale', 'Destroy'];
 
     public function cancelSale()
     {
