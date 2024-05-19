@@ -60,4 +60,9 @@ class Customer extends Model
     ];
 
 
+    public  function pedidos (){
+        return $this->HasMany(Pedido::class);
+    }
+
+
 }

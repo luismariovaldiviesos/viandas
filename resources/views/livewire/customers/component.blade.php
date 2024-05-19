@@ -61,7 +61,13 @@
                                                     wire:click.prevent="Edit({{ $customer->id }})"
                                                     type="button">
                                                         <i class=" fas fa-edit f-2x"></i>
-                                                    </button>
+                                                </button>
+                                                <a href="javascript:void(0)"
+                                                wire:click="detalleCustomer({{$customer->id}})"
+                                                class="btn btn-dark mtmobile" title="Detalle">
+                                                    <i class="fas fa-list"></i>
+                                                </a>
+
                                             </div>
                                         </td>
                                     </tr>

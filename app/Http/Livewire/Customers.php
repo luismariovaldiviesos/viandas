@@ -113,4 +113,10 @@ class Customers extends Component
        $this->noty("El cliente <b>$customer->businame </b> ha sido elmininado");
     }
 
+
+    public  function  detalleCustomer(Customer $customer){
+        $pedidos  =  $customer->pedidos;
+        dd($pedidos);
+    }
+
 }
