@@ -27,7 +27,7 @@ class Pedidos extends Component
     public $showListProducts = false, $tabProducts =  false, $tabCategories = false, $tabDiario =  true;
 
     //collections
-    public $menusList =[], $customers =[], $hoy, $manana, $fechaPedido;
+    public $menusList =[], $customers =[], $hoy, $manana, $fechaPedido =  null;
      //info del carrito
      public $totalCart = 0, $itemsCart= 0, $contentCart=[];
 
@@ -42,8 +42,8 @@ class Pedidos extends Component
      public function mount()
      {
          $date =  Carbon::now();
-         $this->hoy = $date->format('Y-m-d');
-         $this->manana = now()->addDay()->format('Y-m-d');
+         $this->fechaPedido = $date->format('Y-m-d');
+         //$this->manana = now()->addDay()->format('Y-m-d');
 
         // dd($hoy, $mañana);
      }

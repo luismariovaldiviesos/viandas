@@ -24,7 +24,7 @@
                     class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center {{$tabProducts ? 'active' : '' }}"
                     id="content-tab"
                     role="tab" >
-                    <i class="fas fa-list mr-2"></i> DETALLE DE VENTA
+                    <i class="fas fa-list mr-2"></i> DETALLE PEDIDO
                     </a>
 
                     <a wire:click="setTabActive('tabCategories')"
@@ -55,6 +55,7 @@
                                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >CANTIDAD</th>
                                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >TOTAL</th>
                                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >PRECIO</th>
+                                               <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" >DESPACHO</th>
                                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap text-center" >ACCIONES</th>
                                             </tr>
                                         </thead>
@@ -80,6 +81,9 @@
                                                     </td>
                                                    <td class="dark:border-dark-5">
                                                         <h6 class="mb-1 font-medium">{{ $pedido->total }}</h6>
+                                                    </td>
+                                                    <td class="dark:border-dark-5">
+                                                        <h6 class="mb-1 font-medium">{{ $pedido->estado }}</h6>
                                                     </td>
 
                                                     <td class="dark:border-dark-5 text-center">
@@ -258,56 +262,27 @@
                 @include('livewire.pedidos.fechas')
                 <div>
 
-                    <h2 class="text-2xl text-center mb-3">Resumen de Venta</h2>
+                    <h2 class="text-2xl mb-3">Resumen del Pedido</h2>
                     <button onclick="openModalCustomer()" class="btn btn-outline-dark w-full mb-3">{{$customerSelected}}</button>
                     <button onclick="openModalProduct()" class="btn btn-outline-dark w-full mb-3">{{$menuSelected}}</button>
 
 
                 </div>
                 <div class="mt-3">
-                    <h1 class="text-2x1 font-bold">ITEMS</h1>
-                    <h4 class="text-2x5">{{$itemsCart}}</h4>
-                </div>
-                <div class="mt-3">
-                    <h1 class="text-2x1 font-bold">SUBTOTAL</h1>
-                    <h4 class="text-2x1">${{number_format($this->subTotSinImpuesto,2)}}</h4>
-                </div>
-                {{-- <div class="mt-3">
-                    <h1 class="text-2x1 font-bold"> sub total TARIFA 12</h1>
-                    <h4 class="text-2x1"> ${{number_format($this->iva12,2)}}</h4>
-                </div>
-                <div class="mt-3">
-                    <h1 class="text-2x1 font-bold">sub total TARIFA 0</h1>
-                    <h4 class="text-2x1"> ${{number_format($this->iva0,2)}}</h4>
-                </div>
-                <div class="mt-3">
-                    <h1 class="text-2x1 font-bold">TOTAL descuento</h1>
-                    <h3 class="text-2x1">${{number_format($this->totalDscto,2)}}</h3>
-                </div>
-                <div class="mt-3">
-                    <h1 class="text-2x1 font-bold">ICE</h1>
-                    <h4 class="text-2x1"> ${{number_format($this->totalIce,2)}}</h4>
-                </div>
-                <div class="mt-3">
-                    <h1 class="text-2x1 font-bold">12 % IVA</h1>
-                    <h4 class="text-2x1"> ${{number_format($this->totalImpuesto12,2)}}</h4>
-                </div> --}}
-                <div class="mt-3">
-                    <h1 class="text-2x1 font-bold">TOTAL</h1>
-                    <h3 class="text-2x1">${{number_format($totalCart,2)}}</h3>
+                    <h2 class="text-2xl  mb-3">ITEMS</h2>
+                    <h2 class="text-2xl  mb-3">{{$itemsCart}}</h2>
                 </div>
 
-                <div class="mt-6">
-                    <div class="input-group">
-                        <div id="input-group-3" class="input-group-text"><i class="fas fa-dollar-sign fa-2x"></i></div>
-                        <input wire:model="cash" id="cash" type="number" data-kioskboard-type="numpad"  class="form-control form-control-lg kioskboard" placeholder="0.00">
-                    </div>
-                    <h1>Ingresar el Efectivo</h1>
+
+                <div class="mt-3">
+                    <h2 class="text-2xl  mb-3">TOTAL</h2>
+                    <h2 class="text-2xl  mb-3">${{number_format($totalCart,2)}}</h2>
                 </div>
                 <div class="mt-8">
-                    @if($totalCart > 0 && ($cash >= $totalCart) && ($customerSelected !="Seleccionar Cliente"))
+                    @if($totalCart > 0 && ($fechaPedido != null) && ($customerSelected !="Seleccionar Cliente"))
                         {{-- <button wire:loading.attr="disabled" wire:target="storeSale" wire:click.prevent="storeSale" class="btn btn-primary w-full"><i class="fas fa-database mr-2"></i> Guardar Venta</button> --}}
-                        <button wire:loading.attr="disabled" wire:target="storeSale" wire:click.prevent="storeSale(true)" class="btn btn-outline-primary w-full mt-5"><i class="fas fa-receipt mr-2"></i> Guardar e Imprimir</button>
+                        <button wire:loading.attr="disabled" wire:target="storeSale" wire:click.prevent="storeSale(true)"
+                         class="btn btn-outline-primary w-full mt-5"><i class="fas fa-receipt mr-2"></i> Guardar Pedido</button>
                     @endif
 
                     @if($totalCart >0)
