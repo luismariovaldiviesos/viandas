@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Customer extends Model
 {
@@ -64,14 +65,9 @@ class Customer extends Model
         return $this->HasMany(Pedido::class);
     }
 
-    public function pedidosNoPagados (){
 
-        return $this->pedidos()
-                        ->select('customer_id', DB::raw('SUM(total) as total_pedidos'))
-                        ->whereNull('fechapago')
-                        ->gropuBy('customer_id');
 
-    }
+
 
 
 }
