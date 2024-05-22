@@ -59,16 +59,11 @@
                                                     <i class=" fas fa-trash f-2x"></i>
                                                 </button>
                                             {{-- @endif --}}
-                                            <button class="btn btn-warning text-white border-0 ml-3"
-                                                wire:click.prevent="Edit({{ $pedido->id_cliente }})"
-                                                type="button">
-                                                    <i class=" fas fa-list f-2x"></i>
-                                            </button>
-                                         {{--   <a href="javascript:void(0)"
-                                            wire:click="detalleCustomer({{$customer->id}})"
+                                          <a href="javascript:void(0)"
+                                            wire:click="Edit({{$pedido->id_cliente}})"
                                             class="btn btn-dark mtmobile" title="Detalle">
                                                 <i class="fas fa-list"></i>
-                                            </a>--}}
+                                            </a>
 
                                         </div>
                                     </td>
