@@ -84,88 +84,41 @@
         <div class="col-spam-12 p-5">
             {{-- {{ $customers->links() }} --}}
         </div>
-
-
         </div>
+        @include('livewire.cuentasclientes.panel')
+        @include('livewire.cuentasclientes.modalcuentas')
     </div>
 
 
      <script>
 
-        // el =>
-        document.querySelectorAll('.mydp').forEach( function (el) {
-            const myDatePicker = MCDatepicker.create({
-            el: '#' + el.getAttribute('id'),
-            autoClose: true,
-            customOkBTN: 'ACEPTAR',
-            customClearBTN: 'BORRAR',
-            customCancelBTN: 'CANCELAR',
-            dateFormat: 'YYYY-MM-DD',
-            customWeekDays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-            customMonths: [
-            'Enero',
-            'Febrero',
-            'Marzo',
-            'Abril',
-            'Mayo',
-            'Junio',
-            'Julio',
-            'Agosto',
-            'Septiembre',
-            'Octubre',
-            'Noviembre',
-            'Diciembre'
-            ]
+        window.addEventListener('open-modal', event => {
+            openPanel()
+        })
+        window.addEventListener('open-modal-pendientes', event => {
+            //alert('cttm');
+            openModalPendientes()
         })
 
-            myDatePicker.onSelect((date, formatedDate) => {
-                if(myDatePicker.el == '#f1')
-                @this.startDate = formatedDate;
-            else
-                @this.endDate = formatedDate;
+        function openPanel( action = ''){
+            //alert('cttm'); funciona ctm
+            var modal =  document.getElementById('panelCuentas')
+            modal.classList.add('overflow-y-auto','show')
+            modal.style.cssText="margin-top: 0px; margin-left: 0px; padding-left: 17px; z-index: 100"
+        }
 
-                })
-
-            })
-
-            function openModalUser() {
-                var modal = document.getElementById("modalUser")
+        function openModalPendientes() {
+                var modal = document.getElementById("modalPendientes")
                 modal.classList.add("overflow-y-auto", "show")
                 modal.style.cssText = "margin-top: 0px; margin-left: -100px;  z-index: 1000;"
-            }
+        }
 
-
-            function closeModalUser() {
-                var modal = document.getElementById("modalUser")
+        function closeModal() {
+                var modal = document.getElementById("modalPendientes")
                 modal.classList.remove("overflow-y-auto", "show")
                 modal.style.cssText = ""
             }
 
-                function openModalDetail() {
-                var modal = document.getElementById("modalDetail")
-                modal.classList.add("overflow-y-auto", "show")
-                modal.style.cssText = "margin-top: 0px; margin-left: -100px;  z-index: 1000;"
-            }
-
-
-            function closeModalDetail() {
-                var modal = document.getElementById("modalDetail")
-                modal.classList.remove("overflow-y-auto", "show")
-                modal.style.cssText = ""
-            }
-
-            window.addEventListener('open-modal-detail', event => {
-                openModalDetail()
-            })
-
-            window.addEventListener('close-modal-user', event => {
-                closeModalUser()
-            })
-
-            const inputSearch = document.getElementById('user-search')
-                    inputSearch.addEventListener('change', (e) => {
-                    @this.search = e.target.value
-                    })
 
 
 

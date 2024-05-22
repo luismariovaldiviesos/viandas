@@ -50,6 +50,7 @@ class Postres extends Component
         if ($reset) $this->resetUI();
     }
 
+
     public function CloseModal()
     {
         $this->resetUI();

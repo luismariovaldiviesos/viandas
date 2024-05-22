@@ -14,6 +14,8 @@ class CuentasClientes extends Component
     public $action = 'Listado', $componentName = 'CUENTAS POR PAGAR', $search = '';
     private $pagination =10;
     protected $paginationTheme = 'tailwind';
+    public  $pendientes = [];
+    public $customer;
 
 
 
@@ -40,11 +42,19 @@ class CuentasClientes extends Component
         ->layout('layouts.theme.app');
     }
 
+    public function noty($msg, $eventName = 'noty', $reset = true, $action =""){
+        $this->dispatchBrowserEvent($eventName, ['msg'=>$msg, 'type' => 'success', 'action' => $action ]);
+        if($reset) $this->resetUI();
+    }
+
 
     public function  Edit(Customer $customer){
-        $pendientes =  Pedido::where('customer_id','=',$customer->id)->where('fechapago','=',null)->get();
+        $this->pendientes =  Pedido::where('customer_id','=',$customer->id)->where('fechapago','=',null)->get();
+        $this->customer =  $customer->businame;//dd($customer->businame);
        //$this->emit('abreDetalleCliente', $this->pendientes);
-        dd($pendientes);
+         // dd($this->pendientes, $this->customer);
+        //$this->noty('','open-modal',false);
+        $this->noty('','open-modal-pendientes', false);
      }
 
 
