@@ -1,0 +1,47 @@
+desd el boton va al controller
+
+									  <button class="btn btn-warning text-white border-0 ml-3"
+                                                    wire:click.prevent="Edit({{ $product->id }})"
+                                                    type="button">
+                                                        <i class=" fas fa-edit f-2x"></i>
+                                                    </button>
+
+en el controlador en el metodo se hace la busqueda
+
+
+   public function Edit (Product $product)
+    {
+
+        //codigo que corresponda
+
+
+        $this->noty('', 'open-modal', false);  ///
+
+
+
+    }
+
+	en elcmponente principal esta el script
+
+	antes del ultimo div :
+	@include('livewire.products.panel')
+
+	y en el script :
+
+	  window.addEventListener('open-modal', event => {
+            openPanel()
+        })
+
+
+
+
+	   // abrir modal
+        function openPanel(action = ''){
+            if(action == 'add'){
+                @this.resetUI()
+            }
+            var modal = document.getElementById('panelProduct')
+            modal.classList.add('overflow-y-auto','show')
+            modal.style.cssText="margin-top: 0px; margin-left: 0px; padding-left: 17px; z-index: 100"
+
+        }

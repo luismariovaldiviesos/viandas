@@ -11,11 +11,12 @@ class CuentasClientes extends Component
 {
 
     use WithPagination;
-    public $action = 'Listado', $componentName = 'CUENTAS POR PAGAR', $search = '';
+    public $action = 'Listado', $componentName = 'CUENTAS POR COBRAR', $search = '';
     private $pagination =10;
     protected $paginationTheme = 'tailwind';
     public  $pendientes = [];
     public $customer;
+
 
 
 
@@ -56,6 +57,17 @@ class CuentasClientes extends Component
         //$this->noty('','open-modal',false);
         $this->noty('','open-modal-pendientes', false);
      }
+
+     public  $listeners = ['Destroy'];
+
+     public function Destroy($pedido){
+        dd('cambia el metodo');
+     }
+
+
+
+
+
 
 
 

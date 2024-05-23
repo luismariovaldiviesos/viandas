@@ -52,18 +52,22 @@
 
                                     <td class="dark:border-dark-5 text-center">
                                         <div class="d-flex justify-content-center">
-                                            {{-- @if ($customer->orders->count() < 1) --}}
-                                                <button class="btn btn-danger text-white border-0"
-                                                onclick="destroy('customers','Destroy', {{ $pedido->id }})"
-                                                type="button">
-                                                    <i class=" fas fa-trash f-2x"></i>
-                                                </button>
-                                            {{-- @endif --}}
-                                          <a href="javascript:void(0)"
+
+                                            <a href="javascript:void(0)"
                                             wire:click="Edit({{$pedido->id_cliente}})"
                                             class="btn btn-dark mtmobile" title="Detalle">
-                                                <i class="fas fa-list"></i>
+                                                {{-- <i class="fas fa-list"></i> --}}
+                                                <small>Detalle pedidos</small>
                                             </a>
+                                            {{-- @if ($customer->orders->count() < 1) --}}
+                                                <button class="btn btn-danger text-white border-0"
+                                                onclick="destroy('cuentasclientes','Destroy', {{ $pedido->id }})"
+                                                type="button">
+                                                    {{-- <i class=" fas fa-trash f-2x"></i> --}}
+                                                    <small>Cancelar pedidos</small>
+                                                </button>
+                                            {{-- @endif --}}
+
 
                                         </div>
                                     </td>
@@ -85,27 +89,18 @@
             {{-- {{ $customers->links() }} --}}
         </div>
         </div>
-        @include('livewire.cuentasclientes.panel')
-        @include('livewire.cuentasclientes.modalcuentas')
+         @include('livewire.cuentasclientes.modalcuentas')
     </div>
 
 
      <script>
 
-        window.addEventListener('open-modal', event => {
-            openPanel()
-        })
         window.addEventListener('open-modal-pendientes', event => {
             //alert('cttm');
             openModalPendientes()
         })
 
-        function openPanel( action = ''){
-            //alert('cttm'); funciona ctm
-            var modal =  document.getElementById('panelCuentas')
-            modal.classList.add('overflow-y-auto','show')
-            modal.style.cssText="margin-top: 0px; margin-left: 0px; padding-left: 17px; z-index: 100"
-        }
+
 
         function openModalPendientes() {
                 var modal = document.getElementById("modalPendientes")
@@ -118,10 +113,6 @@
                 modal.classList.remove("overflow-y-auto", "show")
                 modal.style.cssText = ""
             }
-
-
-
-
 
 
         </script>
