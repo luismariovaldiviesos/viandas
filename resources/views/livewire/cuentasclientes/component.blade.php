@@ -60,12 +60,9 @@
                                                 <small>Detalle pedidos</small>
                                             </a>
                                             {{-- @if ($customer->orders->count() < 1) --}}
-                                                <button class="btn btn-danger text-white border-0"
-                                                onclick="destroy('cuentasclientes','Destroy', {{ $pedido->id }})"
-                                                type="button">
-                                                    {{-- <i class=" fas fa-trash f-2x"></i> --}}
-                                                    <small>Cancelar pedidos</small>
-                                                </button>
+                                            <button class="btn btn-danger text-white border-0" onclick="confirmPayment()" type="button">
+                                                <small>Cancelar pedidos</small>
+                                            </button>
                                             {{-- @endif --}}
 
 
@@ -113,6 +110,27 @@
                 modal.classList.remove("overflow-y-auto", "show")
                 modal.style.cssText = ""
             }
+
+
+
+            function confirmPayment() {
+                swal({
+                    title: '¿DESEAS pagar las cuentas?',
+                    text: "",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Eliminar',
+                    confirmButtonColor: '#e7515a',
+                    cancelButtonText: 'Cerrar',
+                    padding: '2em'
+                }).then(function(result) {
+                    if (result.value) {
+                        window.livewire.emit('cancelaPendientes')  // este evento se emite al back y ahi hay que escuchar
+                        swal.close()
+                    }
+                })
+	        }
+
 
 
         </script>

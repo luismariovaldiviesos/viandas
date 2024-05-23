@@ -58,10 +58,11 @@ class CuentasClientes extends Component
         $this->noty('','open-modal-pendientes', false);
      }
 
-     public  $listeners = ['Destroy'];
+     public  $listeners = ['cancelaPendientes' => 'pagarPendientes'];
 
-     public function Destroy($pedido){
-        dd('cambia el metodo');
+     public function pagarPendientes(){
+
+        dd('ya');
      }
 
 

@@ -45,3 +45,46 @@ en el controlador en el metodo se hace la busqueda
             modal.style.cssText="margin-top: 0px; margin-left: 0px; padding-left: 17px; z-index: 100"
 
         }
+
+        *********************************************************************************************************************
+
+        para confirmacion con swal
+
+
+        boton :
+           <button class="btn btn-danger text-white border-0" onclick="confirmPayment()" type="button">
+                                                <small>Cancelar pedidos</small>
+                                            </button>
+
+
+        script en el mismo pie del componente o en scripts (hay que probar si funca )
+
+          function confirmPayment() {
+                swal({
+                    title: '¿DESEAS pagar las cuentas?',
+                    text: "",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Eliminar',
+                    confirmButtonColor: '#e7515a',
+                    cancelButtonText: 'Cerrar',
+                    padding: '2em'
+                }).then(function(result) {
+                    if (result.value) {
+                        window.livewire.emit('cancelaPendientes')  // este evento se emite al back y ahi hay que escuchar **
+                        swal.close()
+                    }
+                })
+	        }
+
+
+            lo anterior va all controller y ahi hay que escuchar
+            y asignar al nombre el metodo que se debe ejecutar
+
+             public  $listeners = ['cancelaPendientes' => 'pagarPendientes'];
+
+            public function pagarPendientes(){
+
+                    dd('ya');
+                }
+
