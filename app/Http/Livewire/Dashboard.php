@@ -34,7 +34,7 @@ class Dashboard extends Component
         // $this->getWeekSales();
         // $this->getSalesMonth();
 
-        $this->pedidos =  Pedido::where('estado','Pendiente')->get();
+        //$this->pedidos =  Pedido::where('estado','Pendiente')->get();
         //dd($this->pedidos);
 
         return view('livewire.dash.component')->layout('layouts.theme.app');

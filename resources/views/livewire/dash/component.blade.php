@@ -30,7 +30,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($pedidos as $pedido )
+                            {{-- @forelse ($pedidos as $pedido )
                                 <tr class=" dark:bg-dark-1 {{ $loop->index % 2> 0 ? 'bg-gray-200' : '' }}">
 
                                     <td class="dark:border-dark-5">
@@ -75,7 +75,7 @@
                                         <h6 class="text-center">    NO HAY CLIENTES  </h6>
                                     </td>
                                 </tr>
-                            @endforelse
+                            @endforelse --}}
                         </tbody>
                     </table>
                 </div>
