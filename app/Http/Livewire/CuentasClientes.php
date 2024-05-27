@@ -60,9 +60,17 @@ class CuentasClientes extends Component
 
      public  $listeners = ['cancelaPendientes' => 'pagarPendientes'];
 
-     public function pagarPendientes(){
+     public function pagarPendientes($id){
 
-        dd('ya');
+        $this->pendientes = Pedido::join('customers as c', 'c.id', '=', 'pedidos.customer_id')
+        ->select('pedidos.*', 'c.businame as cliente', 'c.phone as telefono', 'c.email as mail', DB::raw("sum(pedidos.total) over (partition by pedidos.customer_id) as total_sum"))
+        ->where('pedidos.customer_id', $id)
+        ->whereNull('pedidos.fechapago')
+        ->get();
+
+        foreach($this->pendientes  as $pendiete){
+            dd("iniciamos macar como pagadas",$pendiete->id);
+        }
      }
 
 

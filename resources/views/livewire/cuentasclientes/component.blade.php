@@ -60,7 +60,7 @@
                                                 <small>Detalle pedidos</small>
                                             </a>
                                             {{-- @if ($customer->orders->count() < 1) --}}
-                                            <button class="btn btn-danger text-white border-0" onclick="confirmPayment()" type="button">
+                                            <button class="btn btn-danger text-white border-0" onclick="confirmPayment({{$pedido->id_cliente}})" type="button">
                                                 <small>Cancelar pedidos</small>
                                             </button>
                                             {{-- @endif --}}
@@ -113,7 +113,7 @@
 
 
 
-            function confirmPayment() {
+            function confirmPayment($id) {
                 swal({
                     title: '¿DESEAS pagar las cuentas?',
                     text: "",
@@ -125,7 +125,7 @@
                     padding: '2em'
                 }).then(function(result) {
                     if (result.value) {
-                        window.livewire.emit('cancelaPendientes')  // este evento se emite al back y ahi hay que escuchar
+                        window.livewire.emit('cancelaPendientes',$id)  // este evento se emite al back y ahi hay que escuchar
                         swal.close()
                     }
                 })

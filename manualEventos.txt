@@ -52,14 +52,14 @@ en el controlador en el metodo se hace la busqueda
 
 
         boton :
-           <button class="btn btn-danger text-white border-0" onclick="confirmPayment()" type="button">
+           <button class="btn btn-danger text-white border-0" onclick="confirmPayment({{ {{$pedido->id_cliente}} }})" type="button">
                                                 <small>Cancelar pedidos</small>
                                             </button>
 
 
         script en el mismo pie del componente o en scripts (hay que probar si funca )
 
-          function confirmPayment() {
+          function confirmPayment($id) {
                 swal({
                     title: '¿DESEAS pagar las cuentas?',
                     text: "",
@@ -71,7 +71,7 @@ en el controlador en el metodo se hace la busqueda
                     padding: '2em'
                 }).then(function(result) {
                     if (result.value) {
-                        window.livewire.emit('cancelaPendientes')  // este evento se emite al back y ahi hay que escuchar **
+                        window.livewire.emit('cancelaPendientes',$id)  // este evento se emite al back y ahi hay que escuchar **
                         swal.close()
                     }
                 })
@@ -83,7 +83,7 @@ en el controlador en el metodo se hace la busqueda
 
              public  $listeners = ['cancelaPendientes' => 'pagarPendientes'];
 
-            public function pagarPendientes(){
+            public function pagarPendientes(aqui llega el id){
 
                     dd('ya');
                 }
