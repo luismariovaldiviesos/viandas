@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PdfController;
 use App\Http\Livewire\Arqueos;
 use App\Http\Livewire\Asignar;
 use App\Http\Livewire\Cajas;
@@ -53,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('roles', Roles::class)->name('roles');
     Route::get('permisos', Permisos::class)->name('permisos');
     Route::get('asignar', Asignar::class)->name('asignar');
+    Route::get('/download-pdf/', [PdfController::class, 'descargaPdf']);
     // Route::get('descuentos', Descuentos::class)->name('descuentos');
 
 

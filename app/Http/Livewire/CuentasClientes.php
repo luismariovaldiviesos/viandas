@@ -63,6 +63,12 @@ class CuentasClientes extends Component
      }
 
      public  $listeners = ['cancelaPendientes' => 'pagarPendientes'];
+     public function resetUI()
+     {
+         $this->resetPage();
+        //  $this->resetValidation();
+        //  $this->reset('businame','typeidenti','valueidenti','address','email','phone','notes','selected_id','search','form');
+     }
 
      public function pagarPendientes($id){
 
@@ -72,15 +78,16 @@ class CuentasClientes extends Component
         ->whereNull('pedidos.fechapago')
         ->get();
 
-        // $fechaActual = Carbon::now();
-        // foreach ($pendientes as $pedido) {
+         session()->put('pendientes',$pendientes);
+         $fechaActual = Carbon::now();
+
+        //  foreach ($pendientes as $pedido) {
         //     $pedido->fechapago = $fechaActual;
-        //     $pedido->save();
-        // }
-            $this->noty('PAGOS GENERADOS CORRECTAMENTE');
-
-
-
+        //      $pedido->save();
+        //  }
+        $this->noty('PAGOS GENERADOS CORRECTAMENTE');
+        $this->resetUI();
+        return redirect()->to('/download-pdf');
 
      }
 
