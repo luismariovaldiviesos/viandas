@@ -4,8 +4,11 @@ namespace App\Http\Livewire;
 use Livewire\WithPagination;
 use App\Models\Customer;
 use App\Models\Pedido;
+use Barryvdh\DomPDF\PDF;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+
 
 class CuentasClientes extends Component
 {
@@ -68,9 +71,13 @@ class CuentasClientes extends Component
         ->whereNull('pedidos.fechapago')
         ->get();
 
-        foreach($this->pendientes  as $pendiete){
-            dd("iniciamos macar como pagadas",$pendiete->id);
+        $fechaActual = Carbon::now();
+        foreach ($this->pendientes as $pedido) {
+            $pedido->fechapago = $fechaActual;
+            $pedido->save();
         }
+         // Generar el PDF con los datos de los pedidos pendientes
+         $pdf = PDF::loadView();
      }
 
 
