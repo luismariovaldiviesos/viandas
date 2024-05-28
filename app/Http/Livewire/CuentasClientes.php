@@ -49,7 +49,7 @@ class CuentasClientes extends Component
 
     public function noty($msg, $eventName = 'noty', $reset = true, $action =""){
         $this->dispatchBrowserEvent($eventName, ['msg'=>$msg, 'type' => 'success', 'action' => $action ]);
-        if($reset) $this->resetUI();
+
     }
 
 
@@ -72,19 +72,15 @@ class CuentasClientes extends Component
         ->whereNull('pedidos.fechapago')
         ->get();
 
-        $fechaActual = Carbon::now();
-        foreach ($pendientes as $pedido) {
-            $pedido->fechapago = $fechaActual;
-            $pedido->save();
-        }
+        // $fechaActual = Carbon::now();
+        // foreach ($pendientes as $pedido) {
+        //     $pedido->fechapago = $fechaActual;
+        //     $pedido->save();
+        // }
+            $this->noty('PAGOS GENERADOS CORRECTAMENTE');
 
 
-         // Generar el PDF con los datos de los pedidos pendientes
-         //$pdf = PDF::loadView('pdf.pedidos_pendientes', compact($this->pendientes));
-         $pdf = Pdf::loadView('livewire.pdf.pagados', ['pendientes'=>  $pendientes ]);
 
-         // Descargar el PDF
-       return $pdf->download('pedidos_pagados.pdf');
 
      }
 
