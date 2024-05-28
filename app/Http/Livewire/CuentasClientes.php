@@ -4,7 +4,8 @@ namespace App\Http\Livewire;
 use Livewire\WithPagination;
 use App\Models\Customer;
 use App\Models\Pedido;
-use Barryvdh\DomPDF\PDF;
+//use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -65,19 +66,26 @@ class CuentasClientes extends Component
 
      public function pagarPendientes($id){
 
-        $this->pendientes = Pedido::join('customers as c', 'c.id', '=', 'pedidos.customer_id')
+        $pendientes = Pedido::join('customers as c', 'c.id', '=', 'pedidos.customer_id')
         ->select('pedidos.*', 'c.businame as cliente', 'c.phone as telefono', 'c.email as mail', DB::raw("sum(pedidos.total) over (partition by pedidos.customer_id) as total_sum"))
         ->where('pedidos.customer_id', $id)
         ->whereNull('pedidos.fechapago')
         ->get();
 
         $fechaActual = Carbon::now();
-        foreach ($this->pendientes as $pedido) {
+        foreach ($pendientes as $pedido) {
             $pedido->fechapago = $fechaActual;
             $pedido->save();
         }
+
+
          // Generar el PDF con los datos de los pedidos pendientes
-         $pdf = PDF::loadView();
+         //$pdf = PDF::loadView('pdf.pedidos_pendientes', compact($this->pendientes));
+         $pdf = Pdf::loadView('livewire.pdf.pagados', ['pendientes'=>  $pendientes ]);
+
+         // Descargar el PDF
+       return $pdf->download('pedidos_pagados.pdf');
+
      }
 
 

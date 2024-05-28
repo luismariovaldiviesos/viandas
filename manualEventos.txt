@@ -88,3 +88,10 @@ en el controlador en el metodo se hace la busqueda
                     dd('ya');
                 }
 
+
+
+//PARA PDF
+
+composer require barryvdh/laravel-dompdf
+use Barryvdh\DomPDF\Facade\Pdf;
+
