@@ -80,20 +80,43 @@ class CuentasClientes extends Component
      }
 
      public function CancelaSaldos(){
-        dd($this->customer_id, $this->customer, $this->totalPendientes);
-        $pendientes = Pedido::join('customers as c', 'c.id', '=', 'pedidos.customer_id')
-        ->select('pedidos.*', 'c.businame as cliente', 'c.phone as telefono', 'c.email as mail', DB::raw("sum(pedidos.total) over (partition by pedidos.customer_id) as total_sum"))
+        //dd($this->customer_id, $this->customer, $this->totalPendientes);
+        // $pendientes = Pedido::join('customers as c', 'c.id', '=', 'pedidos.customer_id')
+        // ->select('pedidos.*', 'c.businame as cliente', 'c.phone as telefono', 'c.email as mail', DB::raw("sum(pedidos.total) over (partition by pedidos.customer_id) as total_sum"))
+        // ->where('pedidos.customer_id', $this->customer_id)
+        // ->whereNull('pedidos.fechapago')
+        // ->get();
+            $pendientes = Pedido::join('customers as c', 'c.id', '=', 'pedidos.customer_id')
+            ->select(
+            'pedidos.*',
+            'c.businame as cliente',
+            'c.phone as telefono',
+            'c.email as mail',
+            DB::raw("SUM(pedidos.total) OVER (PARTITION BY pedidos.customer_id) AS total_sum"),
+            DB::raw("MIN(pedidos.fechapedido) OVER (PARTITION BY pedidos.customer_id) AS min_fecha_pedido"),
+            DB::raw("MAX(pedidos.fechapedido) OVER (PARTITION BY pedidos.customer_id) AS max_fecha_pedido")
+        )
         ->where('pedidos.customer_id', $this->customer_id)
         ->whereNull('pedidos.fechapago')
         ->get();
-
+        //dd($pendientes);
          session()->put('pendientes',$pendientes);
          $fechaActual = Carbon::now();
+         $desde = $pendientes[0]->min_fecha_pedido;
+         $hasta = $pendientes[0]->max_fecha_pedido;
+         $periodo =  $desde .' '. 'al'.' ' . $hasta;
+         dd($periodo);
 
-        //  foreach ($pendientes as $pedido) {
-        //     $pedido->fechapago = $fechaActual;
-        //      $pedido->save();
-        //  }
+          foreach ($pendientes as $pedido) {
+            // foreach($pedido->detalles as $detalle){
+
+            //     dd($detalle->menu->base);
+
+            // }
+            //dd($pedido->detalles->menu);
+            //  $pedido->fechapago = $fechaActual;
+            //   $pedido->save();
+          }
         $this->noty('PAGOS GENERADOS CORRECTAMENTE');
         $this->resetUI();
         return redirect()->to('/download-pdf');
