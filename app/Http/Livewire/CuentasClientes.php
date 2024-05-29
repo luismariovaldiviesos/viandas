@@ -19,7 +19,7 @@ class CuentasClientes extends Component
     private $pagination =10;
     protected $paginationTheme = 'tailwind';
     public  $pendientes = [];
-    public $customer;
+    public $customer, $totalPendientes;
 
 
 
@@ -54,7 +54,12 @@ class CuentasClientes extends Component
 
 
     public function  Edit(Customer $customer){
-        $this->pendientes =  Pedido::where('customer_id','=',$customer->id)->where('fechapago','=',null)->get();
+        $this->pendientes =  Pedido::where('customer_id','=',$customer->id)
+                            ->where('fechapago','=',null)
+                            ->get();
+
+        $this->totalPendientes = $this->pendientes->sum('total');
+
         $this->customer =  $customer->businame;
         $this->noty('','open-modal-pendientes', false);
      }

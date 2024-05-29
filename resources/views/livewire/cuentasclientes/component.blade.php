@@ -61,7 +61,7 @@
                                             </a>
                                             {{-- @if ($customer->orders->count() < 1) --}}
                                             <button class="btn btn-danger text-white border-0" onclick="confirmPayment({{$pedido->id_cliente}})" type="button">
-                                                <small>Cancelar pedidos</small>
+                                                <small>Cancelar Saldos</small>
                                             </button>
                                             {{-- @endif --}}
 
@@ -115,7 +115,7 @@
 
             function confirmPayment($id) {
                 swal({
-                    title: '¿DESEAS pagar las cuentas?',
+                    title: '¿Estas seguro de cancelar saldos?',
                     text: "",
                     type: 'warning',
                     showCancelButton: true,
