@@ -62,11 +62,11 @@
                                                     type="button">
                                                         <i class=" fas fa-edit f-2x"></i>
                                                 </button>
-                                             {{--   <a href="javascript:void(0)"
-                                                wire:click="detalleCustomer({{$customer->id}})"
+                                                <a href="javascript:void(0)"
+                                                wire:click="setear('detallePago')"
                                                 class="btn btn-dark mtmobile" title="Detalle">
                                                     <i class="fas fa-list"></i>
-                                                </a>--}}
+                                                </a>
 
                                             </div>
                                         </td>
@@ -92,12 +92,14 @@
             </div>
         </div>
     @else
-
         @include('livewire.customers.form')
-
     @endif
 
-    {{-- @include('livewire.sales.keyboard') --}}
+    @if ($detallePago ==  true)
+          @include('livewire.customers.form')
+    @endif
+
+
 
 
     {{-- para el buscador  --}}

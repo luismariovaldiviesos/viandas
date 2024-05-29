@@ -12,7 +12,7 @@ class Customers extends Component
 
     public $businame = "", $typeidenti ="", $valueidenti ="",$address ="",$email ="",$phone ="", $notes='', $selected_id =0;
 
-    public $action = 'Listado', $componentName = 'CLIENTES', $search = '', $form = false;
+    public $action = 'Listado', $componentName = 'CLIENTES', $search = '', $form = false, $detallePago =  false ;
     private $pagination =10;
     protected $paginationTheme = 'tailwind';
 
@@ -60,6 +60,11 @@ class Customers extends Component
         $this->resetPage();
         $this->resetValidation();
         $this->reset('businame','typeidenti','valueidenti','address','email','phone','notes','selected_id','search','form');
+    }
+
+
+    public  function  setear($detallePago){
+        $this->detallePago=  true;
     }
 
     public function Edit(Customer $customer){
