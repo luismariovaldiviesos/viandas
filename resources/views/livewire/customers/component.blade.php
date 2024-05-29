@@ -95,12 +95,6 @@
         @include('livewire.customers.form')
     @endif
 
-    @if ($detallePago ==  true)
-          @include('livewire.customers.form')
-    @endif
-
-
-
 
     {{-- para el buscador  --}}
     <script>
