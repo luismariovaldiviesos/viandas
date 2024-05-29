@@ -9,17 +9,19 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 
 class CuentasClientes extends Component
 {
 
     use WithPagination;
+    use WithFileUploads;
     public $action = 'Listado', $componentName = 'CUENTAS POR COBRAR', $search = '';
     private $pagination =10;
     protected $paginationTheme = 'tailwind';
     public  $pendientes = [];
-    public $customer, $totalPendientes;
+    public $customer, $customer_id, $totalPendientes, $fpago ='efectivo', $dtransferencia;
 
 
 
@@ -61,7 +63,12 @@ class CuentasClientes extends Component
         $this->totalPendientes = $this->pendientes->sum('total');
 
         $this->customer =  $customer->businame;
+        $this->customer_id = $customer->id;
         $this->noty('','open-modal-pendientes', false);
+     }
+
+     public function Pagar(){
+        $this->noty('','open-modal-pagar', false);
      }
 
      public  $listeners = ['cancelaPendientes' => 'pagarPendientes'];
@@ -72,8 +79,29 @@ class CuentasClientes extends Component
         //  $this->reset('businame','typeidenti','valueidenti','address','email','phone','notes','selected_id','search','form');
      }
 
+     public function CancelaSaldos(){
+        dd($this->customer_id, $this->customer, $this->totalPendientes);
+        $pendientes = Pedido::join('customers as c', 'c.id', '=', 'pedidos.customer_id')
+        ->select('pedidos.*', 'c.businame as cliente', 'c.phone as telefono', 'c.email as mail', DB::raw("sum(pedidos.total) over (partition by pedidos.customer_id) as total_sum"))
+        ->where('pedidos.customer_id', $this->customer_id)
+        ->whereNull('pedidos.fechapago')
+        ->get();
+
+         session()->put('pendientes',$pendientes);
+         $fechaActual = Carbon::now();
+
+        //  foreach ($pendientes as $pedido) {
+        //     $pedido->fechapago = $fechaActual;
+        //      $pedido->save();
+        //  }
+        $this->noty('PAGOS GENERADOS CORRECTAMENTE');
+        $this->resetUI();
+        return redirect()->to('/download-pdf');
+     }
+
      public function pagarPendientes($id){
 
+        dd('lelgamos');
         $pendientes = Pedido::join('customers as c', 'c.id', '=', 'pedidos.customer_id')
         ->select('pedidos.*', 'c.businame as cliente', 'c.phone as telefono', 'c.email as mail', DB::raw("sum(pedidos.total) over (partition by pedidos.customer_id) as total_sum"))
         ->where('pedidos.customer_id', $id)

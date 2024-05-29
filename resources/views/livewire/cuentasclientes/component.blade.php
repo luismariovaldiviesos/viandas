@@ -87,6 +87,7 @@
         </div>
         </div>
          @include('livewire.cuentasclientes.modalcuentas')
+         @include('livewire.cuentasclientes.modalpagar')
     </div>
 
 
@@ -96,11 +97,20 @@
             //alert('cttm');
             openModalPendientes()
         })
+        window.addEventListener('open-modal-pagar', event => {
+            //alert('cttm');
+            openModalPagar()
+        })
 
 
 
         function openModalPendientes() {
                 var modal = document.getElementById("modalPendientes")
+                modal.classList.add("overflow-y-auto", "show")
+                modal.style.cssText = "margin-top: 0px; margin-left: -100px;  z-index: 1000;"
+        }
+        function openModalPagar() {
+                var modal = document.getElementById("modalPagar")
                 modal.classList.add("overflow-y-auto", "show")
                 modal.style.cssText = "margin-top: 0px; margin-left: -100px;  z-index: 1000;"
         }
