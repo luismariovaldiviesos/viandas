@@ -101,6 +101,15 @@
             //alert('cttm');
             openModalPagar()
         })
+        window.addEventListener('close-modal-pagar', event => {
+            //alert('cttm');
+            closeModalPagar()
+        })
+
+        window.addEventListener('close-modal-cuentas', event => {
+            //alert('cttm');
+            closeModal()
+        })
 
 
 
@@ -117,6 +126,12 @@
 
         function closeModal() {
                 var modal = document.getElementById("modalPendientes")
+                modal.classList.remove("overflow-y-auto", "show")
+                modal.style.cssText = ""
+            }
+
+            function closeModalPagar() {
+                var modal = document.getElementById("modalPagar")
                 modal.classList.remove("overflow-y-auto", "show")
                 modal.style.cssText = ""
             }

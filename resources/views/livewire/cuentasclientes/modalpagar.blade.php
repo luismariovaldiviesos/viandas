@@ -59,7 +59,7 @@
             </div>
 
             <div class="modal-footer text-right">
-                <button onclick="closeModal()" class="btn btn-primary mr-5">Cerrar Ventana</button>
+                <button onclick="closeModalPagar()" class="btn btn-primary mr-5">Cerrar Ventana</button>
                 <button class="btn btn-warning text-white border-0 ml-3"
                 wire:click="CancelaSaldos()"
                 type="button">
