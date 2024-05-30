@@ -66,6 +66,11 @@ class Customer extends Model
     }
 
 
+    public  function  pagos(){
+        return $this->hasMany(Pago::class);
+    }
+
+
 
 
 
