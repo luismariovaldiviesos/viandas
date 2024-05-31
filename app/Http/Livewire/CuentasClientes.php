@@ -128,8 +128,8 @@ class CuentasClientes extends Component
         $this->noty('PAGOS GENERADOS CORRECTAMENTE');
         $this->noty('','close-modal-pagar', false);
         $this->noty('','close-modal-cuentas', false);
-        $this->resetUI();
         return redirect()->to('/download-pdf');
+        $this->resetUI();
      }
 
     //  public function pagarPendientes($id){
