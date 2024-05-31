@@ -211,6 +211,7 @@
                         {{ $pedidos->links() }}
                    </div>
 
+
                       {{-- FIN PEDIDOS --}}
 
 

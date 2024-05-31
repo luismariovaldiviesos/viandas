@@ -13,12 +13,15 @@ use App\Traits\CartTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Pedidos extends Component
 {
 
 
+    use WithPagination;
     use CartTrait;
+
     public $search, $cash, $searchCustomer, $searchMenu, $customer_id =null,
     $changes,  $customerSelected ="Seleccionar Cliente", $menuSelected = "Buscar Menú";
 
@@ -37,7 +40,7 @@ class Pedidos extends Component
      public $menuIdSelected, $menuChangesSelected, $menuNameSelected, $changesMenu;
 
 
-     protected $paginationTheme = "bootstrap";
+     protected $paginationTheme = 'tailwind';
      private $pagination = 10;
 
      public function mount()
