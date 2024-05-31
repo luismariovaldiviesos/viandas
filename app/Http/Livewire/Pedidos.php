@@ -169,7 +169,7 @@ class Pedidos extends Component
         //dd($id);
         $this->add2Cart($menu);
         $this->dispatchBrowserEvent('close-product-modal');
-        $this->resetUI();
+        //$this->resetUI();
 
     }
 
