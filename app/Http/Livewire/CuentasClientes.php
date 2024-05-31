@@ -18,7 +18,7 @@ class CuentasClientes extends Component
 
     use WithPagination;
     use WithFileUploads;
-    public $action = 'Listado', $componentName = 'CUENTAS POR COBRAR', $search = '';
+    public $action = 'Listado', $componentName = 'CUENTAS POR COBRAR', $search = '', $searchCustomer;
     private $pagination =10;
     protected $paginationTheme = 'tailwind';
     public  $pendientes = [];
@@ -33,17 +33,22 @@ class CuentasClientes extends Component
 
     public function render()
     {
-        // $pedido =  Pedido::join('customers as c', 'c.id', 'pedidos.customer_id')
-        //                     //->select('pedidos.*','c.businame as cliente')
-        //                     ->select(DB::raw("c.businame as cliente, sum(pedidos.total)  as total"))
-        //                     ->where('pedidos.fechapago','=',null)->paginate($this->pagination);
-        // dd($pedido);
 
+        if(strlen($this->search) > 0)
+            $pedidos = Pedido::join('customers as c', 'c.id', '=', 'pedidos.customer_id')
+            ->select('c.id as id_cliente', 'c.businame as cliente', 'c.phone as telefono', 'c.email as mail', DB::raw("sum(pedidos.total) as total_sum"))
+            ->whereNull('pedidos.fechapago')
+            ->where('c.businame','like',"%{$this->search}%")
+            ->groupBy('c.id', 'c.businame', 'c.phone', 'c.email')
+            ->paginate($this->pagination);
+        else
         $pedidos = Pedido::join('customers as c', 'c.id', '=', 'pedidos.customer_id')
         ->select('c.id as id_cliente', 'c.businame as cliente', 'c.phone as telefono', 'c.email as mail', DB::raw("sum(pedidos.total) as total_sum"))
         ->whereNull('pedidos.fechapago')
         ->groupBy('c.id', 'c.businame', 'c.phone', 'c.email')
         ->paginate($this->pagination);
+
+
         //dd($pedidos);
 
         return view('livewire.cuentasclientes.component', [
