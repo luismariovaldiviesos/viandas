@@ -95,3 +95,50 @@ en el controlador en el metodo se hace la busqueda
 composer require barryvdh/laravel-dompdf
 use Barryvdh\DomPDF\Facade\Pdf;
 
+
+
+
+
+
+*********************************boto alerta***************************************
+
+  <button class="btn btn-danger text-white border-0" onclick="confirmPayment({{$pedido->id_cliente}})" type="button">
+                                                <small>Cancelar Saldos</small>
+                                            </button>
+
+
+script en la misma pagina:
+
+  function confirmPayment($id) {
+                swal({
+                    title: '¿Estas seguro de cancelar saldos?',
+                    text: "",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Eliminar',
+                    confirmButtonColor: '#e7515a',
+                    cancelButtonText: 'Cerrar',
+                    padding: '2em'
+                }).then(function(result) {
+                    if (result.value) {
+                        window.livewire.emit('cancelaPendientes',$id)  // este evento se emite al back y ahi hay que escuchar
+                        swal.close()
+                    }
+                })
+	        }
+
+ en el controller listeners
+
+ public  $listeners = ['cancelaPendientes' => 'CancelaSaldos'];
+
+
+ y el metodo CancelaSaldos  RECIBE EL ID :
+
+ public function CancelaSaldos($id){
+
+    BLABLABALA
+ }
+
+
+
+

@@ -24,13 +24,6 @@ class CuentasClientes extends Component
     public  $pendientes = [];
     public $customer, $customer_id, $totalPendientes, $fpago ='efectivo', $dtransferencia;
 
-
-
-
-
-
-
-
     public function render()
     {
 
@@ -47,17 +40,16 @@ class CuentasClientes extends Component
         ->whereNull('pedidos.fechapago')
         ->groupBy('c.id', 'c.businame', 'c.phone', 'c.email')
         ->paginate($this->pagination);
-
-
         //dd($pedidos);
-
         return view('livewire.cuentasclientes.component', [
             'pedidos' => $pedidos
         ])
         ->layout('layouts.theme.app');
     }
 
+
     public function noty($msg, $eventName = 'noty', $reset = true, $action =""){
+
         $this->dispatchBrowserEvent($eventName, ['msg'=>$msg, 'type' => 'success', 'action' => $action ]);
 
     }
@@ -131,39 +123,5 @@ class CuentasClientes extends Component
         return redirect()->to('/download-pdf');
         $this->resetUI();
      }
-
-    //  public function pagarPendientes($id){
-
-    //     dd('lelgamos');
-    //     $pendientes = Pedido::join('customers as c', 'c.id', '=', 'pedidos.customer_id')
-    //     ->select('pedidos.*', 'c.businame as cliente', 'c.phone as telefono', 'c.email as mail', DB::raw("sum(pedidos.total) over (partition by pedidos.customer_id) as total_sum"))
-    //     ->where('pedidos.customer_id', $id)
-    //     ->whereNull('pedidos.fechapago')
-    //     ->get();
-
-    //      session()->put('pendientes',$pendientes);
-    //      $fechaActual = Carbon::now();
-
-    //     //  foreach ($pendientes as $pedido) {
-    //     //     $pedido->fechapago = $fechaActual;
-    //     //      $pedido->save();
-    //     //  }
-    //     $this->noty('PAGOS GENERADOS CORRECTAMENTE');
-    //     $this->resetUI();
-    //     return redirect()->to('/download-pdf');
-
-    //  }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

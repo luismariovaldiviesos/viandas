@@ -74,9 +74,7 @@
                                                 <small>Detalle pedidos</small>
                                             </a>
                                             {{-- @if ($customer->orders->count() < 1) --}}
-                                            <button class="btn btn-danger text-white border-0" onclick="confirmPayment({{$pedido->id_cliente}})" type="button">
-                                                <small>Cancelar Saldos</small>
-                                            </button>
+
                                             {{-- @endif --}}
 
 
@@ -152,23 +150,7 @@
 
 
 
-            function confirmPayment($id) {
-                swal({
-                    title: '¿Estas seguro de cancelar saldos?',
-                    text: "",
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Eliminar',
-                    confirmButtonColor: '#e7515a',
-                    cancelButtonText: 'Cerrar',
-                    padding: '2em'
-                }).then(function(result) {
-                    if (result.value) {
-                        window.livewire.emit('cancelaPendientes',$id)  // este evento se emite al back y ahi hay que escuchar
-                        swal.close()
-                    }
-                })
-	        }
+
 
 
 

@@ -21,7 +21,11 @@ class PdfController extends Controller
         $pdf = Pdf::loadView('livewire.pdf.pagados',['pendientes'=>$pendientes]);
          return $pdf->download('resumenpago.pdf');
 
+
+
     }
+
+
 
 
 }
