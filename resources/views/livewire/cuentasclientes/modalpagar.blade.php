@@ -61,7 +61,7 @@
             <div class="modal-footer text-right">
                 <button onclick="closeModalPagar()" class="btn btn-primary mr-5">Cerrar Ventana</button>
                 <button class="btn btn-warning text-white border-0 ml-3"
-                wire:click="CancelaSaldos()"
+                onclick="PagarPendientes()"
                 type="button">
                    Pagar
                 </button>
@@ -70,4 +70,26 @@
 
         </div>
     </div>
+    <script>
+
+function PagarPendientes() {
+                swal({
+                    title: '¿Estas seguro de cancelar saldos?',
+                    text: "",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Eliminar',
+                    confirmButtonColor: '#e7515a',
+                    cancelButtonText: 'Cerrar',
+                    padding: '2em'
+                }).then(function(result) {
+                    if (result.value) {
+                        window.livewire.emit('cancelaPendientes')  // este evento se emite al back y ahi hay que escuchar
+                        swal.close()
+                    }
+                })
+	        }
+
+
+    </script>
 </div>

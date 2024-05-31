@@ -79,7 +79,8 @@ class CuentasClientes extends Component
         $this->noty('','open-modal-pagar', false);
      }
 
-     public  $listeners = ['cancelaPendientes' => 'pagarPendientes'];
+     public  $listeners = ['cancelaPendientes' => 'CancelaSaldos'];
+
      public function resetUI()
      {
         $this->resetPage();
@@ -126,7 +127,7 @@ class CuentasClientes extends Component
         ]);
         $this->noty('PAGOS GENERADOS CORRECTAMENTE');
         $this->noty('','close-modal-pagar', false);
-        //$this->noty('','close-modal-cuentas', false);
+        $this->noty('','close-modal-cuentas', false);
         $this->resetUI();
         return redirect()->to('/download-pdf');
      }
