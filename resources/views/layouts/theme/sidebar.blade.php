@@ -3,28 +3,69 @@
     <a href="{{ url('dash') }}" class="intro-x flex items-center pl-5 pt-4">
         <img alt="logo" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
         <span class="hidden xl:block text-white text-lg ml-3"><span class="font-medium">DASHBOARD</span> </span>
-
-
     </a>
     @endhasrole
     <div class="side-nav__devider my-6"></div>
 
     <ul>
+
+         <li>
+            <a href="{{ route('pedidos') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="book"></i> </div>
+                <div class="side-menu__title"> TOMAR PEDIDOS</div>
+            </a>
+        </li>
         <li>
-            <a href="javascript:;.html" class="side-menu side-menu--active">
-                <div class="side-menu__icon"> <i data-feather="home"></i> </div>
+            <a href="{{ route('menus') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="menu"></i> </div>
+                <div class="side-menu__title">CONFIGURAR MENU DIA</div>
+            </a>
+        </li>
+
+
+
+        <div class="side-nav__devider my-6"></div>
+
+        <li>
+            <a href="{{ route('customers') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="users"></i> </div>
+                <div class="side-menu__title"> CLIENTES  </div>
+            </a>
+        </li>
+        @hasrole('Admin')
+        <li>
+            <a href="{{ route('cuentasclientes') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="shopping-cart"></i> </div>
+                <div class="side-menu__title"> CUENTAS POR COBRAR  </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('reports') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="calendar"></i> </div>
+                <div class="side-menu__title"> REPORTES  </div>
+            </a>
+        </li>
+        @endhasrole
+
+
+
+
+
+
+        <div class="side-nav__devider my-6"></div>
+
+        <li>
+            @hasrole('Admin')
+            <a href="javascript:;" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="box"></i> </div>
                 <div class="side-menu__title">
-                    Platos y Postres
-                    <div class="side-menu__sub-icon transform rotate-180"> <i data-feather="chevron-down"></i> </div>
+                    PLATOS Y POSTRES
+                    <div class="side-menu__sub-icon "> <i data-feather="chevron-down"></i> </div>
                 </div>
             </a>
-            <ul class="side-menu__sub-open">
-                <li>
-                    <a href="menus" class="side-menu side-menu--active">
-                        <div class="side-menu__icon"> <i data-feather="tool"></i> </div>
-                        <div class="side-menu__title"> ARMAR MENÚ </div>
-                    </a>
-                </li>
+            @endhasrole
+            <ul class= >
+
                 <li>
                     <a href="entradas" class="side-menu side-menu--active">
                         <div class="side-menu__icon"> <i data-feather="layers"></i> </div>
@@ -45,84 +86,6 @@
                 </li>
             </ul>
         </li>
-        {{-- @hasrole('Admin')
-        <li>
-            <a href="{{ url('categories') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="layers"></i> </div>
-                <div class="side-menu__title"> CATEGORIAS  </div>
-            </a>
-        </li>
-        @endhasrole() --}}
-
-         {{-- <li>
-            <a href="{{ route('menus') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="coffee"></i> </div>
-                <div class="side-menu__title"> MENUS  </div>
-            </a>
-        </li> --}}
-
-         <li>
-            <a href="{{ route('pedidos') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="dollar-sign"></i> </div>
-                <div class="side-menu__title"> TOMAR PEDIDOS</div>
-            </a>
-        </li>
-
-        {{-- @hasrole('Admin')
-        <li>
-            <a href="{{ route('cajas') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="shopping-cart"></i> </div>
-                <div class="side-menu__title"> CAJAS  </div>
-            </a>
-        </li>
-        @endhasrole --}}
-        {{-- <li>
-            <a href="{{ route('arqueos') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
-                <div class="side-menu__title"> ARQUEOS  </div>
-            </a>
-        </li> --}}
-
-        <div class="side-nav__devider my-6"></div>
-
-        <li>
-            <a href="{{ route('customers') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="users"></i> </div>
-                <div class="side-menu__title"> CLIENTES  </div>
-            </a>
-        </li>
-
-
-
-
-        <div class="side-nav__devider my-6"></div>
-
-        @hasrole('Admin')
-        <li>
-            <a href="{{ route('reports') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="calendar"></i> </div>
-                <div class="side-menu__title"> REPORTES  </div>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('cuentasclientes') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="shopping-cart"></i> </div>
-                <div class="side-menu__title"> CUENTAS POR COBRAR  </div>
-            </a>
-        </li>
-        @endhasrole
-
-        {{-- <li>
-            <a href="{{ route('diario') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="eye"></i> </div>
-                <div class="side-menu__title"> VENTA DIARIA  </div>
-            </a>
-        </li> --}}
-
-        <div class="side-nav__devider my-6"></div>
-
-
-
 
         <li>
 
@@ -169,23 +132,11 @@
                     </a>
                 </li>
 
-                {{-- <li>
-                    <a href="{{ route('descuentos') }}" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="key"></i> </div>
-                        <div class="side-menu__title"> Descuentos  </div>
-                    </a>
-                </li> --}}
-
-                {{-- <li>
-                    <a href="{{ route('impuestos') }}" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="key"></i> </div>
-                        <div class="side-menu__title"> IMPUESTOS  </div>
-                    </a>
-                </li> --}}
             </ul>
         </li>
 
 
+        <div class="side-nav__devider my-6"></div>
 
     </ul>
 
@@ -227,35 +178,7 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a href="javascript:;" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="box"></i> </div>
-                <div class="side-menu__title">
-                    Menu Layout
-                    <div class="side-menu__sub-icon "> <i data-feather="chevron-down"></i> </div>
-                </div>
-            </a>
-            <ul class="">
-                <li>
-                    <a href="index.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="side-menu__title"> Side Menu </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="simple-menu-light-dashboard-overview-1.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="side-menu__title"> Simple Menu </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="top-menu-light-dashboard-overview-1.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="side-menu__title"> Top Menu </div>
-                    </a>
-                </li>
-            </ul>
-        </li>
+
         {{-- FIN MENIS DESPLEGABLES --}}
         <li>
             <a href="side-menu-light-inbox.html" class="side-menu">
