@@ -29,8 +29,7 @@
                                             @forelse($pendientes as $pendiente)
                                             <tr class="dark:bg-dark-1 text-lg {{$loop->index % 2 > 0 ? 'bg-gray-200' : ''}}">
                                                 <td class="border-b dark:border-dark-5 ">
-                                                    {{ $pendiente->fechapedido }}
-                                                    {{ $pendiente->id }}
+                                                    {{ \Carbon\Carbon::parse($pendiente->fechapedido)->isoFormat('LL') }}
                                                 </td>
                                                 <td>
                                                     @foreach ($pendiente->detalles as $detalle)

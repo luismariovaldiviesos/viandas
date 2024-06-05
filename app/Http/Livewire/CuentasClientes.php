@@ -58,7 +58,9 @@ class CuentasClientes extends Component
     public function  Edit(Customer $customer){
         $this->pendientes =  Pedido::where('customer_id','=',$customer->id)
                             ->where('fechapago','=',null)
+                            ->orderBy('id','desc')
                             ->get();
+
 
         $this->totalPendientes = $this->pendientes->sum('total');
 
