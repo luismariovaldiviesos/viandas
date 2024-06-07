@@ -15,6 +15,8 @@ class Customers extends Component
     public $action = 'Listado', $componentName = 'CLIENTES', $search = '', $form = false;
     private $pagination =10;
     protected $paginationTheme = 'tailwind';
+    public $pagos = [] ;
+    public $cliente;
 
     public function render()
     {
@@ -59,7 +61,7 @@ class Customers extends Component
     {
         $this->resetPage();
         $this->resetValidation();
-        $this->reset('businame','typeidenti','valueidenti','address','email','phone','notes','selected_id','search','form');
+        $this->reset('businame','pagos','typeidenti','valueidenti','address','email','phone','notes','selected_id','search','form');
     }
 
 
@@ -101,6 +103,17 @@ class Customers extends Component
             $this->noty($this->selected_id > 0 ? 'Cliente actualizado ' : 'Cliente registrado', 'noty', false, 'close-modal' );
             $this->resetUI();
 
+    }
+
+    public  function DetallePagos(Customer $customer){
+
+        $this->pagos = $customer->pagos;
+        $this->cliente =  $customer;
+        //dd($this->cliente->businame);
+        //dd($this->cliente->pagos);
+
+        $this->noty('','abre-detalle-pagos');
+        $this->resetUI();
     }
 
     public function Destroy(Customer $customer)

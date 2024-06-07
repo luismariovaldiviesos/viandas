@@ -62,11 +62,14 @@
                                                     type="button">
                                                         <i class=" fas fa-edit f-2x"></i>
                                                 </button>
-                                                <a href="javascript:void(0)"
-                                                wire:click="setear('detallePago')"
-                                                class="btn btn-dark mtmobile" title="Detalle">
-                                                    <i class="fas fa-list"></i>
-                                                </a>
+                                                @if ( count($customer->pagos) > 0 )
+                                                    <a href="javascript:void(0)"
+                                                    wire:click.prevent="DetallePagos({{ $customer->id }})"
+                                                    class="btn btn-dark mtmobile" title="Detalle">
+                                                        <i class="fas fa-list"></i>
+                                                    </a>
+                                                @endif
+
 
                                             </div>
                                         </td>
@@ -93,7 +96,10 @@
         </div>
     @else
         @include('livewire.customers.form')
+
     @endif
+
+    @include('livewire.customers.modal-customers')
 
 
     {{-- para el buscador  --}}
@@ -114,6 +120,28 @@
 
             }
         })
+
+        window.addEventListener('abre-detalle-pagos', event => {
+            //alert('ctm')
+            abreDetalle()
+        })
+
+        function abreDetalle(){
+
+            var modal = document.getElementById('modalUsuario')
+            modal.classList.add('overflow-y-auto','show')
+            modal.style.cssText="margin-top: 0px; margin-left: 0px; padding-left: 17px; z-index: 100"
+
+        }
+
+        function closeModalUsuario() {
+                var modal = document.getElementById("modalUsuario")
+                modal.classList.remove("overflow-y-auto", "show")
+                modal.style.cssText = ""
+            }
+
+
+
 
 
     </script>
