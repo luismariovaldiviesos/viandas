@@ -15,6 +15,7 @@ class Customers extends Component
     public $action = 'Listado', $componentName = 'CLIENTES', $search = '', $form = false;
     private $pagination =10;
     protected $paginationTheme = 'tailwind';
+    public  $pagos = [];
 
 
     public function render()
@@ -77,6 +78,7 @@ class Customers extends Component
         $this->phone = $customer->phone;
         $this->notes = $customer->notes;
         $this->form = true;
+        $this->pagos  =  $customer->pagos;
 
     }
 
