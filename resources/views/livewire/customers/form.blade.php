@@ -17,6 +17,7 @@
                             @error('businame')
                                 <x-alert msg="{{ $message }}" />
                             @enderror
+
                         </div>
 
                         <div>
@@ -86,6 +87,7 @@
                     <x-back />
 
                     <x-save />
+                    <h6 class="text-center text-warning" wire:loading>PROCESANDO...</h6>
                 </div>
 
             </div>

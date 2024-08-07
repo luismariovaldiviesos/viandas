@@ -2,6 +2,7 @@
 
     <button wire:click.prevent="$set('form',true)" class="btn btn-primary shadow-md mr-2 w-full sm:w-auto">Agregar</button>
 
+
     <div class="hidden md:block mx-auto text-gray-600 "></div>
 
     <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml:0">
@@ -11,5 +12,5 @@
             <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 rigth-0 fas fa-search"></i>
         </div>
     </div>
-
 </div>
+<h6 class="text-center text-warning" wire:loading>PROCESANDO...</h6>
